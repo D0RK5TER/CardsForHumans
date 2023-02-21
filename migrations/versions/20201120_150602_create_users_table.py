@@ -54,7 +54,7 @@ def upgrade():
     op.create_table('cards',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('creator', sa.Integer(), nullable=False),
-                    sa.Column('text', sa.String(length=30), nullable=False),
+                    sa.Column('text', sa.String(length=60), nullable=False),
                     sa.Column('is_question', sa.Boolean(),
                               nullable=False, default=False),
                     sa.Column('created', sa.DateTime(),
