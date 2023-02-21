@@ -16,6 +16,23 @@ class Deck(db.Model):
     owned_by = db.relationship('User', back_populates='owner')
     cards = db.relationship('Card', secondary=DeckCard, back_populates='in_deck')
 
+    def basic(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'created': self.created,
+            'card_count': len(self.cards),
+            'created': self.created
+            # 'cards': [c.basic() for c in self.cards]
+        }
+
+    def deck_cards(self):
+        return {
+            'title': self.title,
+            'created': self.created,
+            'cards': [c.basic() for c in self.cards]
+        }
+
     # cards = db.Column(db.String(255), nullable=False, unique=True)
     # hashed_password = db.Column(db.String(255), nullable=False)
     # created = db.Column(db.DateTime, default=datetime.utcnow)
