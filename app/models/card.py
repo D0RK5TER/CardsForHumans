@@ -19,7 +19,29 @@ class Card(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     made_by = db.relationship('User', back_populates='maker')
+
+    
     in_deck = db.relationship(
         'Deck', secondary=DeckCard, back_populates='cards')
     liked_by = db.relationship(
         'User', secondary=Favorite, back_populates='favorites')
+
+
+    def basic(self):
+        return {
+            'id': self.id,
+            'text': self.text,
+            'is_question': self.is_question
+        }
+
+    def extra(self):
+        age = datetime.utcnow
+        age -= self.created
+        return {
+            'id': self.id,
+            'text': self.text,
+            'is_question': self.is_question,
+            'age': age,
+            'made_by': self.made_by.basic()
+        }
+        
