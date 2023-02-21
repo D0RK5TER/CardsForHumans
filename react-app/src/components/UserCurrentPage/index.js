@@ -5,42 +5,34 @@ import { useSelector, useDispatch } from "react-redux";
 // import BreweryCard from '../BreweryCard';
 // import BreweryFormModal from '../BreweryFormModal';
 import OpenModalButton from '../OpenModalButton';
+import thunkMyInfo from '../../store/myprofile'
 // import BadgeFormModal from '../BadgeFormModal';
 
-export default function MyProfile() {
+export default function UserCurrent() {
     const dispatch = useDispatch()
     const history = useHistory()
     let user = useSelector(state => state.user)
-    // console.log('%@!%^#^@#$%^!@$#^%!@$^%#$@!%^#$^@!', myBreweries)
-    let userId = user?.id
-    // let userId = 10
-    let mybreweries = useSelector(state => state.brewery?.mybreweries)
-
     // useEffect(() => async () => {
     //     await dispatch(thunkMyBrewery(userId))
     // }, [dispatch])
-    useEffect(() => {
-        dispatch(thunkMyBrewery(userId))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(thunkMyInfo())
+    // }, [dispatch])
 
     return (
         <div id='my-brewery-page'>
             <div className='my-brewery-title'>
                 <div className='my-page-header'>
-                    My Breweries Page
+                    My Info
                 </div>
                 <div className='below-header'>
-                    <OpenModalButton
-                        buttonText="Make a Brewery"
-                        //   onItemClick={closeMenu}
-                        modalComponent={<BreweryFormModal id={user?.id} />}
-                    />
-
+            
+                {user?.id}------{user?.email}
                 </div>
             </div>
             <>
 
-                {mybreweries?.length ? mybreweries.map(brewery =>
+                {/* {mybreweries?.length ? mybreweries.map(brewery =>
                     <div>
                         <BreweryCard brewery={brewery} user={user} />
                         
@@ -51,7 +43,7 @@ export default function MyProfile() {
                         <h3 style={{ paddingTop: '8vw' }}>Try Making a Brewery!</h3>
                     </div>
 
-                }
+                } */}
             </>
 
             {/* {mybreweries?mybreweries[0]?.id: null}

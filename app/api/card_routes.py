@@ -13,7 +13,7 @@ def all_cards():
 
 @card_routes.route('/<int:id>')
 @login_required
-def all_cards(id):
+def one_card(id):
     card = Card.query.get(id)
     return card.extra()
 

@@ -1,15 +1,15 @@
 // constants
 const SET_INFO = "myprofile/SET_INFO";
-// const REMOVE_DECK = "mydecks/REMOVE_DECK";
+const REMOVE = "myprofile/REMOVE";
 
 const actionSet = (user) => ({
     type: SET_INFO,
     user,
 });
 
-// const actionRemove = () => ({
-//     type: REMOVE_DECK,
-// });
+export const actionRemove = () => ({
+    type: REMOVE,
+});
 
 export const thunkMyInfo = () => async (dispatch) => {
     const response = await fetch("/api/user/current", {
@@ -17,10 +17,9 @@ export const thunkMyInfo = () => async (dispatch) => {
             "Content-Type": "application/json",
         }
     });
-
     if (response.ok) {
         const data = await response.json();
-        dispatch(actionSet(data));
+        await dispatch(actionSet(data));
         return null;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -36,13 +35,13 @@ export const thunkMyInfo = () => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-    const newState = { ...state }
+    let newState = { ...state }
     switch (action.type) {
         case SET_INFO:
             newState = action.user
             return newState;
-        // case REMOVE_DECK:
-        //     return {};
+        case REMOVE:
+            return {};
         default:
             return state;
     }

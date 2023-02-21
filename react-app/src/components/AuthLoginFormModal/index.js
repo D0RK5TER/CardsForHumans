@@ -41,7 +41,7 @@ function LoginFormModal() {
       <form onSubmit={handleSubmit}>
         <div>
           <div className="modal-field">
-            Email
+            Username or Email
           </div>
           <input
             type="text"

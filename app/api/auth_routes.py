@@ -40,7 +40,13 @@ def login():
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
-        login_user(user)
+        userb = User.query.filter(User.username == form.data['email']).first()
+        if user:
+            login_user(user)
+        else:
+            login_user(userb)
+            user = userb
+
         return user.basic()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

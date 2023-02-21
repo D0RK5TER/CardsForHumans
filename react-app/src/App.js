@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 // import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-
+import UserCurrent from "./components/UserCurrentPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,7 +19,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/profile" >
-            {/* <LoginFormPage /> */}
+            <UserCurrent />
           </Route>
           <Route path="/">
             {/* <SignupFormPage /> */}

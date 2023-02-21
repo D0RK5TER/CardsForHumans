@@ -1,3 +1,5 @@
+import { thunkMyInfo } from "./myprofile";
+import { actionRemove } from "./myprofile";
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -41,6 +43,7 @@ export const login = (email, password) => async (dispatch) => {
 
 	if (response.ok) {
 		const data = await response.json();
+		await dispatch(thunkMyInfo())
 		dispatch(setUser(data));
 		return null;
 	} else if (response.status < 500) {
@@ -62,6 +65,7 @@ export const logout = () => async (dispatch) => {
 
 	if (response.ok) {
 		dispatch(removeUser());
+		dispatch(actionRemove())
 	}
 };
 
@@ -95,7 +99,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-	const newState = { ...state }
+	let newState = { ...state }
 	switch (action.type) {
 		case SET_USER:
 			newState = action.payload
