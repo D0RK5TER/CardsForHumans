@@ -2,22 +2,19 @@ from app.models import db, User, environment, SCHEMA, Card, Deck, DeckCard
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
-    demo = User(
-        username='demolish', email='demo@gmail.com', password='password')
-    marnie = User(
-        username='homosapian', email='one@gmail.com', password='password')
-    bobbie = User(
-        username='duesex', email='two@gmail.com', password='password')
-    robbie = User(
-        username='3musket', email='three@gmail.com', password='password')
-    mobbie = User(
-        username='squaremen', email='four@gmail.com', password='password')
-    sobbie = User(
-        username='admain', email='five@gmail.com', password='password')
-
-    
-
+def seed_decks():
+    demo =  Deck(
+        owner=1,  title='ChildsPlay')
+    marnie = Deck(
+        owner=2, title='2InTheHand')
+    bobbie = Deck(
+        owner=3, title='3rd Times The Charm')
+    robbie =  Deck(
+        owner=4,  title='Fourviously')
+    mobbie = Deck(
+        owner=5, title='Octagon/2')
+    sobbie = Deck(
+        owner=6, title='starter deck')
 
     db.session.add(demo)
     db.session.add(marnie)
@@ -35,10 +32,10 @@ def seed_users():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_decks():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.decks RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM users")
+        db.session.execute("DELETE FROM decks")
         
     db.session.commit()
