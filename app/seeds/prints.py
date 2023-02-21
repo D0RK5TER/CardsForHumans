@@ -11,7 +11,7 @@ def seed_prints():
         while print_num >= 0:
             new_print = Print(
                 user=u.id,
-                card=cards[print_num]
+                card=cards[print_num].id
             )
             db.session.add(new_print)
             print_num -= 1
