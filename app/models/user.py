@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     maker = db.relationship('Card', back_populates='made_by')
+    
     owner =  db.relationship('Deck', back_populates='owned_by')
     print_history = db.relationship('Print', back_populates='printed_by')
     favorites = db.relationship('Card', secondary=Favorite, back_populates='liked_by')
@@ -44,7 +45,29 @@ class User(db.Model, UserMixin):
     def users_decks(self):
         return {
             'id': self.id,
-            'decks': [deck.basic() for deck in self.owner]
+            'decks': [deck.deck_cards() for deck in self.owner]
+        }
+
+    def users_all_details(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'created': self.created,
+            'decks': [deck.deck_cards() for deck in self.owner],
+            'cards_made': [c.basic() for c in self.maker],
+        }
+    
+    def current_user(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'created': self.created,
+            'decks': [deck.basic() for deck in self.owner],
+            'cards_made': [c.basic() for c in self.maker],
+            'favorites': [c.basic() for c in self.favorites],
+            'prints': [p.current_user() for p in self.print_history]
         }
 
     # def user_deck_card(self):

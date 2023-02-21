@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../AuthLoginFormModal";
+import SignupFormModal from "../AuthSignupFormModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -56,12 +56,14 @@ function ProfileButton({ user }) {
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
+              location='profile-drop-button'
               modalComponent={<LoginFormModal />}
             />
 
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
+              location='profile-drop-button'
               modalComponent={<SignupFormModal />}
             />
           </>

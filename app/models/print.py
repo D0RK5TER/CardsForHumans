@@ -15,3 +15,14 @@ class Print(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     printed_by = db.relationship('User', back_populates='print_history')
+
+    def basic(self):
+        return {
+
+        }
+
+    def current_user(self):
+        return {
+            'card': self.card,
+            'deck': self.deck
+        }
