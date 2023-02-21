@@ -74,7 +74,7 @@ def upgrade():
                     sa.Column('created', sa.DateTime(),
                               default=datetime.now()),
                     sa.PrimaryKeyConstraint('id'),
-                    sa.ForeignKeyConstraint(['user'], ['user.id'], ),
+                    sa.ForeignKeyConstraint(['user'], ['users.ids'], ),
                     sa.ForeignKeyConstraint(['deck'], ['decks.id'], ),
                     sa.ForeignKeyConstraint(['card'], ['cards.id'], ),
                     )
