@@ -16,6 +16,7 @@ class Card(db.Model):
     creator = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
     text = db.Column(db.String(60), nullable=False)
+    icon = db.Column(db.String(255), nullable=True)
     is_question = db.Column(db.Integer, nullable=False,  default=0)
 
     created = db.Column(db.DateTime, default=datetime.utcnow)
