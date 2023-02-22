@@ -9,6 +9,7 @@ import { thunkSplashCards } from '../../store/cards'
 import CardCard from '../CardCard';
 // import DeckCard from '../DeckCard';
 // import BadgeFormModal from '../BadgeFormModal';
+import '../../0css/splash.css'
 
 export default function SplashPage() {
     const dispatch = useDispatch()
@@ -30,29 +31,29 @@ export default function SplashPage() {
     return (
         <div id='splash-page-whole'>
             <div id='splash-page-top'>
-                <div>
+                <div id='top-left'>
                     <CardCard card={a} />
                 </div>
-                <div>
+                <div id='top-right'>
                     <CardCard card={b} />
                 </div>
             </div>
             <div id='splash-page-mid'>
-                <div>
+                <div id='mid-left'>
                     <CardCard card={c} />
                 </div>
                 <div>
                     <CardCard card={z} />
                 </div>
-                <div>
+                <div id='mid-right'>
                     <CardCard card={d} />
                 </div>
             </div>
             <div id='splash-page-bot'>
-                <div>
+                <div id='bot-left'>
                     <CardCard card={e} />
                 </div>
-                <div>
+                <div id='bot-right'>
                     <CardCard card={f} />
                 </div>
             </div>

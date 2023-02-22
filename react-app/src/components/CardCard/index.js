@@ -13,14 +13,14 @@ export default function CardCard({ card }) {
     console.log(card)
     return (
         <div id='card-card-whole' className={classtoggle} onClick={() => history.push(`/${card?.id}`)}>
-            <div id='card-card-text' className={classtoggle}>
+            <div id='card-card-text' >
                 {card?.text}
             </div>
             <div id='card-card-bot'>
                 <div id='card-card-logo'>
                     <img src={classtoggle=='question'?logo2:logo} />
                 </div>
-                <div id='card-card-name' className={classtoggle}>
+                <div id='card-card-name' >
                     Cards for Humans
                 </div>
             </div>
