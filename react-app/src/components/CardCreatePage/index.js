@@ -7,7 +7,7 @@ export default function CardCreate() {
     const dispatch = useDispatch();
     const history = useHistory()
     const [text, setText] = useState('')
-    const [is_question, setIs_question] = useState(false)
+    const [is_question, setIs_question] = useState(0)
     const [errors, setErrors] = useState([])
 
     const handleIt = async (e) => {
@@ -23,7 +23,7 @@ export default function CardCreate() {
             </div>
             <div>
                 <div
-                    onClick={() => setIs_question(!is_question)}
+                    onClick={() => setIs_question(!is_question ? 0 : 1)}
                 >
                     This is a  -tern Answer/Question
                 </div>
