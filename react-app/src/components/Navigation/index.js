@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+export default function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.user);
 
 	return (
@@ -21,4 +21,3 @@ function Navigation({ isLoaded }){
 	);
 }
 
-export default Navigation;
