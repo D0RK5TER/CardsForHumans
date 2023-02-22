@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
+import OpenModalButton from "../ModalButton";
 import LoginFormModal from "../AuthLoginFormModal";
 import SignupFormModal from "../AuthSignupFormModal";
 
-function ProfileButton({ user }) {
+export default function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
@@ -77,5 +77,3 @@ function ProfileButton({ user }) {
     </>
   );
 }
-
-export default ProfileButton;

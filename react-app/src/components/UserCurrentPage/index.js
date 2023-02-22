@@ -4,31 +4,80 @@ import { useSelector, useDispatch } from "react-redux";
 // import { thunkMyBrewery } from '../../store/brewery';
 // import BreweryCard from '../BreweryCard';
 // import BreweryFormModal from '../BreweryFormModal';
-import OpenModalButton from '../OpenModalButton';
-import thunkMyInfo from '../../store/myprofile'
+import OpenModalButton from '../ModalButton';
+import { thunkMyInfo } from '../../store/myprofile'
+import CardCard from '../CardCard';
+import DeckCard from '../DeckCard';
 // import BadgeFormModal from '../BadgeFormModal';
 
 export default function UserCurrent() {
     const dispatch = useDispatch()
     const history = useHistory()
-    let user = useSelector(state => state.user)
+    let user = useSelector(state => state.myprofile)
     // useEffect(() => async () => {
     //     await dispatch(thunkMyBrewery(userId))
     // }, [dispatch])
-    // useEffect(() => {
-    //     dispatch(thunkMyInfo())
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(thunkMyInfo())
+    }, [])
 
     return (
         <div id='my-brewery-page'>
             <div className='my-brewery-title'>
                 <div className='my-page-header'>
-                    My Info
+                    My Info: Id=
+                    {user?.id} and email={user?.email}
+
                 </div>
-                <div className='below-header'>
-            
-                {user?.id}------{user?.email}
+                <div>
+                    Cards:
+                    <div className='below-header'>
+                        {user?.cards_made ? user.cards_made.map(x => (
+                            <CardCard card={x} />
+                        ))
+                            :
+                            <div>Try making some cards!</div>
+                        }
+                    </div>
                 </div>
+                <div>
+                    Decks:
+                    <div className='below-header'>
+                        {user?.decks ? user.decks.map(x => (
+                            <DeckCard deck={x} />
+                        ))
+                            :
+                            <div>Try making a deck!</div>
+                        }
+                    </div>
+                </div>
+                <div>
+                    Print History:
+                    <div className='below-header'>
+                        {user?.prints ? user.prints.map(x => (
+                            <>
+                                ---card: {x?.card} was printed--
+                            </>
+                        ))
+                            :
+                            <div>Try making a deck!</div>
+                        }
+                    </div>
+                </div>
+                <div>
+                    Favorites:
+                    <div className='below-header'>
+                        {user?.favorites ? user.favorites.map(x => (
+                            <>
+                                ---card: {x?.id} is a fav--
+                            </>
+                        ))
+                            :
+                            <div>Try making a deck!</div>
+                        }
+                    </div>
+                </div>
+                
             </div>
             <>
 
