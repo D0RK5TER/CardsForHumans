@@ -10,6 +10,8 @@ class Card(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+
+#COLUMNS
     id = db.Column(db.Integer, primary_key=True)
     creator = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
@@ -17,6 +19,8 @@ class Card(db.Model):
     is_question = db.Column(db.Boolean, nullable=False,  default=False)
 
     created = db.Column(db.DateTime, default=datetime.utcnow)
+
+#RELATIONSHIPS
 
     made_by = db.relationship('User', back_populates='maker')
 
@@ -26,7 +30,7 @@ class Card(db.Model):
     liked_by = db.relationship(
         'User', secondary=Favorite, back_populates='favorites')
 
-
+#ROUTE INSTANCE METHODS
     def basic(self):
         return {
             'id': self.id,

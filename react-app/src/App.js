@@ -6,6 +6,7 @@ import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import UserCurrent from "./components/UserCurrentPage";
+import CardCreate from "./components/CardCreatePage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,8 +22,8 @@ function App() {
           <Route path="/profile" >
             <UserCurrent />
           </Route>
-          <Route path="/">
-            {/* <SignupFormPage /> */}
+          <Route path="/create">
+            <CardCreate />
           </Route>
         </Switch>
       )}

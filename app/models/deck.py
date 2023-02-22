@@ -11,6 +11,7 @@ class Deck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     title = db.Column(db.String(30), nullable=False)
+    icon = db.Column(db.String(255), nullable=True)
     created = db.Column(db.DateTime, default=datetime.utcnow)
     
     owned_by = db.relationship('User', back_populates='owner')

@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
+import OpenModalButton from "../ModalButton";
 import LoginFormModal from "../AuthLoginFormModal";
 import SignupFormModal from "../AuthSignupFormModal";
 
-function ProfileButton({ user }) {
+export default function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
@@ -50,11 +50,14 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user?.id ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <div>
+              <button onClick={() =>  history.push('/create')|| closeMenu()} >Make A Card</button>
+            </div>
+            <div>
               <button onClick={handleLogout}>Log Out</button>
-            </li>
+            </div>
           </>
         ) : (
           <>
@@ -77,5 +80,3 @@ function ProfileButton({ user }) {
     </>
   );
 }
-
-export default ProfileButton;
