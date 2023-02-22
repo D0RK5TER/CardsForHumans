@@ -32,7 +32,7 @@ def all_decks():
 @login_required
 def one_deck(id):
     deck = Deck.query.get(id)
-    return deck.extra()
+    return deck.deck_cards()
 
 @deck_routes.route('', methods=['POST'])
 @login_required

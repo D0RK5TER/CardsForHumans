@@ -1,0 +1,47 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#splash-page-mid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#splash-page-bot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#splash-page-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 40vw;
+}
+
+
+
+
+
+
+
+#splash-page-whole {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+}
