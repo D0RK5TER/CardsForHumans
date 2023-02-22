@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import UserCurrent from "./components/UserCurrentPage";
 import CardCreate from "./components/CardCreatePage";
+import OneCard from "./components/CardOnePage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,6 +25,12 @@ function App() {
           </Route>
           <Route path="/create">
             <CardCreate />
+          </Route>
+          <Route exact path="/:idx">
+            <OneCard />
+          </Route>
+          <Route path="/">
+            <>Welcome Home</>
           </Route>
         </Switch>
       )}

@@ -4,6 +4,21 @@ from app.models import Card, db
 from app.forms import CardForm
 card_routes = Blueprint('card', __name__)
 
+
+
+@card_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_card(id):    
+    card = Card.query.get(id)
+    if card.creator==current_user.id:
+        db.session.delete(card)
+        db.session.commit()
+        return {'message': 'Sucessfully Deleted'}
+    else:
+        return {'errors': ['Not Your Card!']}, 401
+
+
+
 @card_routes.route('/all')
 @login_required
 def all_cards():
@@ -22,21 +37,35 @@ def one_card(id):
 def make_card():
     form = CardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
-
         card = Card(
             creator=current_user.id,
             text=form.data['text'],
             is_question=form.data['is_question']
         )
-        # print(newbrewery, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
         db.session.add(card)
         db.session.commit()
         return  card.basic()
 
-    return {'errors': ['Unable to validate(info/user)']}, 401
+    return {'errors': form.errors}, 401
 
 
+
+@card_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_card(id):
+    form = CardForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        card = Card.query.get(id)
+        card.text = request.json['text']
+        if card.creator==current_user.id:
+            db.session.commit()
+            return card.basic()
+        else:
+            return {'errors': ['Not Your Card!']}, 401
+
+    return {'errors': form.errors}, 401
 
 
