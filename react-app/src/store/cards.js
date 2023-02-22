@@ -44,8 +44,8 @@ export const thunkMakeCard = (form) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(actionSet(data));
-        data.ok = true
-        return data;
+        // data.ok = true
+        return response;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
