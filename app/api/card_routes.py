@@ -25,6 +25,16 @@ def all_cards():
     cards = Card.query.all().limit(30)
     return {'cards': [c.basic() for c in cards]}
 
+@card_routes.route('/splash')
+def splash_cards():
+    questions = Card.query.filter(Card.is_question == 0).limit(15)
+    answers = Card.query.filter(Card.is_question == 1).limit(3)
+    ret = {
+        'questions': [c.basic() for c in questions],
+        'answers' : [c.basic() for c in answers]
+    }
+    return ret
+
 
 @card_routes.route('/<int:id>')
 @login_required

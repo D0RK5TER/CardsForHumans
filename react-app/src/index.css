@@ -1,4 +1,11 @@
 /* TODO Add site wide styles */
+.question{
+    background-color: black;
+    color: white;
+}
+.answer {
+
+}
 .below-header>div{
     margin-bottom: 1vw;
 }
