@@ -22,21 +22,33 @@ def one_card(id):
 def make_card():
     form = CardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
-
         card = Card(
             creator=current_user.id,
             text=form.data['text'],
             is_question=form.data['is_question']
         )
-        # print(newbrewery, '*^*^*^*^*^*^*^*^*^*^**^*^*^*^*^*')
         db.session.add(card)
         db.session.commit()
         return  card.basic()
 
-    return {'errors': ['Unable to validate(info/user)']}, 401
+    return {'errors': form.errors}, 401
 
 
 
+@card_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_card(id):
+    form = CardForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
+    if form.validate_on_submit():
+        card = Card.query.get(id)
+        card.text = request.json['text']
+        db.session.commit()
+        if card.creator==current_user.id:
+            return card.basic()
+        else:
+            return {'errors': ['Not Your Card!']}, 401
+
+    return {'errors': form.errors}, 401
