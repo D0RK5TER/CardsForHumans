@@ -16,7 +16,7 @@ class Card(db.Model):
     creator = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
     text = db.Column(db.String(60), nullable=False)
-    is_question = db.Column(db.Boolean, nullable=False,  default=False)
+    is_question = db.Column(db.Integer, nullable=False,  default=0)
 
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -39,13 +39,13 @@ class Card(db.Model):
         }
 
     def extra(self):
-        age = datetime.utcnow
-        age -= self.created
+        # age = datetime.utcnow
+        # age -= self.created
         return {
             'id': self.id,
             'text': self.text,
             'is_question': self.is_question,
-            'age': age,
+            # 'age': age,
             'made_by': self.made_by.basic()
         }
         

@@ -1,0 +1,25 @@
+#create-card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vw;
+    width: fit-content;
+}
+
+#card-create-textarea {
+    height: 10vw;
+    width: 20vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5vw;
+    resize: none;
+}
+#create-card-right> * {
+    margin-top: 2vw;
+}
+#create-card-right>div {
+    font-size: 2vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    
+}

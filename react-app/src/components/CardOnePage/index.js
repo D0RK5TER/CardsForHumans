@@ -1,19 +1,45 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import OpenModalButton from '../ModalButton'
+import CardEdit from '../CardEditModal';
+import { thunkGetCard } from '../../store/cards';
+import CardCard from '../CardCard';
+import '../../0css/onecard.css'
 
-export default function OneCard({ id }) {
+
+export default function OneCard() {
+    const dispatch = useDispatch()
+    const card = useSelector(state => state.cards)
+    const { idx } = useParams()
+    useEffect(() => {
+        dispatch(thunkGetCard(idx))
+    }, [])
+    // console.log(idx)
     // const sessionUser = useSelector(state => state.user);
     return (
-        <div>
-            <div>
-                {deck?.title}
-            </div>
-            <div>
-                {deck?.icon}
-            </div>
-            <div>
-                Logo Here
+        <div id='one-card-whole'>
+            <CardCard card={card[idx]} />
+            <div id='one-card-right'>
+                <div >
+                    <OpenModalButton
+                        buttonText="Edit"
+                        loation='edit-modal'
+                        modalComponent={<CardEdit card={card[idx]} />}
+                    />
+                </div>
+
+                <div id='one-card-info'>
+                    <div>
+                    Print stats
+                    num total
+                    </div>
+                    <div>
+                    deck stats
+                    num total
+                    </div>
+
+                </div>
             </div>
         </div>
     );

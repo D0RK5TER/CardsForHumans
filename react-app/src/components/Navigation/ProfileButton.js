@@ -53,6 +53,12 @@ export default function ProfileButton({ user }) {
             <div>{user.username}</div>
             <div>{user.email}</div>
             <div>
+              <button onClick={() =>  history.push('/profile')|| closeMenu()} >Your Stuff</button>
+            </div>
+            <div>
+              <button onClick={() =>  history.push('/')|| closeMenu()} >No Where</button>
+            </div>
+            <div>
               <button onClick={() =>  history.push('/create')|| closeMenu()} >Make A Card</button>
             </div>
             <div>

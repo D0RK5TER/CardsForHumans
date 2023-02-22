@@ -12,6 +12,27 @@ export const actionRemove = (id) => ({
     id
 });
 
+
+export const thunkGetCard = (id) => async (dispatch) => {
+    const response = await fetch(`/api/card/${id}`, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(actionSet(data));
+        data.ok = true
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["Whoopsies! Try Again!"];
+    }
+};
 export const thunkMakeCard = (form) => async (dispatch) => {
     const response = await fetch("/api/card", {
         method: 'POST',
@@ -23,6 +44,49 @@ export const thunkMakeCard = (form) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(actionSet(data));
+        data.ok = true
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["Whoopsies! Try Again!"];
+    }
+};
+export const thunkEditCard = (form, id) => async (dispatch) => {
+    const response = await fetch(`/api/card/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(actionSet(data));
+        data.ok = true
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["Whoopsies! Try Again!"];
+    }
+};
+export const thunkDeleteCard = (id) => async (dispatch) => {
+    const response = await fetch(`/api/card/${id}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(actionRemove(id));
         data.ok = true
         return data;
     } else if (response.status < 500) {
