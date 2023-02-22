@@ -4,179 +4,179 @@ from app.models import db, User, environment, SCHEMA, Card, Deck, DeckCard
 # Adds a demo user, you can add other users here if you want
 def seed_cards():  
     tobbie =  Card(
-        creator=1,   is_question=False, text='Squirrel Poop')
+        creator=1,    is_question=0, text='Squirrel Poop')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=2,  is_question=False,text='Washing Your Hands')
+        creator=2,   is_question=0,text='Washing Your Hands')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=3,  is_question=False,text='Brushing Your Teeth')
+        creator=3,   is_question=0,text='Brushing Your Teeth')
     db.session.add(tobbie)
     tobbie =  Card(
-        creator=4,   is_question=False,text='Melting Marshmellows')
+        creator=4,    is_question=0,text='Melting Marshmellows')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=5,  is_question=False,text='Staying Up too Late')
+        creator=5,   is_question=0,text='Staying Up too Late')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Being Sick')
+        creator=6,   is_question=0,text='Being Sick')
     db.session.add(tobbie)
     tobbie =  Card(
-        creator=6,   is_question=False,text='Asking for the Day Off')
+        creator=6,    is_question=0,text='Asking for the Day Off')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Homework')
+        creator=6,   is_question=0,text='Homework')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Poke it with a stick')
+        creator=6,   is_question=0,text='Poke it with a stick')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Passing Gas')
+        creator=6,   is_question=0,text='Passing Gas')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='A Car')
+        creator=6,   is_question=0,text='A Car')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Pirate Treasure')
+        creator=6,   is_question=0,text='Pirate Treasure')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='A Chocolate Bath')
+        creator=6,   is_question=0,text='A Chocolate Bath')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Pretending Your Sick')
+        creator=6,   is_question=0,text='Pretending Your Sick')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='My stash of halloween candy')
+        creator=6,   is_question=0,text='My stash of halloween candy')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Easter Eggs')
+        creator=6,   is_question=0,text='Easter Eggs')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='My dads smelly shoes')
+        creator=6,   is_question=0,text='My dads smelly shoes')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='hiding in your blankets')
+        creator=6,   is_question=0,text='hiding in your blankets')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='wetting the bed')
+        creator=6,   is_question=0,text='wetting the bed')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Taco Flavored Pizza')
+        creator=6,   is_question=0,text='Taco Flavored Pizza')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Boogers')
+        creator=6,   is_question=0,text='Boogers')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='a barn cat')
+        creator=6,   is_question=0,text='a barn cat')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='a cat in a tuxedo')
+        creator=6,   is_question=0,text='a cat in a tuxedo')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='kissing a frog')
+        creator=6,   is_question=0,text='kissing a frog')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='A bow and arrow')
+        creator=6,   is_question=0,text='A bow and arrow')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='A homerun')
+        creator=6,   is_question=0,text='A homerun')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='farting in a microphone')
+        creator=6,   is_question=0,text='farting in a microphone')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Science')
+        creator=6,   is_question=0,text='Science')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='microwavable pizza')
+        creator=6,   is_question=0,text='microwavable pizza')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='hot pockets')
+        creator=6,   is_question=0,text='hot pockets')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='a bag of flaming poop')
+        creator=6,   is_question=0,text='a bag of flaming poop')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='A T-Rex')
+        creator=6,   is_question=0,text='A T-Rex')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='Captain Planet')
+        creator=6,   is_question=0,text='Captain Planet')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='enlisting in the army')
+        creator=6,   is_question=0,text='enlisting in the army')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='becoming a doctor')
+        creator=6,   is_question=0,text='becoming a doctor')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='massaging feet')
+        creator=6,   is_question=0,text='massaging feet')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='ro-sham-bo')
+        creator=6,   is_question=0,text='ro-sham-bo')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='flipping a coin')
+        creator=6,   is_question=0,text='flipping a coin')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='drinking puddle water')
+        creator=6,   is_question=0,text='drinking puddle water')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,  is_question=False,text='my dirty hamper')
+        creator=6,   is_question=0,text='my dirty hamper')
     db.session.add(tobbie)
 
 
 
 
     q = []
-    q6 = Card(creator=1,  is_question=True, text='What is worse than Homework?')
+    q6 = Card(creator=1,   is_question=1, text='What is worse than Homework?')
     db.session.add(q6)
-    q6 = Card(creator=2,  is_question=True, text='What is something that would get you in trouble?')
+    q6 = Card(creator=2,   is_question=1, text='What is something that would get you in trouble?')
     db.session.add(q6)
-    q6 = Card(creator=3,  is_question=True, text='What is your favorite part about the holdiays?')
+    q6 = Card(creator=3,   is_question=1, text='What is your favorite part about the holdiays?')
     db.session.add(q6)
-    q6 = Card(creator=4,  is_question=True, text='What can you never have enough of?')
+    q6 = Card(creator=4,   is_question=1, text='What can you never have enough of?')
     db.session.add(q6)
-    q6 = Card(creator=5,  is_question=True, text='What do you never want to do again?')
+    q6 = Card(creator=5,   is_question=1, text='What do you never want to do again?')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='They just made _ Smaller!')
+    q6 = Card(creator=6,   is_question=1, text='They just made _ Smaller!')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='The beset halloween costume is _')
+    q6 = Card(creator=6,   is_question=1, text='The beset halloween costume is _')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='After im famous, i will _')
+    q6 = Card(creator=6,   is_question=1, text='After im famous, i will _')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Heaven is full of _')
+    q6 = Card(creator=6,   is_question=1, text='Heaven is full of _')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='_ blank smells horrbile')
+    q6 = Card(creator=6,   is_question=1, text='_ blank smells horrbile')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Why am I sticky?')
+    q6 = Card(creator=6,   is_question=1, text='Why am I sticky?')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Why did I forget to do my homework?')
+    q6 = Card(creator=6,   is_question=1, text='Why did I forget to do my homework?')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Why are pirates always after booty?')
+    q6 = Card(creator=6,   is_question=1, text='Why are pirates always after booty?')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Introducting Extreme _ ')
+    q6 = Card(creator=6,   is_question=1, text='Introducting Extreme _ ')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='I hate it when _')
+    q6 = Card(creator=6,   is_question=1, text='I hate it when _')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Dresscode requires you to wear _')
+    q6 = Card(creator=6,   is_question=1, text='Dresscode requires you to wear _')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='I just got a _ and it is great')
+    q6 = Card(creator=6,   is_question=1, text='I just got a _ and it is great')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='I just got a _ and it is horrible')
+    q6 = Card(creator=6,   is_question=1, text='I just got a _ and it is horrible')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Disnay came out with a _ movie')
+    q6 = Card(creator=6,   is_question=1, text='Disnay came out with a _ movie')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='I hate it when my mom _')
+    q6 = Card(creator=6,   is_question=1, text='I hate it when my mom _')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='I bet there are _ on the moon')
+    q6 = Card(creator=6,   is_question=1, text='I bet there are _ on the moon')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Death by _ would be the worst')
+    q6 = Card(creator=6,   is_question=1, text='Death by _ would be the worst')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='Why do i hurt?')
+    q6 = Card(creator=6,   is_question=1, text='Why do i hurt?')
     db.session.add(q6)
-    q6 = Card(creator=6,  is_question=True, text='My last text was about a _')
+    q6 = Card(creator=6,   is_question=1, text='My last text was about a _')
     db.session.add(q6)
-    q6 = Card(creator=6, is_question=True, text='My pet lizard is great at _')
+    q6 = Card(creator=6,  is_question=1, text='My pet lizard is great at _')
     db.session.add(q6)
 
     db.session.commit()
