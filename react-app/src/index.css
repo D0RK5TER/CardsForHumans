@@ -1,7 +1,19 @@
 /* TODO Add site wide styles */
+.below-header>div{
+    margin-bottom: 1vw;
+}
+.below-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80vw;
+    flex-wrap: wrap;
+}
+
 body {
     margin: 0px;
 }
+
 #navbar {
     width: 100vw;
     display: flex;

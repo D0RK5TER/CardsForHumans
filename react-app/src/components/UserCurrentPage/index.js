@@ -33,7 +33,9 @@ export default function UserCurrent() {
                     Cards:
                     <div className='below-header'>
                         {user?.cards_made ? user.cards_made.map(x => (
-                            <CardCard card={x} />
+                            <div>
+                                <CardCard card={x} />
+                            </div>
                         ))
                             :
                             <div>Try making some cards!</div>
@@ -77,7 +79,7 @@ export default function UserCurrent() {
                         }
                     </div>
                 </div>
-                
+
             </div>
             <>
 

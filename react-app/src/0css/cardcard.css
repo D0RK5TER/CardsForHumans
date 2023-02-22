@@ -9,6 +9,7 @@
 
 
 #card-card-whole {
+    min-width: 17vw;
     width: 17vw;
     height: 24vw;
     border: 1px solid #000000;
