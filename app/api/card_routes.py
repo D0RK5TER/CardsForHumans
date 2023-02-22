@@ -4,6 +4,21 @@ from app.models import Card, db
 from app.forms import CardForm
 card_routes = Blueprint('card', __name__)
 
+
+
+@card_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_card(id):    
+    card = Card.query.get(id)
+    if card.creator==current_user.id:
+        db.session.delete(card)
+        db.session.commit()
+        return {'message': 'Sucessfully Deleted'}
+    else:
+        return {'errors': ['Not Your Card!']}, 401
+
+
+
 @card_routes.route('/all')
 @login_required
 def all_cards():
@@ -45,10 +60,12 @@ def edit_card(id):
     if form.validate_on_submit():
         card = Card.query.get(id)
         card.text = request.json['text']
-        db.session.commit()
         if card.creator==current_user.id:
+            db.session.commit()
             return card.basic()
         else:
             return {'errors': ['Not Your Card!']}, 401
 
     return {'errors': form.errors}, 401
+
+

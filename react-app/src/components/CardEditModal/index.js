@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
-import { thunkEditCard } from '../../store/cards';
+import { thunkEditCard, thunkDeleteCard } from '../../store/cards';
 import { useModal } from "../../context/Modal";
 
 export default function CardEdit({card}) {
@@ -16,6 +16,11 @@ export default function CardEdit({card}) {
         e.preventDefault()
         const data = await dispatch(thunkEditCard({ text, is_question}, card?.id))
         data.ok ? history.push(`/${data.id}`) || closeModal() : setErrors(data.errors)
+    }
+    const cancelIt  = async (e) => {
+        e.preventDefault()
+        const data = await dispatch(thunkDeleteCard(card?.id))
+        data.ok ? history.push(`/profile`) || closeModal() : setErrors(data.errors)
     }
     return (
         <div>
@@ -40,7 +45,8 @@ export default function CardEdit({card}) {
                     <div>
                         Logo Here
                     </div>
-                    <button type='submit'>Submit Card</button>
+                    <button type='submit'>ChangƏ</button>
+                    <button type='button' onClick={cancelIt}>Destroy!</button>
                 </form>
                 <div className="error-cont">
                     {errors.map((error) => (

@@ -7,6 +7,7 @@ export default function CardCard({ card }) {
     return (
         <div>
             <div>
+                {card?.id} is ID-
                 {card?.text}
             </div>
             <div>
