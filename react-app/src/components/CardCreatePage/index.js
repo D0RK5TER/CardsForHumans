@@ -15,7 +15,7 @@ export default function CardCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeCard({ text, is_question }))
-        data.ok ? history.push(`/${data.id}`) : setErrors(data.errors)
+        !data.errors ? history.push(`/${data.id}`) : setErrors(data.errors)
     }
 
     return (
