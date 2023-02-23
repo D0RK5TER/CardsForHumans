@@ -11,7 +11,7 @@ deck_routes = Blueprint('deck', __name__)
 @deck_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_deck(id):    
-    deck = deck.query.get(id)
+    deck = Deck.query.get(id)
     if deck.owner==current_user.id:
         db.session.delete(deck)
         db.session.commit()
@@ -63,7 +63,7 @@ def edit_deck(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        deck = deck.query.get(id)
+        deck = Deck.query.get(id)
         deck.title = request.json['title']
         deck.icon = request.json['icon']
         if deck.owner==current_user.id:

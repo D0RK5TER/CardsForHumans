@@ -1,3 +1,9 @@
+#icon-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 #one-card-whole {
     display: flex;
     flex-direction: row;

@@ -39,8 +39,8 @@ export default function DeckCard({ deck }) {
                     {!deck?.title ? <>Deckasaurus</> : deck?.title}
                 </div>
                 <div id='deck-card-bot'>
-                    <div id='deck-card-logo'>
-                        <img src={alt} />
+                    <div >
+                        <img src={alt} id='deck-card-logo' />
                         {/* <img src='logo2'/> */}
                     </div>
                 </div>

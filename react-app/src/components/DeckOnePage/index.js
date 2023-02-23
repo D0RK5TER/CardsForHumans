@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from '../ModalButton'
-import CardEdit from '../CardEditModal';
-import { thunkGetDeck } from '../../store/decks';
+import { thunkDeleteDeck, thunkGetDeck } from '../../store/decks';
 import '../../0css/onecard.css';
 import DeckCard from '../DeckCard';
 import { ageMinutes } from '../../0utils/funcs';
 
+
 export default function OneDeck() {
+    const history = useHistory()
     const dispatch = useDispatch()
     const deck = useSelector(state => state.decks)
     const { idx } = useParams()
@@ -16,22 +17,30 @@ export default function OneDeck() {
         dispatch(thunkGetDeck(idx))
     }, [idx])
 
-    let age = new Date(deck[idx]?.created).getTime()
-    let today = new Date().getTime()
-    let newage = today%age
-    console.log(deck[idx])
-    // console.log(new Date(age))
-    // const sessionUser = useSelector(state => state.user);
+    const cancelIt = async (e) => {
+        e.preventDefault()
+        if (window.confirm('Are you sure?')) {
+            const data = await dispatch(thunkDeleteDeck(deck[idx]?.id))
+            console.log(data)
+            // data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
+        }
+    }
     return (
         <div id='one-card-whole'>
             <DeckCard deck={deck[idx]} />
             <div id='one-card-right'>
                 <div >
-                    <OpenModalButton
-                        buttonText="Edit"
-                        loation='edit-modal'
-                        modalComponent={<CardEdit card={null} />}
-                    />
+
+                    <>
+                        <div id='edit-modal' onClick={() => history.push(`/deck/${idx}/edit`)}>
+                            Edit
+                        </div>
+                    </>
+                    <>
+                        <div id='edit-modal' onClick={cancelIt}>
+                            Delete
+                        </div>
+                    </>
                 </div>
 
                 <div id='one-card-info'>
