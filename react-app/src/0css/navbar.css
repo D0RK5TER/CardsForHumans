@@ -1,8 +1,28 @@
+#nav-butt:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+#nav-butt {
+    cursor: pointer;
+    /* border: 1px rgb(255, 255, 255) solid; */
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: fit-content;
+    border-radius: 1vw;
+    padding: .9851vw;
+    font-size: 2vw;
+    margin-top: 1vw;
+    letter-spacing: .12vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
 #bot-half{
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     margin: 0vw;
     /* outline: black px solid; */
     padding: 1vw;
+    border-radius: 1vw;
+
 }
 
 #nav-right {
@@ -32,6 +52,7 @@
     position: absolute;
     background: white;
     color: black;
+    border: black 1px solid;
     padding: 1vw;
     border-radius: 1vw;
 }

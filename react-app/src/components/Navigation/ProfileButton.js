@@ -54,18 +54,27 @@ export default function ProfileButton({ user }) {
               <div>{user.email}</div>
             </div>
             <div id='bot-half'>
-              <div>
-                <button onClick={() => history.push('/profile') || closeMenu()} >Your Stuff</button>
-              </div>
-              <div>
-                <button onClick={() => history.push('/deck/create') || closeMenu()} >Deck Building</button>
-              </div>
-              <div>
-                <button onClick={() => history.push('/create') || closeMenu()} >Make A Card</button>
-              </div>
-              <div>
-                <button onClick={handleLogout}>Log Out</button>
-              </div>
+            
+                        <div id='nav-butt' onClick={() => history.push('/profile') || closeMenu()} >
+                            Your Stuff
+                        </div>
+                    
+                    
+                        <div id='nav-butt' onClick={() => history.push('/deck/create') || closeMenu()} >
+                           Make Stuffs
+                        </div>
+                    
+                    
+                        <div id='nav-butt' onClick={() => history.push('/create') || closeMenu()}>
+                            Make Stuff
+                        </div>
+                    
+                    
+                        <div id='nav-butt' onClick={handleLogout}>
+                            Bye Bye
+                        </div>
+                    
+              
             </div>
           </>
         ) : (
