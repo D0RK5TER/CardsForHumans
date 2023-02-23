@@ -6,7 +6,6 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../ModalButton";
 import LoginFormModal from "../AuthLoginFormModal";
 import SignupFormModal from "../AuthSignupFormModal";
-
 export default function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -44,22 +43,22 @@ export default function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <div onClick={openMenu}>
+        Account ▿
+      </div>
+      <div className={ulClassName} ref={ulRef}>
         {user?.id ? (
           <>
             <div>{user.username}</div>
             <div>{user.email}</div>
             <div>
-              <button onClick={() =>  history.push('/profile')|| closeMenu()} >Your Stuff</button>
+              <button onClick={() => history.push('/profile') || closeMenu()} >Your Stuff</button>
             </div>
             <div>
-              <button onClick={() =>  history.push('/')|| closeMenu()} >No Where</button>
+              <button onClick={() => history.push('/') || closeMenu()} >No Where</button>
             </div>
             <div>
-              <button onClick={() =>  history.push('/create')|| closeMenu()} >Make A Card</button>
+              <button onClick={() => history.push('/create') || closeMenu()} >Make A Card</button>
             </div>
             <div>
               <button onClick={handleLogout}>Log Out</button>
@@ -82,7 +81,7 @@ export default function ProfileButton({ user }) {
             />
           </>
         )}
-      </ul>
+      </div>
     </>
   );
 }
