@@ -10,6 +10,7 @@ import CardCreate from "./components/CardCreatePage";
 import OneCard from "./components/CardOnePage";
 import SplashPage from "./components/UserSplashPage";
 import OneDeck from "./components/DeckOnePage";
+import DeckCreate from "./components/DeckCreatePage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,6 +25,9 @@ function App() {
         <Switch>
           <Route path="/profile" >
             <UserCurrent />
+          </Route>
+          <Route path="/deck/create">
+            <DeckCreate />
           </Route>
           <Route path="/create">
             <CardCreate />

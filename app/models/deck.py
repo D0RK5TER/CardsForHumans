@@ -21,6 +21,7 @@ class Deck(db.Model):
         return {
             'id': self.id,
             'title': self.title,
+            'icon': self.icon,
             'created': self.created,
             'card_count': len(self.cards),
             'created': self.created
@@ -32,6 +33,7 @@ class Deck(db.Model):
             'id': self.id,
             'title': self.title,
             'created': self.created,
+            'icon': self.icon,
             'cards': [c.basic() for c in self.cards]
         }
 

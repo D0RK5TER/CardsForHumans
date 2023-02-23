@@ -6,7 +6,7 @@ import CardEdit from '../CardEditModal';
 import { thunkGetDeck } from '../../store/decks';
 import '../../0css/onecard.css';
 import DeckCard from '../DeckCard';
-
+import { ageMinutes } from '../../0utils/funcs';
 
 export default function OneDeck() {
     const dispatch = useDispatch()
@@ -15,7 +15,12 @@ export default function OneDeck() {
     useEffect(() => {
         dispatch(thunkGetDeck(idx))
     }, [idx])
-    // console.log(idx)
+
+    let age = new Date(deck[idx]?.created).getTime()
+    let today = new Date().getTime()
+    let newage = today%age
+    console.log(deck[idx])
+    // console.log(new Date(age))
     // const sessionUser = useSelector(state => state.user);
     return (
         <div id='one-card-whole'>
@@ -40,7 +45,7 @@ export default function OneDeck() {
                     <div>
                         Counting Minutes:
                         <div>
-                            {deck[idx]?.created}
+                            {deck[idx] && ageMinutes(deck[idx]?.created)}
                         </div>
                     </div>
 
