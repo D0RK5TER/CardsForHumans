@@ -64,8 +64,24 @@ export default function UserCurrent() {
                     }
                 </div>
             </div>
-            <div>
-                Decks:
+            <div id='user-curr-cards'>
+                <div id='user-curr-cards-title'>
+                    <div>
+                        D
+                    </div>
+                    <div>
+                        E
+                    </div>
+                    <div>
+                        C
+                    </div>
+                    <div>
+                        K
+                    </div>
+                    <div>
+                        S
+                    </div>
+                </div>
                 <div className='below-header'>
                     {user?.decks ? user.decks.map(x => (
                         <DeckCard deck={x} />

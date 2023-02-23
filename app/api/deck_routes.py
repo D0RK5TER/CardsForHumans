@@ -17,22 +17,25 @@ def delete_deck(id):
         db.session.commit()
         return {'message': 'Sucessfully Deleted'}
     else:
-        return {'errors': ['Not Your deck!']}, 401
+        return {'errors': ['Nacho deck!']}, 401
 
 
 
-@deck_routes.route('/all')
-@login_required
-def all_decks():
-    decks = Deck.query.all().limit(30)
-    return {'decks': [d.basic() for d in decks]}
+# @deck_routes.route('/all')
+# @login_required
+# def all_decks():
+#     decks = Deck.query.all().limit(30)
+#     return {'decks': [d.basic() for d in decks]}
 
 
 @deck_routes.route('/<int:id>')
 @login_required
 def one_deck(id):
     deck = Deck.query.get(id)
-    return deck.deck_cards()
+    if deck:
+        return {'deck':deck.deck_cards()}
+    else:
+        return {'errors': ['That aint no deck i heard of']}
 
 @deck_routes.route('', methods=['POST'])
 @login_required
