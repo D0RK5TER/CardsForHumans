@@ -48,3 +48,13 @@ class Card(db.Model):
             'made_by': self.made_by.basic()
         }
         
+    def one_card(self):
+        return {
+            'id': self.id,
+            'text': self.text,
+            'is_question': self.is_question,
+            # 'age': age,
+            'made_by': self.made_by.id,
+            'in': [d.basic() for d in self.in_deck],
+            'likes': len(self.liked_by)
+        }

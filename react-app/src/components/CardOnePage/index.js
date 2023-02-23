@@ -31,12 +31,16 @@ export default function OneCard() {
 
                 <div id='one-card-info'>
                     <div>
-                    Print stats
-                    num total
+                        D-ecks
+                        <div>
+                            {card[idx]?.in?.length}
+                        </div>
                     </div>
                     <div>
-                    deck stats
-                    num total
+                        Like-D
+                        <div>
+                            {card[idx]?.likes}
+                        </div>
                     </div>
 
                 </div>
