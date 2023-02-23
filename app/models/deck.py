@@ -29,6 +29,7 @@ class Deck(db.Model):
 
     def deck_cards(self):
         return {
+            'id': self.id,
             'title': self.title,
             'created': self.created,
             'cards': [c.basic() for c in self.cards]
