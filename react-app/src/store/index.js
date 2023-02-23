@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import user from './session';
 import myprofile from './myprofile';
 import cards from './cards'
+import decks from './decks'
 const rootReducer = combineReducers({
   user,
   myprofile,
-  cards
+  cards,
+  decks
 });
 
 

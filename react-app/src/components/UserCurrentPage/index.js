@@ -9,6 +9,7 @@ import { thunkMyInfo } from '../../store/myprofile'
 import CardCard from '../CardCard';
 import DeckCard from '../DeckCard';
 // import BadgeFormModal from '../BadgeFormModal';
+import '../../0css/usercurr.css'
 
 export default function UserCurrent() {
     const dispatch = useDispatch()
@@ -22,86 +23,102 @@ export default function UserCurrent() {
     }, [])
 
     return (
-        <div id='my-brewery-page'>
-            <div className='my-brewery-title'>
-                <div className='my-page-header'>
-                    My Info: Id=
-                    {user?.id} and email={user?.email}
+        <div id='user-curr-whole'>
+            <div className='user-curr-title'>
 
-                </div>
                 <div>
-                    Cards:
-                    <div className='below-header'>
-                        {user?.cards_made ? user.cards_made.map(x => (
-                            <div>
-                                <CardCard card={x} />
-                            </div>
-                        ))
-                            :
-                            <div>Try making some cards!</div>
-                        }
+                    Welcome
+                    <div className='user-curr-name'>
+                        {user?.username}
                     </div>
                 </div>
-                <div>
-                    Decks:
-                    <div className='below-header'>
-                        {user?.decks ? user.decks.map(x => (
-                            <DeckCard deck={x} />
-                        ))
-                            :
-                            <div>Try making a deck!</div>
-                        }
-                    </div>
-                </div>
-                <div>
-                    Print History:
-                    <div className='below-header'>
-                        {user?.prints ? user.prints.map(x => (
-                            <>
-                                ---card: {x?.card} was printed--
-                            </>
-                        ))
-                            :
-                            <div>Try making a deck!</div>
-                        }
-                    </div>
-                </div>
-                <div>
-                    Favorites:
-                    <div className='below-header'>
-                        {user?.favorites ? user.favorites.map(x => (
-                            <>
-                                ---card: {x?.id} is a fav--
-                            </>
-                        ))
-                            :
-                            <div>Try making a deck!</div>
-                        }
-                    </div>
-                </div>
-
+                Here are your belongings!
             </div>
-            <>
-
-                {/* {mybreweries?.length ? mybreweries.map(brewery =>
+            <div id='user-curr-cards'>
+                <div id='user-curr-cards-title'>
                     <div>
-                        <BreweryCard brewery={brewery} user={user} />
-                        
+                        C
                     </div>
-                ) :
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', alignSelf: 'center', width: '100vw' }}>
-                        <h1 style={{ paddingTop: '5vw', fontFamily: 'Bold' }}>Sorry! Out Of Luck!</h1>
-                        <h3 style={{ paddingTop: '8vw' }}>Try Making a Brewery!</h3>
+                    <div>
+                        A
                     </div>
+                    <div>
+                        R
+                    </div>
+                    <div>
+                        D
+                    </div>
+                    <div>
+                        S
+                    </div>
+                </div>
 
-                } */}
-            </>
-
-            {/* {mybreweries?mybreweries[0]?.id: null}
-            <button onClick={() => history.push(`/brewery/${mybreweries[0]?.id}`)}>
-                Edit your beers
-            </button> */}
+                <div className='below-header'>
+                    {user?.cards_made ? user.cards_made.map(x => (
+                        <div>
+                            <CardCard card={x} />
+                        </div>
+                    ))
+                        :
+                        <div>Try making some cards!</div>
+                    }
+                </div>
+            </div>
+            <div id='user-curr-cards'>
+                <div id='user-curr-cards-title'>
+                    <div>
+                        D
+                    </div>
+                    <div>
+                        E
+                    </div>
+                    <div>
+                        C
+                    </div>
+                    <div>
+                        K
+                    </div>
+                    <div>
+                        S
+                    </div>
+                </div>
+                <div className='below-header'>
+                    {user?.decks ? user.decks.map(x => (
+                        <DeckCard deck={x} />
+                    ))
+                        :
+                        <div>Try making a deck!</div>
+                    }
+                </div>
+            </div>
+            <div>
+                Print History:
+                <div className='below-header'>
+                    {user?.prints ? user.prints.map(x => (
+                        <>
+                            ---card: {x?.card} was printed--
+                        </>
+                    ))
+                        :
+                        <div>Try making a deck!</div>
+                    }
+                </div>
+            </div>
+            <div>
+                Favorites:
+                <div className='below-header'>
+                    {user?.favorites ? user.favorites.map(x => (
+                        <>
+                            ---card: {x?.id} is a fav--
+                        </>
+                    ))
+                        :
+                        <div>Try making a deck!</div>
+                    }
+                </div>
+            </div>
 
         </div>
+
     )
 }

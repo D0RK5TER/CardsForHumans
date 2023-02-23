@@ -3,43 +3,49 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import OpenModalButton from '../ModalButton'
 import CardEdit from '../CardEditModal';
-import { thunkGetCard } from '../../store/cards';
-import CardCard from '../CardCard';
-import '../../0css/onecard.css'
+import { thunkGetDeck } from '../../store/decks';
+import '../../0css/onecard.css';
+import DeckCard from '../DeckCard';
+import { ageMinutes } from '../../0utils/funcs';
 
-
-export default function OneCard() {
+export default function OneDeck() {
     const dispatch = useDispatch()
-    const card = useSelector(state => state.cards)
+    const deck = useSelector(state => state.decks)
     const { idx } = useParams()
     useEffect(() => {
-        dispatch(thunkGetCard(idx))
-    }, [])
-    // console.log(idx)
+        dispatch(thunkGetDeck(idx))
+    }, [idx])
+
+    let age = new Date(deck[idx]?.created).getTime()
+    let today = new Date().getTime()
+    let newage = today%age
+    console.log(deck[idx])
+    // console.log(new Date(age))
     // const sessionUser = useSelector(state => state.user);
     return (
         <div id='one-card-whole'>
-            <CardCard card={card[idx]} />
+            <DeckCard deck={deck[idx]} />
             <div id='one-card-right'>
                 <div >
                     <OpenModalButton
                         buttonText="Edit"
                         loation='edit-modal'
-                        modalComponent={<CardEdit card={card[idx]} />}
+                        modalComponent={<CardEdit card={null} />}
                     />
                 </div>
 
                 <div id='one-card-info'>
                     <div>
-                        D-ecks
+                        Counting Cards:
                         <div>
-                            {card[idx]?.in?.length}
+                            {deck[idx]?.cards?.length}
+                            {/* {card[idx]?.in?.length} */}
                         </div>
                     </div>
                     <div>
-                        Like-D
+                        Counting Minutes:
                         <div>
-                            {card[idx]?.likes}
+                            {deck[idx] && ageMinutes(deck[idx]?.created)}
                         </div>
                     </div>
 
