@@ -32,6 +32,11 @@ export default function OneCard() {
             <div id='one-card-right'>
                 <div >
                     <>
+                        <div id='edit-modal' onClick={() => window.print()}>
+                            Print
+                        </div>
+                    </>
+                    <>
                         <div id='edit-modal' onClick={() => history.push(`/${idx}/edit`)}>
                             Edit
                         </div>

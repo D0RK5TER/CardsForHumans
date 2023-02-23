@@ -30,13 +30,13 @@ export default function CardEdit() {
                 <div
                     onClick={() => setIs_question(!is_question ? 0 : 1)}
                 >
-                    This is a  -tern Answer/Question
+                    
                 </div>
                 <div id='create-card-right'>
                     <form id='create-card-right'
                         onSubmit={handleIt}>
                         {/* <div> */}
-                        <div>Make Your Own Card!</div>
+                        <div>Change It Up!</div>
                         <textarea
                             id='card-create-textarea'
                             type='textarea'
@@ -47,7 +47,7 @@ export default function CardEdit() {
                         />
                         {/* </div> */}
                         {/* <div> */}
-                        <button id='edit-modal' type='submit'>Submit</button>
+                        <button id='edit-modal' type='submit'>Confirm</button>
                         {/* </div> */}
 
                     </form>
