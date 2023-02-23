@@ -55,7 +55,7 @@ export default function ProfileButton({ user }) {
               <button onClick={() => history.push('/profile') || closeMenu()} >Your Stuff</button>
             </div>
             <div>
-              <button onClick={() => history.push('/deck/create') || closeMenu()} >No Where</button>
+              <button onClick={() => history.push('/deck/create') || closeMenu()} >Deck Building</button>
             </div>
             <div>
               <button onClick={() => history.push('/create') || closeMenu()} >Make A Card</button>
