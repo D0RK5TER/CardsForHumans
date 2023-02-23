@@ -39,7 +39,7 @@ function SignupFormModal() {
 				<div className="modal-title">
 					Sign-Up
 					<ul>
-						{errors.map((error, idx) => (
+						{errors?.map((error, idx) => (
 							<li key={idx}>{error}</li>
 						))}
 					</ul>

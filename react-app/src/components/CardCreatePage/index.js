@@ -15,7 +15,7 @@ export default function CardCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeCard({ text, is_question }))
-        data.ok ? history.push(`/${data.id}`) : setErrors(data.errors)
+        !data.errors ? history.push(`/${data.id}`) : setErrors(data.errors)
     }
 
     return (
@@ -31,26 +31,26 @@ export default function CardCreate() {
                 </div>
                 <div id='create-card-right'>
                     <form id='create-card-right'
-                    onSubmit={handleIt}>
+                        onSubmit={handleIt}>
                         {/* <div> */}
-                            <div>Make Your Own Card!</div>
-                            <textarea
-                                id='card-create-textarea'
-                                type='textarea'
-                                value={text}
-                                onChange={(e) => setText(e.target.value)}
-                                placeholder='-tern'
-                                required
-                            />
+                        <div>Make Your Own Card!</div>
+                        <textarea
+                            id='card-create-textarea'
+                            type='textarea'
+                            value={text}
+                            onChange={(e) => setText(e.target.value)}
+                            placeholder='-tern'
+                            required
+                        />
                         {/* </div> */}
                         {/* <div> */}
-                            <button id='edit-modal' type='submit'>Submit</button>
+                        <button id='edit-modal' type='submit'>Submit</button>
                         {/* </div> */}
 
                     </form>
                 </div>
                 <div className="error-cont">
-                    {errors.map((error) => (
+                    {errors?.map((error) => (
                         <div classname='error-message'>{error}</div>
                     ))}
                 </div>

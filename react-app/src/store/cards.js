@@ -1,10 +1,15 @@
 // constants
 const SET_CARD = "cards/SET_CARD";
 const REMOVE = "cards/REMOVE";
-
+const SET_CARDS = "cards/SET_CARDS"
 const actionSet = (card) => ({
     type: SET_CARD,
     card,
+});
+
+const actionSetMany = (cards) => ({
+    type: SET_CARDS,
+    cards,
 });
 
 export const actionRemove = (id) => ({
@@ -12,7 +17,28 @@ export const actionRemove = (id) => ({
     id
 });
 
-
+export const thunkSplashCards = () => async (dispatch) => {
+    const response = await fetch(`/api/card/splash`, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (response.ok) {
+        const data = await response.json();
+        // console.log(data)
+        dispatch(actionSetMany(data.answers));
+        await dispatch(actionSetMany(data.questions));
+        data.ok = true
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["Whoopsies! Try Again!"];
+    }
+};
 export const thunkGetCard = (id) => async (dispatch) => {
     const response = await fetch(`/api/card/${id}`, {
         headers: {
@@ -44,7 +70,7 @@ export const thunkMakeCard = (form) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(actionSet(data));
-        data.ok = true
+        // data.ok = true
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -107,6 +133,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_CARD:
             newState[action.card.id] = action.card
+            return newState;
+        case SET_CARDS:
+            for ( let x of action.cards) newState[x.id] = x
             return newState;
         case REMOVE:
             delete newState[action.id]

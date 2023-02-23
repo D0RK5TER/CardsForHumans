@@ -1,7 +1,21 @@
 /* TODO Add site wide styles */
-.below-header>div{
+.question {
+    background-color: black;
+    color: white;
+    border: white solid 3px;
+}
+
+.answer {
+    background-color: white;
+    color: black;
+    border: black solid 3px;
+
+}
+
+.below-header>div {
     margin-bottom: 1vw;
 }
+
 .below-header {
     display: flex;
     flex-direction: row;
@@ -12,13 +26,6 @@
 
 body {
     margin: 0px;
-}
-
-#navbar {
-    width: 100vw;
-    display: flex;
-    justify-content: space-around;
-
 }
 
 #edit-modal {

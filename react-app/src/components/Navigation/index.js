@@ -2,19 +2,29 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
+import OpenModalButton from "../ModalButton";
+import About from "../AAbout";
 
-export default function Navigation({ isLoaded }){
+import '../../0css/navbar.css'
+
+export default function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.user);
 
 	return (
 		<div id='navbar'>
-			<div>
-				<div onClick={()=>history.push('/')}>Home</div>
+			<div onClick={() => history.push('/')} id='home-button'>
+				<div>Cards
+					<br />For<br /> Humans
+				</div>
 			</div>
 			{isLoaded && (
-				<div>
+				<div id='nav-right'>
+					<OpenModalButton
+						buttonText='About ▿'
+						location='nav-bar-modal'
+						modalComponent={<About />}
+					/>
 					<ProfileButton user={sessionUser} />
 				</div>
 			)}

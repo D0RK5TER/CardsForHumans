@@ -4,20 +4,20 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { thunkEditCard, thunkDeleteCard } from '../../store/cards';
 import { useModal } from "../../context/Modal";
 
-export default function CardEdit({card}) {
+export default function CardEdit({ card }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const [text, setText] = useState(card?.text)
     const [is_question, setIs_question] = useState(card?.is_question)
     const [errors, setErrors] = useState([])
-    const {closeModal} = useModal()
+    const { closeModal } = useModal()
 
     const handleIt = async (e) => {
         e.preventDefault()
-        const data = await dispatch(thunkEditCard({ text, is_question}, card?.id))
+        const data = await dispatch(thunkEditCard({ text, is_question }, card?.id))
         data.ok ? history.push(`/${data.id}`) || closeModal() : setErrors(data.errors)
     }
-    const cancelIt  = async (e) => {
+    const cancelIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkDeleteCard(card?.id))
         data.ok ? history.push(`/profile`) || closeModal() : setErrors(data.errors)
@@ -49,7 +49,7 @@ export default function CardEdit({card}) {
                     <button type='button' onClick={cancelIt}>Destroy!</button>
                 </form>
                 <div className="error-cont">
-                    {errors.map((error) => (
+                    {errors?.map((error) => (
                         <div classname='error-message'>{error}</div>
                     ))}
                 </div>

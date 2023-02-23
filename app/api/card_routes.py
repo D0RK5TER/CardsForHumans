@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Card, db
 from app.forms import CardForm
 card_routes = Blueprint('card', __name__)
-
+from .auth_routes import validation_errors_to_error_messages
 
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
@@ -24,6 +24,16 @@ def delete_card(id):
 def all_cards():
     cards = Card.query.all().limit(30)
     return {'cards': [c.basic() for c in cards]}
+
+@card_routes.route('/splash')
+def splash_cards():
+    questions = Card.query.filter(Card.is_question == 0).limit(15)
+    answers = Card.query.filter(Card.is_question == 1).limit(3)
+    ret = {
+        'questions': [c.basic() for c in questions],
+        'answers' : [c.basic() for c in answers]
+    }
+    return ret
 
 
 @card_routes.route('/<int:id>')
@@ -47,7 +57,7 @@ def make_card():
         db.session.commit()
         return  card.basic()
 
-    return {'errors': form.errors}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 
@@ -66,6 +76,6 @@ def edit_card(id):
         else:
             return {'errors': ['Not Your Card!']}, 401
 
-    return {'errors': form.errors}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
