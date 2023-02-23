@@ -1,3 +1,10 @@
+#bot-half{
+    background-color: black;
+    margin: 0vw;
+    /* outline: black px solid; */
+    padding: 1vw;
+}
+
 #nav-right {
     width: 25vw;
     display: flex;

@@ -37,7 +37,7 @@ export default function OneDeck() {
                         </div>
                     </>
                     <>
-                        <div id='edit-modal' onClick={cancelIt}>
+                        <div id='delete-butt' onClick={cancelIt}>
                             Delete
                         </div>
                     </>
