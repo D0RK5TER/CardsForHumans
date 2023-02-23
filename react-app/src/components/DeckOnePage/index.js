@@ -21,8 +21,8 @@ export default function OneDeck() {
         e.preventDefault()
         if (window.confirm('Are you sure?')) {
             const data = await dispatch(thunkDeleteDeck(deck[idx]?.id))
-            console.log(data)
-            // data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
+            // console.log(data)
+            data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
     return (

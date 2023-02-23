@@ -4,7 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { thunkEditCard, thunkDeleteCard } from '../../store/cards';
 import { useModal } from "../../context/Modal";
 
-export default function CardEdit({ card }) {
+export default function CardEdit2({ card }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const [text, setText] = useState(card?.text)
