@@ -40,7 +40,7 @@ def splash_cards():
 @login_required
 def one_card(id):
     card = Card.query.get(id)
-    return card.extra()
+    return card.one_card()
 
 @card_routes.route('', methods=['POST'])
 @login_required
