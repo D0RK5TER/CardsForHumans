@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from 'react-router-dom';
-import { thunkMakeDeck } from '../../store/decks';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
+import { thunkEditDeck, thunkDeleteDeck } from '../../store/decks';
+
 // import CardCard from '../CardCard';
 import DeckCard from '../DeckCard';
 import '../../0css/cardcreate.css';
@@ -15,25 +16,28 @@ import logo6 from '../../0assets/icons/icon6.png'
 import logo7 from '../../0assets/icons/icon7.png'
 import logo8 from '../../0assets/icons/icon8.png'
 import logo9 from '../../0assets/icons/icon9.png'
-// import DeckC
-export default function DeckCreate() {
+
+export default function DeckEdit() {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [title, setTitle] = useState('')
-    const [icon, setIcon] = useState(0)
-    const [icon2, setIcon2] = useState(0)
+    const { idx } = useParams()
+    const deck = useSelector(state => state.decks[idx])
+    const [title, setTitle] = useState(deck?.title)
+    const [icon, setIcon] = useState(deck?.icon)
+    const [icon2, setIcon2] = useState(deck?.icon)
     const [hide, setHide] = useState('none')
     const [visi, setVisi] = useState('relative')
     const [errors, setErrors] = useState([])
-
     const handleIt = async (e) => {
         e.preventDefault()
-        const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? history.push(`/deck/${data.id}`) : setErrors(data.errors)
+        const data = await dispatch(thunkEditDeck({ title, icon }, deck?.id))
+        data.ok ? history.push(`/deck/${deck.id}`) : setErrors(data.errors)
     }
-    let selected = icon2
-
-
+    // const cancelIt = async (e) => {
+    //     e.preventDefault()
+    //     const data = await dispatch(thunkDeleteDeck(deck?.id))
+    //     data.ok ? history.push(`/profile`) || closeModal() : setErrors(data.errors)
+    // }
     return (
         <div id='one-card-whole'>
             <div>
@@ -46,7 +50,7 @@ export default function DeckCreate() {
                     space
                 </div>
                 <div id='create-card-right'>
-                    <div>Make Your Deck!</div>
+                    <div>Get Changin!</div>
                     <form id='create-card-right'
                         onSubmit={handleIt}>
                         {/* <div> */}
@@ -56,7 +60,7 @@ export default function DeckCreate() {
                             type='textarea'
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            placeholder='-tern'
+                            // placeholder='-tern'
                             required
                         />
                         <div
@@ -68,9 +72,8 @@ export default function DeckCreate() {
                                     style={{ border: +icon2 === 0 ? '2px solid white' : 'none' }}
                                     onMouseLeave={() => setIcon(icon2)}
                                     onClick={() => setIcon2('0')}
-                                    onMouseOver={() => setIcon('0')}
-                                >
-                                    <img src={logo0} style={{ maxHeight: '70px' }} />
+                                    onMouseOver={() => setIcon('0')}>
+                                    <img src={logo0} />
                                 </div>
                                 <div
                                     style={{ border: +icon2 === 1 ? '2px solid white' : 'none' }}
@@ -81,6 +84,7 @@ export default function DeckCreate() {
                                 </div>
                                 <div
                                     style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
+
                                     onMouseLeave={() => setIcon(icon2)}
                                     onClick={() => setIcon2('2')}
                                     onMouseOver={() => setIcon('2')}>
@@ -145,17 +149,13 @@ export default function DeckCreate() {
                             </div>
 
                         </div>
-
-                        {/* </div> */}
-                        {/* <div> */}
-                        {/* </div> */}
                         <button id='edit-modal' type='button'
                             style={{ display: visi }}
                             onClick={() => { setHide('flex'); setVisi('none') }} >
                             Name it!</button>
                         <button id='edit-modal' type='submit'
                             style={{ display: hide }}
-                        >Make it!</button>
+                        >Change it!</button>
                     </form>
                 </div>
                 <div className="error-cont">

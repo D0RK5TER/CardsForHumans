@@ -1,11 +1,21 @@
+#deck-card-logo {
+    height: 10vw;
+}
 
-
-#deck-card-inner{
+#deck-card-inner {
     border: .17vw solid white;
     height: 28vw;
     width: 17vw;
-    margin-left: 1vw;
-    margin-top: 1vw;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2vw;
+    text-align: center;
+    /* margin-left: 1vw; */
+    /* margin-top: 1vw; */
 }
 
 
@@ -19,6 +29,6 @@
     justify-content: space-between;
     padding: .75vw;
     cursor: pointer;
-    border-left: .17vw solid white;
+    border: .17vw solid white;
     border-top: .17vw solid white;
 }
