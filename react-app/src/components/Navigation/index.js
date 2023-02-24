@@ -10,7 +10,7 @@ import '../../0css/navbar.css'
 export default function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.user);
-
+	const que = useSelector(state => state.prints)
 	return (
 		<div id='navbar'>
 			<div onClick={() => history.push('/')} id='home-button'>
@@ -18,6 +18,13 @@ export default function Navigation({ isLoaded }) {
 					<br />For<br /> Humans
 				</div>
 			</div>
+			<>
+				{Object?.values(que)?.length?
+				<div onClick={()=>history.push('/printer')}>
+				Print Page
+				</div>
+				:<></>}
+			</>
 			{isLoaded && (
 				<div id='nav-right'>
 					<OpenModalButton

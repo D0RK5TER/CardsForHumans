@@ -1,9 +1,25 @@
+.info-box-card.two {
+    width: 20vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 1vw;
+    padding: .5vw;
+    border: 1px solid white;
+    
+
+}
+
+.info-box-card {
+    text-align: center;
+    font-size: 3vw;
+    font-family: 'Times New Roman', Times, serif
+}
+
 #card-card-text {
     padding-top: 1vw;
     font-size: 2vw;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    overflow:hidden;
+    overflow: hidden;
     overflow-wrap: break-word;
 }
 
@@ -20,12 +36,14 @@
     padding: .75vw;
     cursor: pointer;
 }
+
 #card-card-name {
     text-align: center;
     padding-top: .5vw;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
+
 #card-card-bot {
     width: 100%;
     display: flex;

@@ -75,7 +75,7 @@ def upgrade():
 
     op.create_table('prints',
                     sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('user', sa.Integer(), nullable=False),
+                    sa.Column('user', sa.Integer(), nullable=True),
                     sa.Column('deck', sa.Integer(), nullable=True),
                     sa.Column('card', sa.Integer(), nullable=True),
                     sa.Column('created', sa.DateTime(),

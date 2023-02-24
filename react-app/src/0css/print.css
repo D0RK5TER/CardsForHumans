@@ -1,0 +1,53 @@
+
+
+
+#card-print-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+   padding-left: 7vw;
+}
+
+
+.print-butt {
+    cursor: pointer;
+    font-size: 2vw;
+    border: .1px  black;
+    border-style: dotted;
+    padding: 1vw;
+}
+
+
+
+#print-butt-cont {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    justify-content: space-between;
+}
+
+
+
+#print-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vw;
+    width: 120vw;
+    margin-bottom: 10vw;
+}
+
+
+
+
+#printer-page{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}

@@ -11,7 +11,8 @@ export default function CardCreate() {
     const [text, setText] = useState('')
     const [is_question, setIs_question] = useState(0)
     const [errors, setErrors] = useState([])
-
+    const one = {height: 'fit-content', color: 'black', backgroundColor: 'white', 'width': '2.75vw'}
+    const zero = {height: 'fit-content', color: 'white', backgroundColor: 'black', 'width': '2.75vw'}
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeCard({ text, is_question }))
@@ -21,14 +22,16 @@ export default function CardCreate() {
     return (
         <div id='one-card-whole'>
             <div>
-                <CardCard card={{ text }} />
+                <CardCard card={{ text, is_question }} />
+                <div 
+                id='edit-modal' 
+                style={is_question?one:zero}
+                    onClick={() => {console.log(is_question);setIs_question(is_question ? 0 : 1)}}
+                >
+                    {is_question?<>A!</>:<>Q?</>}
+                </div>
             </div>
             <div id='one-card-right'>
-                <div
-                    onClick={() => setIs_question(!is_question ? 0 : 1)}
-                >
-                    This is a  -tern Answer/Question
-                </div>
                 <div id='create-card-right'>
                     <form id='create-card-right'
                         onSubmit={handleIt}>
@@ -39,7 +42,7 @@ export default function CardCreate() {
                             type='textarea'
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            placeholder='-tern'
+                            placeholder={is_question?'Worst Dinner?': 'Tomato Soup.'}
                             required
                         />
                         {/* </div> */}
