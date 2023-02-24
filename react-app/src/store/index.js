@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   myprofile,
   cards,
   decks,
-  prints
+  prints,
 });
 
 

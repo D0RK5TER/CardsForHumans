@@ -19,17 +19,17 @@ class Card(db.Model):
     is_question = db.Column(db.Integer, nullable=False,  default=0)
     created = db.Column(db.DateTime, default=datetime.utcnow)
     
-
 #RELATIONSHIPS
-
+    #one-many
     made_by = db.relationship('User', back_populates='maker')
     p_times = db.relationship('Print', back_populates='cardD')
 
-    
+    #many-many
     in_deck = db.relationship(
         'Deck', secondary=DeckCard, back_populates='cards')
     liked_by = db.relationship(
         'User', secondary=Favorite, back_populates='favorites')
+    
 #ROUTE INSTANCE METHODS
     def basic(self):
         return {
@@ -58,5 +58,6 @@ class Card(db.Model):
             'made_by': self.made_by.id,
             'in': [d.basic() for d in self.in_deck],
             'likes': len(self.liked_by),
-            'printed': len(self.p_times)
+            'printed': len(self.p_times),
+            "who_likes": [u.id for u in self.liked_by]
         }
