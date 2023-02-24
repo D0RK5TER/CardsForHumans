@@ -10,20 +10,26 @@ export default function About() {
     const { closeModal } = useModal()
     return (
 
-        <div id='myinfocont'>
-            <div id="myinfoheader">
+        <div className="modal-content about">
+            <div className="modal-header">
 
-                <div id='loginexitbutt' onClick={() => closeModal()}>
+                <div className="modal-title" style={{textDecoration: 'none'}}>
+                    Welcome!
+
+                </div>
+
+                <div className="modal-exit" onClick={closeModal}>
                     ⓧ
                 </div>
-                <div id='myinfosubheader'>
-                    <div id='myheadtop'>Welcome!</div>
-                    <div id='myheadbot'>No Us,&nbsp; Just Me</div>
-                </div >
             </div>
 
+            <div>
+                Some text would look nice here
+            </div>
             <div id='myinfopage'>
-                <div className="gitcon" onClick={() => window.location = 'https://github.com/D0RK5TER/earthRnR'}>
+                <div className="gitcon" onClick={() => window.location = 'https://github.com/D0RK5TER/cardsforhumans'}
+                style={{cursor: 'pointer'}}
+                >
                     <img src={gitcon}
                         className="gitcon"
                         style={{ float: 'left' }}
@@ -39,7 +45,7 @@ export default function About() {
                     }}>
                     Email Dexter
                 </Link>
-                <div className="linkcon" onClick={() => window.location = 'https://www.linkedin.com/in/p-dexter-assaf-63a7a3252/'}>
+                <div className="linkcon" style={{cursor: 'pointer'}} onClick={() => window.location = 'https://www.linkedin.com/in/p-dexter-assaf-63a7a3252/'}>
                     <img src={linkcon}
                         alt='my buttons'
                     />

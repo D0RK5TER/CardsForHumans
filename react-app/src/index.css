@@ -3,13 +3,32 @@
 @media print {
 
     #card-card-whole.question {
-        border: 2px black solid ;
+        border: 2px black solid;
         /* border-style: inset; */
         /* padding: 0px; */
     }
-   
+
 }
 
+.modal-content.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 17vw;
+    
+}
+
+#dexter {
+    font-size: 2vw;
+}
+
+#myinfopage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    min-width: 30vw;
+    vertical-align: middle;
+}
 
 .question {
     background-color: rgb(0, 0, 0);

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
-import "./SignupForm.css";
+// import "./SignupForm.css";
 
 function SignupFormModal() {
 	const dispatch = useDispatch();
@@ -35,17 +35,22 @@ function SignupFormModal() {
 	return (
 		<div className="modal-content">
 			<div className="modal-header">
-				<div className="modal-exit"></div>
+
 				<div className="modal-title">
-					Sign-Up
-					<ul>
-						{errors?.map((error, idx) => (
-							<li key={idx}>{error}</li>
-						))}
-					</ul>
+					Login
+
+				</div>
+
+				<div className="modal-exit" onClick={closeModal}>
+					ⓧ
 				</div>
 			</div>
-			<form onSubmit={handleSubmit}>
+			<div className="error-box">
+				{errors?.map((error, idx) => (
+					<div key={idx}>{error}</div>
+				))}
+			</div>
+			<form className='modal-form' onSubmit={handleSubmit}>
 				<div>
 					<div className="modal-field">
 						Email
