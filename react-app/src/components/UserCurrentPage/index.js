@@ -24,9 +24,6 @@ export default function UserCurrent() {
 
     return (
         <div id='user-curr-whole'>
-            <div id='edit-modal' onClick={() => window.print()}>
-                            Print
-                        </div>
             <div className='user-curr-title'>
 
                 <div>
@@ -86,15 +83,30 @@ export default function UserCurrent() {
                     </div>
                 </div>
                 <div className='below-header'>
-                    {user?.decks ? user.decks.map(x => (
+                    {user?.decks ? user.decks.map((x, i) => i<3? (
                         <DeckCard deck={x} />
+                    ):<></>)
+                        :
+                        <div>Try making a deck!</div>
+                    }
+                </div>
+            </div>
+            <div id='user-curr-favs'>
+                <div id='user-curr-fav-title'>
+                    FAVORITES
+                    </div>
+                <div className='below-header'>
+                    {user?.favorites ? user.favorites.map(x => (
+                        <>
+                            <CardCard card={x} />
+                        </>
                     ))
                         :
                         <div>Try making a deck!</div>
                     }
                 </div>
             </div>
-            <div>
+            {/* <div>
                 Print History:
                 <div className='below-header'>
                     {user?.prints ? user.prints.map(x => (
@@ -106,20 +118,7 @@ export default function UserCurrent() {
                         <div>Try making a deck!</div>
                     }
                 </div>
-            </div>
-            <div>
-                Favorites:
-                <div className='below-header'>
-                    {user?.favorites ? user.favorites.map(x => (
-                        <>
-                            ---card: {x?.id} is a fav--
-                        </>
-                    ))
-                        :
-                        <div>Try making a deck!</div>
-                    }
-                </div>
-            </div>
+            </div> */}
 
         </div>
 

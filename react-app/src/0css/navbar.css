@@ -34,6 +34,7 @@
     font-weight: bold;
     padding-top: 2vw;
     padding-right: 2vw;
+    cursor: pointer;
 
 }
 
@@ -45,6 +46,7 @@
     padding-left: 5vw;
     padding-top: 5vw;
     line-height: 4.5vw;
+    cursor: pointer;
 }
 
 .profile-dropdown {

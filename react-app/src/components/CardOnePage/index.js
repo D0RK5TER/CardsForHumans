@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import OpenModalButton from '../ModalButton'
-import CardEdit from '../CardEditModal';
 import { thunkGetCard, thunkDeleteCard } from '../../store/cards';
+import { thunkMakePrint } from '../../store/prints';
 import CardCard from '../CardCard';
 import '../../0css/onecard.css'
 
@@ -11,7 +10,9 @@ import '../../0css/onecard.css'
 export default function OneCard() {
     const history = useHistory()
     const dispatch = useDispatch()
+    const [errors, setErrors] = useState([])
     const card = useSelector(state => state.cards)
+    const user = useSelector(state => state.user)
     const { idx } = useParams()
     useEffect(() => {
         dispatch(thunkGetCard(idx))
@@ -24,6 +25,10 @@ export default function OneCard() {
             data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
+    const printIt = async () => {
+        const data = await dispatch(thunkMakePrint({ card: +idx }))
+        !data?.errors ? window.print() : setErrors(data.errors)
+    }
     // console.log(idx)
     // const sessionUser = useSelector(state => state.user);
     return (
@@ -32,20 +37,25 @@ export default function OneCard() {
             <div id='one-card-right'>
                 <div >
                     <>
-                        <div id='edit-modal' onClick={() => window.print()}>
+                        <div id='edit-modal' onClick={printIt}>
                             Print
                         </div>
                     </>
-                    <>
-                        <div id='edit-modal' onClick={() => history.push(`/${idx}/edit`)}>
-                            Edit
-                        </div>
-                    </>
-                    <>
-                        <div id='delete-butt' onClick={cancelIt}>
-                            Delete
-                        </div>
-                    </>
+                    {user?.id == card[idx]?.made_by ?
+                        <>
+                            <>
+                                <div id='edit-modal' onClick={() => history.push(`/${idx}/edit`)}>
+                                    Edit
+                                </div>
+                            </>
+                            <>
+                                <div id='delete-butt' onClick={cancelIt}>
+                                    Delete
+                                </div>
+                            </>
+                        </>
+                        : <></>
+                    }
                 </div>
 
                 <div id='one-card-info'>
@@ -63,6 +73,11 @@ export default function OneCard() {
                     </div>
 
                 </div>
+            </div>
+            <div className="error-cont">
+                {errors?.map((error) => (
+                    <div style={{color: 'white'}} classname='error-message'>{error}</div>
+                ))}
             </div>
         </div>
     );
