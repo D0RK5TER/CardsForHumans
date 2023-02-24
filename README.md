@@ -39,9 +39,14 @@ https://github.com/D0RK5TER/CardsForHumans
 pipenv install
 cd react-app
 npm install
+cd ..
 ```
 
-3. Create .env and add:
+3. Create .env 
+```
+touch .env
+```
+5. and add:
 ```
 SECRET_KEY=<<Password of your choosing>>
 DATABASE_URL=sqlite:///dev.db
@@ -63,7 +68,7 @@ cd react-app
 npm start
 ```
 
-6. Navigate to local site
+6. Navigate to local site in browser
 ```
 http://localhost:3000/
 ```
