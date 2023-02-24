@@ -24,6 +24,9 @@ export default function UserCurrent() {
 
     return (
         <div id='user-curr-whole'>
+            <div id='edit-modal' onClick={() => window.print()}>
+                            Print
+                        </div>
             <div className='user-curr-title'>
 
                 <div>

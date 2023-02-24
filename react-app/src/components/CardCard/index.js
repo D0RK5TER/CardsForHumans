@@ -16,7 +16,7 @@ export default function CardCard({ card }) {
             <div id='card-card-text' >
                 {card?.text}
             </div>
-            <div id='card-card-bot'>
+            <div id='card-card-bot' >
                 <div id='card-card-logo'>
                     <img src={classtoggle=='question'?logo2:logo} />
                 </div>
