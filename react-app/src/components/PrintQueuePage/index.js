@@ -15,6 +15,9 @@ export default function PrintQueue() {
     
 
     return (
-        <></>
+        <>
+        
+        
+        </>
     )
 }

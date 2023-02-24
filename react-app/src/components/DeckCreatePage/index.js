@@ -43,7 +43,7 @@ export default function DeckCreate() {
                 <div
                 // onClick={() => setIcon(!icon ? 0 : 1)}
                 >
-                    space
+                    
                 </div>
                 <div id='create-card-right'>
                     <div>Make Your Deck!</div>

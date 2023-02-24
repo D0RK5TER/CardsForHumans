@@ -26,3 +26,10 @@ class Print(db.Model):
             'card': self.card,
             'deck': self.deck
         }
+    
+    def cards(self):
+        return {
+            'id': self.id,
+            'card': self.card,
+            'created': self.created
+        }

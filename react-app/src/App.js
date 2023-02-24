@@ -12,6 +12,7 @@ import SplashPage from "./components/UserSplashPage";
 import OneDeck from "./components/DeckOnePage";
 import DeckCreate from "./components/DeckCreatePage";
 import DeckEdit from "./components/DeckEditPage";
+import CardEdit from "./components/CardEditPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route exact path='/deck/:idx/edit'>
           <DeckEdit />
+          </Route>
+          <Route exact path='/:idx/edit'>
+          <CardEdit />
           </Route>
           <Route exact path="/:idx">
             <OneCard />
