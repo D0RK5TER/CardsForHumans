@@ -49,9 +49,12 @@ export default function PrintQueue() {
             <div id='card-print-box'>
 
                 {Object?.values(prints) ? Object?.values(prints).map(x =>
-                    <div style={{ margin: '1vw' }}>
-                        <CardCard card={cards[x.card]} />
-                    </div>
+                    <>
+                        <div style={{ margin: '1vw' }}>
+                            <CardCard card={cards[x.card]} />
+                        </div>
+                        
+                    </>
                 )
 
                     : <></>}

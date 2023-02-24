@@ -19,11 +19,13 @@ export default function Navigation({ isLoaded }) {
 				</div>
 			</div>
 			<>
-				{Object?.values(que)?.length?
-				<div onClick={()=>history.push('/printer')}>
-				Print Page
-				</div>
-				:<></>}
+				{Object?.values(que)?.length ?
+					<>
+						<div id='go-go-printer' onClick={() => history.push('/printer')}>
+							Print Page ~ {Object?.values(que)?.length} {Object?.values(que)?.length==1?'card':'cards'}
+						</div>
+					</>
+					: <></>}
 			</>
 			{isLoaded && (
 				<div id='nav-right'>
