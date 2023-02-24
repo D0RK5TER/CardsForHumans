@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function CardEdit() {
     const [text, setText] = useState(card?.text)
     const [is_question, setIs_question] = useState(card?.is_question)
     const [errors, setErrors] = useState([])
-    
+
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkEditCard({ text, is_question }, card?.id))
@@ -24,13 +24,13 @@ export default function CardEdit() {
     return (
         <div id='one-card-whole'>
             <div>
-                <CardCard card={{ text }} />
+                <CardCard card={{ text, is_question: card['is_question'] }} />
             </div>
             <div id='one-card-right'>
                 <div
                     onClick={() => setIs_question(!is_question ? 0 : 1)}
                 >
-                    
+
                 </div>
                 <div id='create-card-right'>
                     <form id='create-card-right'

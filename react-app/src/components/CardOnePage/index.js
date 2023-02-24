@@ -39,6 +39,7 @@ export default function OneCard() {
     }
     const unlikeIt = async () => {
         const data = await dispatch(thunkDeleteFav(+idx))
+        // console.log(data)
         !data?.errors ? setRend(!rend) : setErrors(data.errors)
     }
     // console.log(idx)
@@ -70,7 +71,7 @@ export default function OneCard() {
                             Print
                         </div>
                     </>
-                    {card[idx] && !card[idx]?.who_likes.includes(user?.id) ?
+                    {card[idx] && !card[idx]?.who_likes?.includes(user?.id) ?
                         <>
                             <div id='edit-modal' onClick={likeIt}>
                                 ❤︎
@@ -79,7 +80,7 @@ export default function OneCard() {
                         <>
                             <div 
                             style={{textDecoration: 'line-through', textDecorationThickness: '.31vw', textDecorationColor: 'red'}}
-                            id='edit-modal' onClick={likeIt}>
+                            id='edit-modal' onClick={unlikeIt}>
                                ❤︎ 
                             </div>
                         </>
@@ -105,7 +106,11 @@ export default function OneCard() {
                             {card[idx]?.printed}
                         </div>
                     </div>
-
+                    <div className="error-cont">
+                {errors?.map((error) => (
+                    <div style={{ color: 'white' }} classname='error-message'>{error}</div>
+                ))}
+            </div>
                 </div>
             </div>
             <div className="error-cont">

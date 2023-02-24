@@ -47,7 +47,7 @@ def make_fav():
             return {'errors': ['You already like it...']}, 401
 
     else:
-        return {'errors': form.errors}, 401
+        return {'errors': [form.errors]}, 401
 
 
 
