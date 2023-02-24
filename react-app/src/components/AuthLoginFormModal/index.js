@@ -4,7 +4,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 
-import "./LoginForm.css";
+// import "./LoginForm.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -28,17 +28,22 @@ function LoginFormModal() {
   return (
     <div className="modal-content">
       <div className="modal-header">
-        <div className="modal-exit"></div>
+
         <div className="modal-title">
           Login
-          <ul>
-            {errors?.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
+
+        </div>
+
+        <div className="modal-exit" onClick={closeModal}>
+          ⓧ
         </div>
       </div>
-      <form onSubmit={handleSubmit}>
+      <div className="error-box">
+        {errors?.map((error, idx) => (
+          <div key={idx}>{error}</div>
+        ))}
+      </div>
+      <form className='modal-form' onSubmit={handleSubmit}>
         <div>
           <div className="modal-field">
             Username or Email

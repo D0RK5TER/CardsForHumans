@@ -78,10 +78,10 @@ export default function OneCard() {
                             </div>
                         </> :
                         <>
-                            <div 
-                            style={{textDecoration: 'line-through', textDecorationThickness: '.31vw', textDecorationColor: 'red'}}
-                            id='edit-modal' onClick={unlikeIt}>
-                               ❤︎ 
+                            <div
+                                style={{ textDecoration: 'line-through', textDecorationThickness: '.31vw', textDecorationColor: 'red' }}
+                                id='edit-modal' onClick={unlikeIt}>
+                                ❤︎
                             </div>
                         </>
                     }
@@ -106,11 +106,7 @@ export default function OneCard() {
                             {card[idx]?.printed}
                         </div>
                     </div>
-                    <div className="error-cont">
-                {errors?.map((error) => (
-                    <div style={{ color: 'white' }} classname='error-message'>{error}</div>
-                ))}
-            </div>
+
                 </div>
             </div>
             <div className="error-cont">

@@ -54,27 +54,27 @@ export default function ProfileButton({ user }) {
               <div>{user.email}</div>
             </div>
             <div id='bot-half'>
-            
-                        <div id='nav-butt' onClick={() => history.push('/profile') || closeMenu()} >
-                            Your Stuff
-                        </div>
-                    
-                    
-                        <div id='nav-butt' onClick={() => history.push('/deck/create') || closeMenu()} >
-                           Make Stuffs
-                        </div>
-                    
-                    
-                        <div id='nav-butt' onClick={() => history.push('/create') || closeMenu()}>
-                            Make Stuff
-                        </div>
-                    
-                    
-                        <div id='nav-butt' onClick={handleLogout}>
-                            Bye Bye
-                        </div>
-                    
-              
+
+              <div id='nav-butt' onClick={() => history.push('/profile') || closeMenu()} >
+                Your Stuff
+              </div>
+
+
+              <div id='nav-butt' onClick={() => history.push('/deck/create') || closeMenu()} >
+                Make Stuffs
+              </div>
+
+
+              <div id='nav-butt' onClick={() => history.push('/create') || closeMenu()}>
+                Make Stuff
+              </div>
+
+
+              <div id='nav-butt' onClick={handleLogout}>
+                Bye Bye
+              </div>
+
+
             </div>
           </>
         ) : (
@@ -82,14 +82,14 @@ export default function ProfileButton({ user }) {
             <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
-              location='profile-drop-button'
+              location='nav-butt'
               modalComponent={<LoginFormModal />}
             />
 
             <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
-              location='profile-drop-button'
+              location='nav-butt'
               modalComponent={<SignupFormModal />}
             />
           </>

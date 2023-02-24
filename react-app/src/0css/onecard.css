@@ -1,3 +1,7 @@
+#q-butt {
+    /* border: 1px solid white; */
+}
+
 #icon-box {
     display: flex;
     flex-direction: row;
@@ -37,10 +41,16 @@
     font-weight: bolder;
 }
 
+#edit-modal:hover {
+    filter: invert(100%);
+
+}
+
 #edit-modal {
     cursor: pointer;
     border: 1px rgb(255, 255, 255) solid;
     background-color: rgb(255, 255, 255);
+    border: 1px solid black;
     color: rgb(0, 0, 0);
     width: fit-content;
     border-radius: 1vw;
