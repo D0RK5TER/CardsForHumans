@@ -69,7 +69,15 @@ class User(db.Model, UserMixin):
             'favorites': [c.basic() for c in self.favorites],
             'prints': [p.current_user() for p in self.print_history]
         }
-
+    def likes(self):
+        return {
+            'likes': [c.id for c in self.favorites],
+            'favs': self.favorites
+        }
+    def del_likes(self):
+        return{
+            'favs': self.favorites
+        }
     # def user_deck_card(self):
     #     return {
     #         'id': self.id,

@@ -14,7 +14,6 @@
 }
 #nav-butt {
     cursor: pointer;
-    /* border: 1px rgb(255, 255, 255) solid; */
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     width: fit-content;

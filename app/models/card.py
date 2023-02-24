@@ -58,5 +58,6 @@ class Card(db.Model):
             'made_by': self.made_by.id,
             'in': [d.basic() for d in self.in_deck],
             'likes': len(self.liked_by),
-            'printed': len(self.p_times)
+            'printed': len(self.p_times),
+            "who_likes": [u.id for u in self.liked_by]
         }
