@@ -11,12 +11,13 @@ export default function OneCard() {
     const history = useHistory()
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
+    const [rend, setRend] = useState(false)
     const card = useSelector(state => state.cards)
     const user = useSelector(state => state.user)
     const { idx } = useParams()
     useEffect(() => {
         dispatch(thunkGetCard(idx))
-    }, [])
+    }, [rend])
     const cancelIt = async (e) => {
         e.preventDefault()
         if (window.confirm('Are you sure?')) {
@@ -27,20 +28,20 @@ export default function OneCard() {
     }
     const printIt = async () => {
         const data = await dispatch(thunkMakePrint({ card: +idx }))
-        !data?.errors ? window.print() : setErrors(data.errors)
+        // !data?.errors ? window.print() || setRend(!rend) : setErrors(data.errors)
+        !data?.errors ? setRend(!rend) : setErrors(data.errors)
+    }
+
+    const likeIt =async () => {
+        // const data = await dispatch(thunkMakePrint({ card: +idx }))
+        // !data?.errors ? window.print() || setRend(!rend) : setErrors(data.errors)
     }
     // console.log(idx)
     // const sessionUser = useSelector(state => state.user);
     return (
         <div id='one-card-whole'>
+            <div id='one-card-card-cont'>
             <CardCard card={card[idx]} />
-            <div id='one-card-right'>
-                <div >
-                    <>
-                        <div id='edit-modal' onClick={printIt}>
-                            Print
-                        </div>
-                    </>
                     {user?.id == card[idx]?.made_by ?
                         <>
                             <>
@@ -56,19 +57,33 @@ export default function OneCard() {
                         </>
                         : <></>
                     }
+                    </div>
+            <div id='one-card-right'>
+                <div >
+                    <>
+                        <div id='edit-modal' onClick={printIt}>
+                            Print
+                        </div>
+                    </>
                 </div>
 
                 <div id='one-card-info'>
-                    <div>
-                        D-ecks
-                        <div>
+                    <div className='info-box-card two'>
+                        T-imes  Like-D
+                        <div className='info-box-card'>
+                            {card[idx]?.likes}
+                        </div>
+                    </div >
+                    <div className='info-box-card two'>
+                        D-eck Coun-T
+                        <div className='info-box-card'>
                             {card[idx]?.in?.length}
                         </div>
-                    </div>
-                    <div>
-                        Like-D
-                        <div>
-                            {card[idx]?.likes}
+                    </div >
+                    <div className='info-box-card two' >
+                        T-he  Printe-D
+                        <div className='info-box-card'>
+                            {card[idx]?.printed}
                         </div>
                     </div>
 
@@ -76,7 +91,7 @@ export default function OneCard() {
             </div>
             <div className="error-cont">
                 {errors?.map((error) => (
-                    <div style={{color: 'white'}} classname='error-message'>{error}</div>
+                    <div style={{ color: 'white' }} classname='error-message'>{error}</div>
                 ))}
             </div>
         </div>

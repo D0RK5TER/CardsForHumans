@@ -18,17 +18,18 @@ class Card(db.Model):
     text = db.Column(db.String(60), nullable=False)
     is_question = db.Column(db.Integer, nullable=False,  default=0)
     created = db.Column(db.DateTime, default=datetime.utcnow)
+    
 
 #RELATIONSHIPS
 
     made_by = db.relationship('User', back_populates='maker')
+    p_times = db.relationship('Print', back_populates='cardD')
 
     
     in_deck = db.relationship(
         'Deck', secondary=DeckCard, back_populates='cards')
     liked_by = db.relationship(
         'User', secondary=Favorite, back_populates='favorites')
-
 #ROUTE INSTANCE METHODS
     def basic(self):
         return {
@@ -56,5 +57,6 @@ class Card(db.Model):
             # 'age': age,
             'made_by': self.made_by.id,
             'in': [d.basic() for d in self.in_deck],
-            'likes': len(self.liked_by)
+            'likes': len(self.liked_by),
+            'printed': len(self.p_times)
         }

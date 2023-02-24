@@ -13,6 +13,8 @@ import OneDeck from "./components/DeckOnePage";
 import DeckCreate from "./components/DeckCreatePage";
 import DeckEdit from "./components/DeckEditPage";
 import CardEdit from "./components/CardEditPage";
+import PrintQueue from "./components/PrintQueuePage";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,6 +35,9 @@ function App() {
           </Route>
           <Route path="/create">
             <CardCreate />
+          </Route>
+          <Route path="/printer">
+            <PrintQueue />
           </Route>
           <Route exact path='/deck/:idx'>
           <OneDeck />

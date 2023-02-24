@@ -13,9 +13,9 @@ const actionRemove = (id) => ({
     type: REMOVE,
     id
 });
-const actionRemoveAll = (id) => ({
+export const actionRemoveAll = () => ({
     type: REMOVE_ALL,
-    id
+    
 });
 
 // export const thunkSplashCards = () => async (dispatch) => {

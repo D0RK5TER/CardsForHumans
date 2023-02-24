@@ -56,7 +56,7 @@ export default function DeckCreate() {
                             type='textarea'
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            placeholder='-tern'
+                            placeholder='One Deck to Rule Them All'
                             required
                         />
                         <div
