@@ -10,13 +10,13 @@ export default function CardCard({ card }) {
     // const sessionUser = useSelector(state => state.user);
     let classtoggle
     card?.is_question == 1 ? classtoggle = 'question' : classtoggle = 'answer'
-    console.log(card)
+    // console.log(card)
     return (
         <div id='card-card-whole' className={classtoggle} onClick={() => history.push(`/${card?.id}`)}>
             <div id='card-card-text' >
                 {card?.text}
             </div>
-            <div id='card-card-bot'>
+            <div id='card-card-bot' >
                 <div id='card-card-logo'>
                     <img src={classtoggle=='question'?logo2:logo} />
                 </div>

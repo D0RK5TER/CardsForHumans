@@ -53,7 +53,7 @@ def upgrade():
                               default=datetime.now()),
                     sa.Column('icon', sa.String(length=255) , nullable=True),
                     sa.PrimaryKeyConstraint('id'),
-                    sa.ForeignKeyConstraint(['owner'], ['users.id'], ),
+                    sa.ForeignKeyConstraint(['owner'], ['users.id'], )
                     )
     if environment == "production":
         op.execute(f"ALTER TABLE decks SET SCHEMA {SCHEMA};")

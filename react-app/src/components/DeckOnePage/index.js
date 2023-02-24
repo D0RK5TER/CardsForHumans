@@ -21,8 +21,8 @@ export default function OneDeck() {
         e.preventDefault()
         if (window.confirm('Are you sure?')) {
             const data = await dispatch(thunkDeleteDeck(deck[idx]?.id))
-            console.log(data)
-            // data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
+            // console.log(data)
+            data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
     return (
@@ -37,7 +37,7 @@ export default function OneDeck() {
                         </div>
                     </>
                     <>
-                        <div id='edit-modal' onClick={cancelIt}>
+                        <div id='delete-butt' onClick={cancelIt}>
                             Delete
                         </div>
                     </>

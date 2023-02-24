@@ -5,4 +5,3 @@ from wtforms.validators import DataRequired
 class PrintCardForm(FlaskForm):
     card = IntegerField(
         'card', validators=[DataRequired(message='Select some cards to print!')])
-    submit = SubmitField()

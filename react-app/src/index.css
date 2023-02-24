@@ -1,6 +1,18 @@
 /* TODO Add site wide styles */
+
+@media print {
+
+    #card-card-whole.question {
+        border: 2px black solid ;
+        /* border-style: inset; */
+        /* padding: 0px; */
+    }
+   
+}
+
+
 .question {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
     border: white solid 3px;
 }

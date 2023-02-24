@@ -4,11 +4,13 @@ import user from './session';
 import myprofile from './myprofile';
 import cards from './cards'
 import decks from './decks'
+import prints from './prints'
 const rootReducer = combineReducers({
   user,
   myprofile,
   cards,
-  decks
+  decks,
+  prints
 });
 
 
