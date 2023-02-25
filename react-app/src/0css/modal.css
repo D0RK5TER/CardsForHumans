@@ -72,6 +72,8 @@ filter: invert(100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 20;
+
 }
 
 #modal-background {
@@ -81,10 +83,13 @@ filter: invert(100%);
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 20;
+
 }
 
 #modal-content {
     position: absolute;
     background-color: white;
     padding: 1vw;
+    z-index: 20;
 }
