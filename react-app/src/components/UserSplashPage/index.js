@@ -15,6 +15,7 @@ export default function SplashPage() {
     const dispatch = useDispatch()
     const history = useHistory()
     let splash = useSelector(state => state.cards)
+    let user = useSelector(state=>state.user?.id)
     // useEffect(() => async () => {
     //     await dispatch(thunkMyBrewery(userId))
     // }, [dispatch])
@@ -32,29 +33,29 @@ export default function SplashPage() {
         <div id='splash-page-whole'>
             <div id='splash-page-top'>
                 <div id='top-left'>
-                    <CardCard card={a} />
+                    <CardCard card={a} make={user?0:1}/>
                 </div>
                 <div id='top-right'>
-                    <CardCard card={b} />
+                    <CardCard card={b} make={user?0:1}/>
                 </div>
             </div>
             <div id='splash-page-mid'>
                 <div id='mid-left'>
-                    <CardCard card={c} />
+                    <CardCard card={c} make={user?0:1}/>
                 </div>
-                <div>
-                    <CardCard card={z} />
+                <div id='mid-mid'>
+                    <CardCard card={z} make={user?0:1}/>
                 </div>
                 <div id='mid-right'>
-                    <CardCard card={d} />
+                    <CardCard card={d} make={user?0:1}/>
                 </div>
             </div>
             <div id='splash-page-bot'>
                 <div id='bot-left'>
-                    <CardCard card={e} />
+                    <CardCard card={e} make={user?0:1}/>
                 </div>
                 <div id='bot-right'>
-                    <CardCard card={f} />
+                    <CardCard card={f} make={user?0:1}/>
                 </div>
             </div>
         </div>

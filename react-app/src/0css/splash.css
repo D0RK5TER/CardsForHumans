@@ -1,34 +1,115 @@
+#bot-right:hover {
+    transform: rotate(0);
+    transition: 800ms;
+    z-index: 3;
+}
+
+#bot-right {
+    transform: rotate(.08turn);
+    transition: 800ms;
+
+}
+
+#bot-left:hover {
+    transform: rotate(0);
+    transition: 800ms;
+    z-index: 3;
+}
+
+#bot-left {
+    transform: rotate(-.072turn);
+    transition: 800ms;
 
 
+}
 
 
+#mid-right:hover {
+    transform: rotate(0);
+    transition: 800ms;
+    z-index: 3;
+}
 
+#mid-right {
+    transform: rotate(.05turn);
+    transition: 800ms;
 
+    /* right: 20vw; */
+}
 
+#mid-left:hover {
+    transform: rotate(0);
+    transition: 800ms;
+    z-index: 3;
+}
 
+#mid-left {
+    transform: rotate(.02turn);
+    transition: 800ms;
 
+}
 
+#mid-mid:hover {
+    transform: scale(1.25);
+    transition: 800ms;
 
+    z-index: 2;
+}
 
+#mid-mid {
+    z-index: 2;
+    transition: 800ms;
 
+}
 
+#top-right:hover {
+    transform: rotate(0);
+    transition: 800ms;
+    z-index: 3;
+}
 
+#top-right {
+    transform: rotate(.08turn);
+    transition: 800ms;
+
+}
+
+#top-left:hover {
+    transform: rotate(0);
+    transition: 800ms;
+    z-index: 3;
+}
+
+#top-left {
+    transform: rotate(-.02turn);
+    transition: 800ms;
+
+}
 
 #splash-page-mid {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 80vw;
+    height: 20vw;
+
 }
+
 #splash-page-bot {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 50vw;
+
 }
+
 #splash-page-top {
+    /* z-index: 1; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 40vw;
+    width: 60vw;
+    height: 20vw;
 }
 
 
@@ -44,4 +125,5 @@
     justify-content: flex-start;
     align-items: center;
     width: 100vw;
+    min-height: 100vh;
 }

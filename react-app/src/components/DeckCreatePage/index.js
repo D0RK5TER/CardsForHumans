@@ -76,7 +76,7 @@ export default function DeckCreate() {
                     <div id='create-card-right'>
                         <div>Make Your Deck!</div>
                         {visi === hide ?
-                            <>You have added {addcnt} of 5 needed to create a deck</>
+                            <>You have added {addcnt}-{addcnt==1?'card':'cards'} 5 needed to create a deck</>
                             : <></>}
                         <form id='create-card-right'
                             onSubmit={handleIt}>
