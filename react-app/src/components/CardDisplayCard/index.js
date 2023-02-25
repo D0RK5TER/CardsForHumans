@@ -12,7 +12,7 @@ import DeckCard from '../DeckCard';
 import '../../0css/usercurr.css'
 import '../../0css/carddisplay.css'
 
-export default function CardDisplay({ cards, title }) {
+export default function CardDisplay({ cards, title, deck_id }) {
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -23,8 +23,12 @@ export default function CardDisplay({ cards, title }) {
         setCardmeme(car)
         console.log('heyyyyy')
     }
-    const selectIt = () => {
-        
+    async function selectIt() {
+        // console.log(x)
+        if (title.includes('Pick')) {
+            // const data = await dispatch()
+        }
+        //dispath for add card to deck and then remove from cardmeme and continue
     }
     return (
         <div id='card-display-whole'>
@@ -32,18 +36,18 @@ export default function CardDisplay({ cards, title }) {
                 {title}
             </div>
             <div className='card-display-cards'>
-                <div>
-                    <CardCard card={a} make={1}/>
+                <div onClick={selectIt}>
+                    <CardCard card={a} make={1} />
                 </div>
                 <div>
-                    <CardCard card={b} make={1}/>
+                    <CardCard card={b} make={1} />
                 </div>
                 <div>
-                    <CardCard card={c} make={1}/>
+                    <CardCard card={c} make={1} />
                 </div>
-                <div id='display-next' onClick={handleIt}>
+                {rest?.length ? <div id='display-next' onClick={handleIt}>
                     ►
-                </div>
+                </div> : <></>}
             </div>
 
         </div>

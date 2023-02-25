@@ -75,3 +75,22 @@ def edit_deck(id):
     return {'errors': form.errors}, 401
 
 
+
+@deck_routes.route('/<int:id>/card', methods=['POST'])
+@login_required
+def make_deck_card(id):
+    form = DeckForm()
+    deck = Deck.query.get(id)
+    card = Card.query.get(request.json['card'])
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        deck = Deck(
+            owner=current_user.id,
+            title=form.data['title'],
+            icon=form.data['icon'],
+        )
+        db.session.add(deck)
+        db.session.commit()
+        return  deck.basic()
+
+    return {'errors': form.errors}, 401

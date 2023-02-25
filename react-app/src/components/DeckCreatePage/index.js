@@ -26,11 +26,13 @@ export default function DeckCreate() {
     const [hide, setHide] = useState('none')
     const [visi, setVisi] = useState('relative')
     const [errors, setErrors] = useState([])
+    const [did, setDid] = useState(0)
     const usefav = useSelector(state => state.user.favorites)
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? setHide('none') : setErrors(data.errors)
+        !data.errors ? setHide('none') || setDid(data.id)  : setErrors(data.errors)
+
     }
     let selected = icon2
 
@@ -56,6 +58,9 @@ export default function DeckCreate() {
                     </div>
                     <div id='create-card-right'>
                         <div>Make Your Deck!</div>
+                        {visi === hide ?
+                        <>heyy</>
+                        :<></>}
                         <form id='create-card-right'
                             onSubmit={handleIt}>
                             {/* <div> */}
@@ -177,7 +182,7 @@ export default function DeckCreate() {
                 </div>
             </div>
                   {visi === hide ?
-                        <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' />
+                        <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' deck_id={did}/>
                     : <></>}
         </div>
     );
