@@ -16,8 +16,6 @@
     font-family:fantasy;
     font-weight: bold;
     text-align: center;
-    /* margin-left: 1vw; */
-    /* margin-top: 1vw; */
 }
 
 
@@ -31,6 +29,7 @@
     justify-content: space-between;
     padding: .75vw;
     cursor: pointer;
-    border: .17vw solid white;
-    border-top: .17vw solid white;
+    border: .25vw solid white;
+    border-top: .75vw solid white;
+    border-left: .75vw solid white;
 }

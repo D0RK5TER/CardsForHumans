@@ -6,12 +6,13 @@ import { thunkDeleteDeck, thunkGetDeck } from '../../store/decks';
 import '../../0css/onecard.css';
 import DeckCard from '../DeckCard';
 import { ageMinutes } from '../../0utils/funcs';
-
+import CardDisplay from '../CardDisplayCard';
 
 export default function OneDeck() {
     const history = useHistory()
     const dispatch = useDispatch()
     const deck = useSelector(state => state.decks)
+    const usefav = useSelector(state => state.user.favorites)
     const { idx } = useParams()
     useEffect(() => {
         dispatch(thunkGetDeck(idx))
@@ -25,42 +26,47 @@ export default function OneDeck() {
             data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
+    console.log(usefav)
     return (
-        <div id='one-card-whole'>
-            <DeckCard deck={deck[idx]} />
-            <div id='one-card-right'>
-                <div >
 
-                    <>
-                        <div id='edit-modal' onClick={() => history.push(`/deck/${idx}/edit`)}>
-                            Edit
-                        </div>
-                    </>
-                    <>
-                        <div id='delete-butt' onClick={cancelIt}>
-                            Delete
-                        </div>
-                    </>
-                </div>
+        <div>
 
-                <div id='one-card-info'>
-                    <div>
-                        Counting Cards:
+            <div id='one-card-whole'>
+                <DeckCard deck={deck[idx]} />
+                <div id='one-card-right'>
+                    <div >
+                        <>
+                            <div id='edit-modal' onClick={() => history.push(`/deck/${idx}/edit`)}>
+                                Edit
+                            </div>
+                        </>
+                        <>
+                            <div id='delete-butt' onClick={cancelIt}>
+                                Delete
+                            </div>
+                        </>
+                    </div>
+                    <div id='one-card-info'>
                         <div>
-                            {deck[idx]?.cards?.length}
-                            {/* {card[idx]?.in?.length} */}
+                            Counting Cards:
+                            <div>
+                                {deck[idx]?.cards?.length}
+                            </div>
+                        </div>
+                        <div>
+                            Counting Minutes:
+                            <div>
+                                {deck[idx] && ageMinutes(deck[idx]?.created)}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        Counting Minutes:
-                        <div>
-                            {deck[idx] && ageMinutes(deck[idx]?.created)}
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
+
+            {/* <CardDisplay cards={usefav ? usefav : []} title='Favs:'/> */}
+
+
+        </div >
     );
 }
 

@@ -1,5 +1,11 @@
-#q-butt {
-    /* border: 1px solid white; */
+
+#one-card-whole-card:first-child {
+    padding-left: 30vw;
+}
+
+#one-card-whole.deck-create {
+    min-height: 100vh;
+padding-left: 0;
 }
 
 #icon-box {
@@ -8,15 +14,17 @@
     flex-wrap: wrap;
 }
 
+
 #one-card-whole {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     background-color: black;
     color: white;
-    height: 80vw;
-    padding: 10vw;
+
+    padding-top: 4vw;
     padding-left: 30vw;
+    height: fit-content;
 
     /* margin-bottom: 10vw; */
 }

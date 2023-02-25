@@ -40,6 +40,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'created': self.created,
+            'favorites': [c.basic() for c in self.favorites]
+
         }
     
     def users_decks(self):
@@ -55,7 +57,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'created': self.created,
             'decks': [deck.deck_cards() for deck in self.owner],
-            'cards_made': [c.basic() for c in self.maker],
+            'cards_made': [c.basic() for c in self.maker]
         }
     
     def current_user(self):

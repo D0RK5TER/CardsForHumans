@@ -1,0 +1,37 @@
+#card-display-header {
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 4vw;
+}
+
+.card-display-cards {
+    padding-top: 2vw;
+    display: flex;
+    flex-direction: row;
+    /* font-size: 5vw; */
+}
+
+#display-next:hover {
+    color: rgb(221, 221, 221);
+}
+
+#display-next {
+    font-size: 10vw;
+    display: flex;
+    flex-direction: row;
+    margin-top: 6vw;
+    cursor: pointer;
+    height: fit-content;
+    box-sizing: border-box;
+    object-fit: scale-down
+}
+
+#card-display-whole {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding-top: 2vw;
+}

@@ -1,0 +1,16 @@
+#deck-create-whole {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: black;
+    color: white;
+    padding-bottom: 4vw;
+    padding-top: 4vw;
+    min-height: 85vh;
+}
+
+#deck-create-top {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30vw;
+}
