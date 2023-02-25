@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Deck, db
+from app.models import Deck, db,  Card
 from app.forms import DeckForm
 
 
@@ -75,3 +75,19 @@ def edit_deck(id):
     return {'errors': form.errors}, 401
 
 
+
+@deck_routes.route('/<int:id>/card', methods=['POST'])
+@login_required
+def make_deck_card(id):
+    # form = DeckForm()
+    deck = Deck.query.get(id)
+    card = Card.query.get(request.json['card'])
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    if deck and card:
+        if (current_user.id != deck.owner):
+            return {'errors': ['Notcha Deck']}
+        deck.cards.append(card)
+        db.session.commit()
+        return  deck.basic()
+
+    return {'errors': ['Your looking for somwthing that doesnt want to be found']}, 401

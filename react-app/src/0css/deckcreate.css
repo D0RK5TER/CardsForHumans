@@ -1,0 +1,44 @@
+
+
+
+
+
+
+#cd-select-header {
+
+    font-size: 4vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    padding-top: 2vw;
+}
+
+#cd-select-cards{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#create-deck-card-whole {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+#deck-create-whole {
+    /* z-index: ; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: black;
+    color: white;
+    padding-bottom: 4vw;
+    padding-top: 4vw;
+    min-height: 100vh;
+}
+
+#deck-create-top {
+    display: flex;
+    flex-direction: row;
+    padding-left: 30vw;
+}

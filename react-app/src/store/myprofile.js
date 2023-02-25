@@ -87,6 +87,31 @@ export const thunkDeleteFav = (id) => async (dispatch) => {
     }
 }
 
+export const thunkDeckCard = (deck, cid) => async (dispatch) => {
+    const response = await fetch(`/api/deck/${deck}/card`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ card: cid })
+    });
+    if (response.ok) {
+        // const data = await response.json();
+        // await dispatch(actionRemoveLike(data));
+        // data.ok = true
+        return null;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["Whoopsies! Try Again!"];
+    }
+
+
+
+}
 
 const initialState = {};
 

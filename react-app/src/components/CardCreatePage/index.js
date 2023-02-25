@@ -22,11 +22,11 @@ export default function CardCreate() {
     return (
         <div id='one-card-whole'>
             <div>
-                <CardCard card={{ text, is_question }} />
+                <CardCard card={{ text, is_question }} make={1} />
                 <div
                     id='edit-modal'
                     style={is_question ? one : zero}
-                    onClick={() => { console.log(is_question); setIs_question(is_question ? 0 : 1) }}
+                    onClick={() => setIs_question(is_question ? 0 : 1)}
                 >
                     {is_question ? <>A!</> : <>Q?</>}
                 </div>
