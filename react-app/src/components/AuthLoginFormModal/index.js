@@ -24,6 +24,10 @@ function LoginFormModal() {
       closeModal()
     }
   };
+  const demoTime = () => {
+    setEmail('demolish')
+    setPassword('password')
+  }
 
   return (
     <div className="modal-content">
@@ -62,11 +66,14 @@ function LoginFormModal() {
           <input
             type="password"
             value={password}
+            // default={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
         <button className="modal-submit" type="submit">Login</button>
+        <button className="modal-submit" type="button"  onClick={demoTime} style={{marginLeft: '2vw'}}>Demo Site</button>
+
       </form>
     </div>
   );
