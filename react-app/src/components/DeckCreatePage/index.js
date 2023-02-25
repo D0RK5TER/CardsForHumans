@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { thunkMakeDeck } from '../../store/decks';
 // import CardCard from '../CardCard';
-import CardDisplay from '../CardDisplayCard';
+import { thunkDeckCard } from '../../store/myprofile';
 import DeckCard from '../DeckCard';
 import '../../0css/deckcreate.css';
 import logo0 from '../../0assets/icons/icon0.png'
@@ -16,6 +16,7 @@ import logo6 from '../../0assets/icons/icon6.png'
 import logo7 from '../../0assets/icons/icon7.png'
 import logo8 from '../../0assets/icons/icon8.png'
 import logo9 from '../../0assets/icons/icon9.png'
+import CardCard from '../CardCard';
 // import DeckC
 export default function DeckCreate() {
     const dispatch = useDispatch();
@@ -27,21 +28,37 @@ export default function DeckCreate() {
     const [visi, setVisi] = useState('relative')
     const [errors, setErrors] = useState([])
     const [did, setDid] = useState(0)
+    const [addcnt, setAddcnt] = useState(0)
     const usefav = useSelector(state => state.user.favorites)
+    const [opts, setOpts] = useState(usefav)
+    const [a, b, c, ...rest] = opts
+
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? setHide('none') || setDid(data.id)  : setErrors(data.errors)
+        !data.errors ? setHide('none') || setDid(data.id) : setErrors(data.errors)
 
     }
     let selected = icon2
-
-
+    const addingIt = async (it) => {
+        const data = await dispatch(thunkDeckCard(did, it.id))
+        if (data?.errors) {
+            setErrors(data.errors)
+        }
+        else {
+            const newopts = opts.filter(x => x.id != it.id)
+            setOpts(newopts)
+            setAddcnt(addcnt + 1)
+        }
+    }
+    const skippingIt = async () => {
+        setOpts([b, c, ...rest])
+    }
     return (
         <div id='deck-create-whole' className='deck-create'>
             <div id='deck-create-top'>
                 <div>
-                <DeckCard deck={{ title, icon }} />
+                    <DeckCard deck={{ title, icon }} />
                 </div>
 
                 {/* {visi === hide ?
@@ -59,8 +76,8 @@ export default function DeckCreate() {
                     <div id='create-card-right'>
                         <div>Make Your Deck!</div>
                         {visi === hide ?
-                        <>heyy</>
-                        :<></>}
+                            <>You have added {addcnt} of 5 needed to create a deck</>
+                            : <></>}
                         <form id='create-card-right'
                             onSubmit={handleIt}>
                             {/* <div> */}
@@ -174,16 +191,40 @@ export default function DeckCreate() {
                         </form>
                     </div>
                 </div>
-                
+
                 <div className="error-cont">
                     {errors?.map((error) => (
                         <div classname='error-message'>{error}</div>
                     ))}
                 </div>
             </div>
-                  {visi === hide ?
-                        <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' deck_id={did}/>
-                    : <></>}
+            {visi === hide ?
+                <div id='create-deck-card-whole'>
+                    <div id='cd-select-header'>
+                        Add Some Cards!
+                    </div>
+                    <div id='cd-select-cards'>
+                        <div className='select-one-card'
+                            onClick={() => addingIt(a)}
+                        >
+                            <CardCard card={a} make={1} />
+                        </div>
+                        <div
+                            className='select-one-card'
+                            onClick={() => addingIt(b)}>
+                            <CardCard card={b} make={1} />
+                        </div>
+                        <div className='select-one-card'
+                            onClick={() => addingIt(c)}>
+                            <CardCard card={c} make={1} />
+                        </div>
+                        {rest?.length ? <div id='display-next' onClick={skippingIt}>
+                            ►
+                        </div> : <></>}
+                    </div>
+                    {/* <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' deck_id={did} /> */}
+                </div>
+                : <></>}
         </div>
     );
 }
