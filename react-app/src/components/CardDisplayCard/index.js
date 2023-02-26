@@ -53,9 +53,9 @@ export default function CardDisplay({ cards, title, deck }) {
                     </div>
                     <div>
 
-                        {rest?.length ? <div id='display-next' onClick={handleIt}>
+                        <div id='display-next' onClick={handleIt}>
                             ►
-                        </div> : <></>}
+                        </div>
                     </div>
                 </div>
 
@@ -70,9 +70,7 @@ export default function CardDisplay({ cards, title, deck }) {
                 <div className='card-display-cards'>
                     <div>
 
-                        {/* {!rest?.length ? <div id='display-next' onClick={tiEldanh}>
-                            ►
-                        </div> : <></>} */}
+
                     </div>
                     <div>
                         <CardCard card={a} />
@@ -87,37 +85,12 @@ export default function CardDisplay({ cards, title, deck }) {
                     <div>
                         <div id='display-next' onClick={handleIt}>
                             ►
-                        </div> 
+                        </div>
                     </div>
                 </div>
 
             </div>
-        // :
-        // <div id='card-display-whole'>
-        //     <div id='card-display-header'>
-        //         {title}
-        //     </div>
-        //     <div className='card-display-cards'>
 
-        //         <div>
-        //             <DeckCard card={a} make={1} />
-        //         </div>
-
-        //         <div>
-        //             <DeckCard card={b} make={1} />
-        //         </div>
-        //         <div>
-        //             <DeckCard card={c} make={1} />
-        //         </div>
-        //         <div>
-
-        //             {rest?.length ? <div id='display-next' onClick={handleIt}>
-        //                 ►
-        //             </div> : <></>}
-        //         </div>
-        //     </div>
-
-        // </div>
 
     )
 }

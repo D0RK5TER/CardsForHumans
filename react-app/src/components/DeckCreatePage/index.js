@@ -58,7 +58,7 @@ export default function DeckCreate() {
         <div id='deck-create-whole' className='deck-create'>
             <div id='deck-create-top'>
                 <div>
-                    <DeckCard deck={{ title, icon }} />
+                    <DeckCard deck={{ title, icon }} make={1} />
                 </div>
 
                 {/* {visi === hide ?
@@ -75,9 +75,16 @@ export default function DeckCreate() {
                     </div>
                     <div id='create-card-right'>
                         <div>Make Your Deck!</div>
-                        {visi === hide ?
-                            <>You have added {addcnt}-{addcnt==1?'card':'cards'} 5 needed to create a deck</>
-                            : <></>}
+                        {visi === hide && addcnt > 10 ? 
+                         <>
+                         <button id='edit-modal' type='button'
+                        onClick={()=> history.push(`/deck/${did}`)}
+                        >Finish!</button>
+                        You have added {addcnt} cards!
+                        </>
+                        :visi === hide ?
+                                <>You have added {addcnt}-{addcnt == 1 ? 'card' : 'cards'} </>
+                                : <></>}
                         <form id='create-card-right'
                             onSubmit={handleIt}>
                             {/* <div> */}
@@ -109,7 +116,7 @@ export default function DeckCreate() {
                                         onClick={() => setIcon2('1')}
                                         onMouseOver={() => setIcon('1')}>
                                         <img src={logo1} />
-                                    </div> 
+                                    </div>
                                     <div
                                         style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
                                         onMouseLeave={() => setIcon(icon2)}
@@ -207,16 +214,16 @@ export default function DeckCreate() {
                         <div className='select-one-card'
                             onClick={() => addingIt(a)}
                         >
-                            <CardCard card={a} make={1} />
+                            <CardCard card={a} make={3} />
                         </div>
                         <div
                             className='select-one-card'
                             onClick={() => addingIt(b)}>
-                            <CardCard card={b} make={1} />
+                            <CardCard card={b} make={3} />
                         </div>
                         <div className='select-one-card'
                             onClick={() => addingIt(c)}>
-                            <CardCard card={c} make={1} />
+                            <CardCard card={c} make={3} />
                         </div>
                         {rest?.length ? <div id='display-next' onClick={skippingIt}>
                             ►

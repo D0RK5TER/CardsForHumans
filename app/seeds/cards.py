@@ -52,7 +52,7 @@ def seed_cards():
         creator=6,   is_question=0,text='Easter Eggs')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=2,   is_question=0,text='My Dads Smelly Shoes')
+        creator=2,   is_question=0,text="My Dad's Smelly Shoes")
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='Hiding In Your Blankets')
