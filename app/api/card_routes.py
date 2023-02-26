@@ -28,22 +28,17 @@ def all_cards():
 
 @card_routes.route('/splash')
 def splash_cards():
-    questions = Card.query.filter(Card.is_question == 0).all()
-    answers = Card.query.filter(Card.is_question == 1).all()
+    questions = Card.query.filter(Card.is_question == 1).all()
+    answers = Card.query.filter(Card.is_question == 0).all()
     i = 0
     q = []
-    a = []
+    while i < 6:
+        q.append(answers[random.randint(0,len(answers)-1)].basic())
+        i+=1
     while i < 10:
         q.append(questions[random.randint(0,len(questions)-1)].basic())
         i+=1
-    while i < 20:
-        a.append(answers[random.randint(0,len(answers)-1)].basic())
-        i+=1
-    ret = {
-        'questions': q,
-        'answers' : a
-    }
-    return ret
+    return {'cards' : q}
 
 @card_routes.route('/random')
 def rando_cards():

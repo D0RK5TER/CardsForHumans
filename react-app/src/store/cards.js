@@ -25,11 +25,11 @@ export const thunkSplashCards = () => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        // console.log(data)
-        dispatch(actionSetMany(data.answers));
-        await dispatch(actionSetMany(data.questions));
+        console.log(data, '!*!*!**!*!*!*!**!')
+        await dispatch(actionSetMany(data.cards));
+        // await dispatch(actionSetMany(data.questions));
         data.ok = true
-        return null;
+        return data;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
@@ -135,7 +135,7 @@ export default function reducer(state = initialState, action) {
             newState[action.card.id] = action.card
             return newState;
         case SET_CARDS:
-            for ( let x of action.cards) newState[x.id] = x
+            for (let x of action.cards) newState[x.id] = x
             return newState;
         case REMOVE:
             delete newState[action.id]

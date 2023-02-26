@@ -109,7 +109,7 @@ export default function DeckCreate() {
                                         onClick={() => setIcon2('1')}
                                         onMouseOver={() => setIcon('1')}>
                                         <img src={logo1} />
-                                    </div>
+                                    </div> 
                                     <div
                                         style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
                                         onMouseLeave={() => setIcon(icon2)}

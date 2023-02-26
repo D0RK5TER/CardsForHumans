@@ -1,19 +1,21 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import OpenModalButton from "../ModalButton";
+import { thunkSplashCards } from '../../store/cards';
 import About from "../AAbout";
 
 import '../../0css/navbar.css'
 
 export default function Navigation({ isLoaded }) {
+	const dispatch = useDispatch()
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.user);
 	const que = useSelector(state => state.prints)
 	return (
 		<div id='navbar'>
-			<div onClick={() => history.push('/')} id='home-button'>
+			<div onClick={() => { dispatch(thunkSplashCards()); history.push('/') }} id='home-button'>
 				<div>Cards
 					<br />For<br /> Humans
 				</div>
@@ -22,7 +24,7 @@ export default function Navigation({ isLoaded }) {
 				{Object?.values(que)?.length ?
 					<>
 						<div id='go-go-printer' onClick={() => history.push('/printer')}>
-							Print Page ~ {Object?.values(que)?.length} {Object?.values(que)?.length==1?'card':'cards'}
+							Print Page ~ {Object?.values(que)?.length} {Object?.values(que)?.length == 1 ? 'card' : 'cards'}
 						</div>
 					</>
 					: <></>}

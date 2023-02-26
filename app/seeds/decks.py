@@ -4,24 +4,33 @@ from app.models import db, User, environment, SCHEMA, Card, Deck, DeckCard
 # Adds a demo user, you can add other users here if you want
 def seed_decks():
     demo =  Deck(
-        owner=1,  title='ChildsPlay')
+        owner=1,  title='Childs-Play', icon='6')
     marnie = Deck(
-        owner=2, title='2InTheHand')
+        owner=2, title='2nd Place', icon='1')
     bobbie = Deck(
-        owner=3, title='3rd Times The Charm')
+        owner=3, title='3rd Times The Charm', icon='7')
     robbie =  Deck(
-        owner=4,  title='Fourviously')
+        owner=4,  title='Fourviously', icon='5')
     mobbie = Deck(
-        owner=5, title='Octagon/2')
+        owner=5, title='Half a Octopus', icon='3')
     sobbie = Deck(
-        owner=6, title='starter deck')
+        owner=1, title='OG Deck', icon='3')
+    db.session.add(sobbie)
+    sobbie = Deck(
+        owner=6, title='Starter', icon='0')
+    db.session.add(sobbie)
+    sobbie = Deck(
+        owner=1, title='Deck-zilla', icon='2')
+    db.session.add(sobbie)
+    sobbie = Deck(
+        owner=6, title='Just Another Deck', icon='6')
+    db.session.add(sobbie)
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.add(robbie)
     db.session.add(mobbie)
-    db.session.add(sobbie)
     db.session.commit()
 
 

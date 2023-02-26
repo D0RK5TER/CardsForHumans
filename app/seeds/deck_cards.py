@@ -7,11 +7,12 @@ def seed_deck_cards():
     decks = Deck.query.all()
     for d in decks:
         cards = Card.query.all()
-        fav_num = randint(5, len(cards)-1)
-        while fav_num >= 0:
-            d.cards.append(cards[fav_num])
-            # db.session.add(new_fav)
-            fav_num -= 1
+        fav_num = 0
+        deck_num = randint(23,52)        
+        while fav_num < deck_num:
+            card = cards.pop(randint(0,len(cards)-1))
+            d.cards.append(card)
+            fav_num += 1
 
     db.session.commit()
 

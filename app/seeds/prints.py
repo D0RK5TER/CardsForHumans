@@ -5,13 +5,13 @@ from app.models import db, User, environment, SCHEMA, Card, Deck, Print
 # Adds a demo user, you can add other users here if you want
 def seed_prints():
     users = User.query.all()
-    cards = Card.query.all()
     for u in users:
-        print_num = randint(1, len(cards)-1)
+        cards = Card.query.all()
+        print_num = randint(13, 52)
         while print_num >= 0:
             new_print = Print(
                 user=u.id,
-                card=cards[print_num].id
+                card=cards.pop(randint(0,len(cards)-1)).id
             )
             db.session.add(new_print)
             print_num -= 1
