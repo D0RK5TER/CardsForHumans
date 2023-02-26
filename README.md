@@ -36,7 +36,7 @@ https://github.com/D0RK5TER/CardsForHumans
 
 2. Install packages:
 ```
-pipenv install
+pipenv install -r requirements.txt
 cd react-app
 npm install
 cd ..
