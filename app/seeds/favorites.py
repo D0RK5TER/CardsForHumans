@@ -7,12 +7,10 @@ def seed_favorites():
     users = User.query.all()
     for u in users:
         cards = Card.query.all()
-        fav_num = randint(1, len(cards)-1)
+        fav_num = randint(10, len(cards)-1)
         while fav_num >= 0:
-            u.favorites.append(cards[fav_num])
-            # db.session.add(new_fav)
+            u.favorites.append(cards.pop(randint(0,len(cards)-1)))
             fav_num -= 1
-
     db.session.commit()
 
 

@@ -4,6 +4,7 @@ from app.models import Card, db
 from app.forms import CardForm
 card_routes = Blueprint('card', __name__)
 from .auth_routes import validation_errors_to_error_messages
+import random
 
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
@@ -27,11 +28,34 @@ def all_cards():
 
 @card_routes.route('/splash')
 def splash_cards():
-    questions = Card.query.filter(Card.is_question == 0).limit(15)
-    answers = Card.query.filter(Card.is_question == 1).limit(3)
+    questions = Card.query.filter(Card.is_question == 1).all()
+    answers = Card.query.filter(Card.is_question == 0).all()
+    i = 0
+    q = []
+    while i < 6:
+        q.append(answers[random.randint(0,len(answers)-1)].basic())
+        i+=1
+    while i < 10:
+        q.append(questions[random.randint(0,len(questions)-1)].basic())
+        i+=1
+    return {'cards' : q}
+
+@card_routes.route('/random')
+def rando_cards():
+    questions = Card.query.filter(Card.is_question == 0).all()
+    answers = Card.query.filter(Card.is_question == 1).all()
+    i = 0
+    q = []
+    a = []
+    while i < 40:
+        q.append(questions[random.randint(0,len(questions)-1)].basic())
+        i+=1
+    while i < 40:
+        a.append(answers[random.randint(0,len(answers)-1)].basic())
+        i+=1
     ret = {
-        'questions': [c.basic() for c in questions],
-        'answers' : [c.basic() for c in answers]
+        'questions': q,
+        'answers' : a
     }
     return ret
 

@@ -8,6 +8,7 @@ import OpenModalButton from '../ModalButton';
 import { thunkMyInfo } from '../../store/myprofile'
 import CardCard from '../CardCard';
 import DeckCard from '../DeckCard';
+import CardDisplay from '../CardDisplayCard';
 // import BadgeFormModal from '../BadgeFormModal';
 import '../../0css/usercurr.css'
 
@@ -21,7 +22,7 @@ export default function UserCurrent() {
     useEffect(() => {
         dispatch(thunkMyInfo())
     }, [])
-
+    console.log(user.cards_made)
     return (
         <div id='user-curr-whole'>
             <div className='user-curr-title'>
@@ -54,11 +55,10 @@ export default function UserCurrent() {
                 </div>
 
                 <div className='below-header'>
-                    {user?.cards_made ? user.cards_made.map(x => (
+                    {user?.cards_made ?
                         <div>
-                            <CardCard card={x} />
+                            <CardDisplay cards={user?.cards_made} />
                         </div>
-                    ))
                         :
                         <div>Try making some cards!</div>
                     }
@@ -83,18 +83,51 @@ export default function UserCurrent() {
                     </div>
                 </div>
                 <div className='below-header'>
-                    {user?.decks ? user.decks.map((x, i) => i<3? (
-                        <DeckCard deck={x} />
-                    ):<></>)
+                    {user?.decks ?
+                        <div>
+                            {//needs to be a seperate disp[lay]
+                            }
+                            <CardDisplay cards={user?.decks} deck={1} />
+                        </div>
                         :
                         <div>Try making a deck!</div>
+                    }
+                </div>
+            </div>
+            <div id='user-curr-cards'>
+                <div id='user-curr-cards-title'>
+                    <div>
+                        F
+                    </div>
+                    <div>
+                        A
+                    </div>
+                    <div>
+                        V
+                    </div>
+                    <div>
+                        E
+                    </div>
+                    <div>
+                        S
+                    </div>
+                </div>
+                <div className='below-header'>
+                    {user?.decks ?
+                        <div>
+                            {//needs to be a seperate disp[lay]
+                            }
+                            <CardDisplay cards={user?.favorites} />
+                        </div>
+                        :
+                        <div>Try and like something!</div>
                     }
                 </div>
             </div>
             <div id='user-curr-favs'>
                 <div id='user-curr-fav-title'>
                     FAVORITES
-                    </div>
+                </div>
                 <div className='below-header'>
                     {user?.favorites ? user.favorites.map(x => (
                         <>
