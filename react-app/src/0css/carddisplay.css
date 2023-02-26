@@ -23,9 +23,18 @@
     cursor: pointer;
     height: fit-content;
     box-sizing: border-box;
-    object-fit: scale-down
+    object-fit: scale-down;
+    /* width: 10vw */
 }
-
+.card-display-cards>div{
+    width: fit-content;
+}
+.card-display-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
 #card-display-whole {
     display: flex;
     flex-direction: column;
@@ -34,4 +43,6 @@
     background-color: black;
     color: white;
     padding-top: 2vw;
+    width: 80vw;
+    
 }

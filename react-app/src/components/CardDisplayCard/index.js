@@ -12,61 +12,112 @@ import DeckCard from '../DeckCard';
 import '../../0css/usercurr.css'
 import '../../0css/carddisplay.css'
 
-export default function CardDisplay({ cards, title }) {
+export default function CardDisplay({ cards, title, deck }) {
 
     const dispatch = useDispatch()
     const history = useHistory()
     const [cardmeme, setCardmeme] = useState(cards)
+    // const [rend, setRend] = useState(true)
     const [a, b, c, ...rest] = cardmeme
 
 
     const handleIt = () => {
-        let car = [b, c, ...rest]
-        setCardmeme(car)
-        // console.log('heyyyyy')
+        if (rest?.length) {
+            let car = [b, c, ...rest]
+            setCardmeme(car)
+        }
+        else setCardmeme([b, c, ...cards])
     }
-    // const selectIt = () => {
-    //     console.log('yyyyyyyeh')
-    //     setCardmeme(cardmeme)
-    // }
-    //     // e.preventDefault()
-    //     // // console.log(x)
-    //     // console.log('enter here')
-    //     // console.log(title)
-    //     // if (title.includes('Pick')) {
-    //     const data = await dispatch(thunkMyInfo())
-    //     //     console.log('enter here')
-    //     setCardmeme(data)
-    //     // }
-    //     // return 0
-    //     //dispath for add card to deck and then remove from cardmeme and continue
-    // }
     return (
-        <div id='card-display-whole'>
-            <div id='card-display-header'>
-                {title}
+        deck ?
+            <div id='card-display-whole'>
+                <div id='card-display-header'>
+                    {title}
+                </div>
+                <div className='card-display-cards'>
+                    <div>
+
+                        {/* {!rend ? <div id='display-next' onClick={handleIt}>
+                            ◀︎
+                        </div> : <></>} */}
+                    </div>
+                    <div>
+                        <DeckCard deck={a} />
+                    </div>
+
+                    <div>
+                        <DeckCard deck={b} />
+                    </div>
+                    <div>
+                        <DeckCard deck={c} />
+                    </div>
+                    <div>
+
+                        {rest?.length ? <div id='display-next' onClick={handleIt}>
+                            ►
+                        </div> : <></>}
+                    </div>
+                </div>
+
             </div>
-            <div className='card-display-cards'>
 
-                <div>
-                    <CardCard card={a} make={1} />
+
+            :
+            <div id='card-display-whole'>
+                <div id='card-display-header'>
+                    {title}
+                </div>
+                <div className='card-display-cards'>
+                    <div>
+
+                        {/* {!rest?.length ? <div id='display-next' onClick={tiEldanh}>
+                            ►
+                        </div> : <></>} */}
+                    </div>
+                    <div>
+                        <CardCard card={a} />
+                    </div>
+
+                    <div>
+                        <CardCard card={b} />
+                    </div>
+                    <div>
+                        <CardCard card={c} />
+                    </div>
+                    <div>
+                        <div id='display-next' onClick={handleIt}>
+                            ►
+                        </div> 
+                    </div>
                 </div>
 
-                <div>
-                    <CardCard card={b} make={1} />
-                </div>
-                <div>
-                    <CardCard card={c} make={1} />
-                </div>
-                <div>
-
-                    {rest?.length ? <div id='display-next' onClick={handleIt}>
-                        ►
-                    </div> : <></>}
-                </div>
             </div>
+        // :
+        // <div id='card-display-whole'>
+        //     <div id='card-display-header'>
+        //         {title}
+        //     </div>
+        //     <div className='card-display-cards'>
 
-        </div>
+        //         <div>
+        //             <DeckCard card={a} make={1} />
+        //         </div>
+
+        //         <div>
+        //             <DeckCard card={b} make={1} />
+        //         </div>
+        //         <div>
+        //             <DeckCard card={c} make={1} />
+        //         </div>
+        //         <div>
+
+        //             {rest?.length ? <div id='display-next' onClick={handleIt}>
+        //                 ►
+        //             </div> : <></>}
+        //         </div>
+        //     </div>
+
+        // </div>
 
     )
 }

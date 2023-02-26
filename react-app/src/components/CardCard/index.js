@@ -12,7 +12,7 @@ export default function CardCard({ card, make }) {
     card?.is_question == 1 ? classtoggle = 'question' : classtoggle = 'answer'
     // console.log(card)
     return (
-        <div id='card-card-whole' className={classtoggle} onClick={!make?()=>history.push(`/${card?.id}`):null}>
+        <div id='card-card-whole' className={classtoggle} onClick={make===2?()=>window.alert('Sign In to Come In') :make===1?()=>window.alert("It doesn't exist yet"):()=>history.push(`/${card?.id}`)}>
             <div id='card-card-text' >
                 {card?.text}
             </div>
