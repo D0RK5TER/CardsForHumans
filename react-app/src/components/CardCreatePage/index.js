@@ -16,7 +16,7 @@ export default function CardCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeCard({ text, is_question }))
-        !data.errors ? history.push(`/${data.id}`) : setErrors(data.errors)
+        data.id ? history.push(`/${data.id}`) : setText(data)
     }
 
     return (
@@ -41,6 +41,7 @@ export default function CardCreate() {
                             id='card-create-textarea'
                             type='textarea'
                             value={text}
+                            pattern=".*\w.*"
                             onChange={(e) => setText(e.target.value)}
                             placeholder={is_question ? 'Worst Dinner?' : 'Tomato Soup.'}
                             required
