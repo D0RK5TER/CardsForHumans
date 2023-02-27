@@ -1,12 +1,60 @@
+#deck-title-sub {
+    font-size: 1.4vw;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+
+#deck-title {
+    font-size: 3vw;
+    text-decoration: underline;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+#icon-box>div {
+    margin: .75vw;
+    height: fit-content;
+}
+
+#icon-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 30vw;
+    height: fit-content;
+}
+
+#deck-create-textarea {
+    height: 7vw;
+    width: 20vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5vw;
+    resize: none;
+}
+
 #make-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     min-height: 18vw;
+
 }
 
+#create-deck-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2vw;
+    min-height: 20vw;
+    min-width: 30vw;
 
+    width: fit-content;
+}
 
 
 
@@ -18,11 +66,12 @@
     padding-top: 2vw;
 }
 
-#cd-select-cards{
+#cd-select-cards {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 #create-deck-card-whole {
     display: flex;
     flex-direction: column;

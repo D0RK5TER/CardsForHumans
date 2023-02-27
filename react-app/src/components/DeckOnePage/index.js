@@ -48,14 +48,14 @@ export default function OneDeck() {
                         </>
                     </div>
                     <div id='one-card-info'>
-                        <div>
+                        <div className='info-box-card two'>
                             Counting Cards:
                             <div>
                                 {deck[idx]?.cards?.length}
                             </div>
                         </div>
-                        <div>
-                            Counting Minutes:
+                        <div className='info-box-card two'>
+                             Minutes Alive:
                             <div>
                                 {deck[idx] && ageMinutes(deck[idx]?.created)}
                             </div>
