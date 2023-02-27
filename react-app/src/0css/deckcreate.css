@@ -12,10 +12,16 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#icon-box>div img {
+    height: 4vw;
+}
 
 #icon-box>div {
     margin: .75vw;
     height: fit-content;
+    box-sizing: border-box;
+    object-fit: fill;
+
 }
 
 #icon-box {
@@ -23,7 +29,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 30vw;
+    max-width: 30vw;
     height: fit-content;
 }
 
@@ -50,8 +56,9 @@
     justify-content: center;
     align-items: center;
     margin-left: 2vw;
-    min-height: 20vw;
+    /* min-height: 10vw; */
     min-width: 30vw;
+    max-height: 25vw;
 
     width: fit-content;
 }

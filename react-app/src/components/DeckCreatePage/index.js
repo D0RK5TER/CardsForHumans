@@ -71,7 +71,7 @@ export default function DeckCreate() {
 
                     <div id='create-deck-right'>
                         {visi === hide || <div id='deck-title'>Make Your Deck!</div>}
-                        {visi === 'none' ? <div id='deck-title-sub'>Select a pic</div> : <div id='deck-title-sub'>Name it...</div>}
+                        {visi === 'none' && visi!==hide ? <div id='deck-title-sub'>Select a pic</div> : visi === 'none'?<></>: <div id='deck-title-sub'>Name it...</div>}
                         {visi === hide && addcnt >= 10 ?
                             <div id='make-title'>
 
@@ -114,7 +114,7 @@ export default function DeckCreate() {
                             >
                                 <div id='icon-box'>
                                     <div
-                                        style={{ margin: '.5vw', border: +icon2 === 0 ? '2px solid white ' : 'none' }}
+                                        style={{ border: +icon2 === 0 ? '2px solid white ' : 'none' }}
                                         onMouseLeave={() => setIcon(icon2)}
                                         onClick={() => setIcon2('0')}
                                         onMouseOver={() => setIcon('0')}
