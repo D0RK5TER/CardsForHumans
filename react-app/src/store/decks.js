@@ -76,7 +76,7 @@ export const thunkMakeDeck = (form) => async (dispatch) => {
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
-            return data.errors;
+            return data;
         }
     } else {
         return ["Whoopsies! Try Again!"];
@@ -93,8 +93,8 @@ export const thunkEditDeck = (form, id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(actionSetD(data));
-        data.ok = true
-        return data;
+        // data.ok = true
+        return null;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {

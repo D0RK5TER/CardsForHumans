@@ -3,9 +3,12 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetCard, thunkDeleteCard } from '../../store/cards';
 import { thunkMakePrint } from '../../store/prints';
-import { thunkMakeFav, thunkDeleteFav } from '../../store/myprofile';
+import { thunkMakeFav, thunkDeleteFav, thunkMyInfo } from '../../store/myprofile';
 import CardCard from '../CardCard';
 import '../../0css/onecard.css'
+import heart from '../../0assets/like.png'
+import noheart from '../../0assets/likenot.png'
+import broheart from '../../0assets/likebreak.png'
 
 
 export default function OneCard() {
@@ -13,6 +16,7 @@ export default function OneCard() {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
     const [rend, setRend] = useState(false)
+    const [tog, setTog] = useState(heart)
     const card = useSelector(state => state.cards)
     const user = useSelector(state => state.user)
     const { idx } = useParams()
@@ -24,7 +28,8 @@ export default function OneCard() {
         if (window.confirm('Are you sure?')) {
             const data = await dispatch(thunkDeleteCard(card[idx]?.id))
             // console.log(data)
-            data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
+            // data.ok ? dispatch(thunkMyInfo()) : window.alert('Something Went Wrong!')
+            data.ok ? await dispatch(thunkMyInfo()) || history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
     const printIt = async () => {
@@ -42,6 +47,7 @@ export default function OneCard() {
         // console.log(data)
         !data?.errors ? setRend(!rend) : setErrors(data.errors)
     }
+
     // console.log(idx)
     // const sessionUser = useSelector(state => state.user);
     return (
@@ -73,15 +79,13 @@ export default function OneCard() {
                     </>
                     {card[idx] && !card[idx]?.who_likes?.includes(user?.id) ?
                         <>
-                            <div id='edit-modal' onClick={likeIt}>
-                                ❤︎
+                            <div id='edit-modal2' onClick={likeIt}>
+                                <img src={noheart} />
                             </div>
                         </> :
                         <>
-                            <div
-                                style={{ textDecoration: 'line-through', textDecorationThickness: '.31vw', textDecorationColor: 'red' }}
-                                id='edit-modal' onClick={unlikeIt}>
-                                ❤︎
+                            <div id='edit-modal2' onClick={unlikeIt} onMouseEnter={()=>setTog(broheart)} onMouseLeave={()=>setTog(heart)}>
+                                <img src={tog}  />
                             </div>
                         </>
                     }

@@ -11,6 +11,7 @@ import DeckCard from '../DeckCard';
 // import BadgeFormModal from '../BadgeFormModal';
 import '../../0css/usercurr.css'
 import '../../0css/carddisplay.css'
+import heart from '../../0assets/like.png'
 
 export default function CardDisplay({ cards, title, deck }) {
 
@@ -28,6 +29,7 @@ export default function CardDisplay({ cards, title, deck }) {
         }
         else setCardmeme([b, c, ...cards])
     }
+    console.log(a, b, c)
     return (
         deck ?
             <div id='card-display-whole'>
@@ -45,17 +47,18 @@ export default function CardDisplay({ cards, title, deck }) {
                         <DeckCard deck={a} />
                     </div>
 
-                    <div>
+                    {b ? <div>
                         <DeckCard deck={b} />
-                    </div>
-                    <div>
+                    </div> : <></>}
+                    {c ? <div>
                         <DeckCard deck={c} />
-                    </div>
+                    </div> : <></>}
                     <div>
 
-                        <div id='display-next' onClick={handleIt}>
+                        {a && b && c ? <div id='display-next' onClick={handleIt}>
                             ►
                         </div>
+                            : <></>}
                     </div>
                 </div>
 
@@ -76,16 +79,18 @@ export default function CardDisplay({ cards, title, deck }) {
                         <CardCard card={a} />
                     </div>
 
-                    <div>
+                    {b ? <div>
                         <CardCard card={b} />
-                    </div>
+                    </div> : <></>}
+                    {c ?
+                        <div>
+                            <CardCard card={c} />
+                        </div> : <></>}
                     <div>
-                        <CardCard card={c} />
-                    </div>
-                    <div>
-                        <div id='display-next' onClick={handleIt}>
+                        {a && b && c ? <div id='display-next' onClick={handleIt}>
                             ►
                         </div>
+                            : <></>}
                     </div>
                 </div>
 

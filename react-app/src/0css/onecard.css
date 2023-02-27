@@ -7,11 +7,17 @@
     min-height: 100vh;
 padding-left: 0;
 }
-
+#icon-box>div {
+    margin: .75vw;
+    height: fit-content;
+}
 #icon-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
+    width: 30vw;
+    height: 15vw;
 }
 
 
@@ -48,7 +54,27 @@ padding-left: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
+#edit-modal2:hover {
+    filter: invert(100%);
 
+}
+
+#edit-modal2 {
+    cursor: pointer;
+    border: 1px rgb(255, 255, 255) solid;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1vw;
+    padding: .5vw;
+    min-width: 8vw;
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 1vw; */
+    /* margin-top: 1vw; */
+}
 #edit-modal:hover {
     filter: invert(100%);
 

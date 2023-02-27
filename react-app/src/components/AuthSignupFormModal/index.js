@@ -27,7 +27,7 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field",
+				"Those passwords don't match",
 			]);
 		}
 	};
@@ -37,7 +37,7 @@ function SignupFormModal() {
 			<div className="modal-header">
 
 				<div className="modal-title">
-					Login
+					Sign-Up
 
 				</div>
 
@@ -60,6 +60,9 @@ function SignupFormModal() {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
+						pattern="[\w-]+@([\w-]+\.)+[\w-]+"
+						title="Match the format!"
+						
 					/>
 				</div>
 				<div>
@@ -71,6 +74,8 @@ function SignupFormModal() {
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
+						min='6'
+						
 					/>
 				</div>
 				<div>
@@ -82,6 +87,7 @@ function SignupFormModal() {
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						required
+						minLength='6'
 					/>
 				</div>
 				<div>

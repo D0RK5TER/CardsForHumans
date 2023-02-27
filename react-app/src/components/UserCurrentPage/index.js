@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 // import BreweryFormModal from '../BreweryFormModal';
 import OpenModalButton from '../ModalButton';
 import { thunkMyInfo } from '../../store/myprofile'
-import CardCard from '../CardCard';
-import DeckCard from '../DeckCard';
+// import CardCard from '../CardCard';
+// import DeckCard from '../DeckCard';
 import CardDisplay from '../CardDisplayCard';
 // import BadgeFormModal from '../BadgeFormModal';
 import '../../0css/usercurr.css'
@@ -22,7 +22,6 @@ export default function UserCurrent() {
     useEffect(() => {
         dispatch(thunkMyInfo())
     }, [])
-    console.log(user.cards_made)
     return (
         <div id='user-curr-whole'>
             <div className='user-curr-title'>
@@ -55,12 +54,12 @@ export default function UserCurrent() {
                 </div>
 
                 <div className='below-header'>
-                    {user?.cards_made ?
+                    {user?.cards_made?.length ?
                         <div>
                             <CardDisplay cards={user?.cards_made} />
                         </div>
                         :
-                        <div>Try making some cards!</div>
+                        <h1>Try making some cards!</h1>
                     }
                 </div>
             </div>
@@ -83,14 +82,14 @@ export default function UserCurrent() {
                     </div>
                 </div>
                 <div className='below-header'>
-                    {user?.decks ?
+                    {user?.decks?.length ?
                         <div>
                             {//needs to be a seperate disp[lay]
                             }
                             <CardDisplay cards={user?.decks} deck={1} />
                         </div>
                         :
-                        <div>Try making a deck!</div>
+                        <h1>Try making a deck!</h1>
                     }
                 </div>
             </div>
@@ -113,45 +112,16 @@ export default function UserCurrent() {
                     </div>
                 </div>
                 <div className='below-header'>
-                    {user?.decks ?
+                    {user?.favorites?.length ?
                         <div>
-                            {//needs to be a seperate disp[lay]
-                            }
+
                             <CardDisplay cards={user?.favorites} />
                         </div>
                         :
-                        <div>Try and like something!</div>
+                        <h1>Try and like something!</h1>
                     }
                 </div>
             </div>
-            <div id='user-curr-favs'>
-                <div id='user-curr-fav-title'>
-                    FAVORITES
-                </div>
-                <div className='below-header'>
-                    {user?.favorites ? user.favorites.map(x => (
-                        <>
-                            <CardCard card={x} />
-                        </>
-                    ))
-                        :
-                        <div>Try making a deck!</div>
-                    }
-                </div>
-            </div>
-            {/* <div>
-                Print History:
-                <div className='below-header'>
-                    {user?.prints ? user.prints.map(x => (
-                        <>
-                            ---card: {x?.card} was printed--
-                        </>
-                    ))
-                        :
-                        <div>Try making a deck!</div>
-                    }
-                </div>
-            </div> */}
 
         </div>
 

@@ -6,7 +6,7 @@ import { thunkMakeDeck } from '../../store/decks';
 import { thunkDeckCard } from '../../store/myprofile';
 import DeckCard from '../DeckCard';
 import '../../0css/deckcreate.css';
-import logo0 from '../../0assets/icons/icon0.png'
+import logo0 from '../../0assets/icons/icon01.png'
 import logo1 from '../../0assets/icons/icon1.png'
 import logo2 from '../../0assets/icons/icon2.png'
 import logo3 from '../../0assets/icons/icon3.png'
@@ -36,8 +36,12 @@ export default function DeckCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? setHide('none') || setDid(data.id) : setErrors(data.errors)
+        !data.errors ? setHide('none') || setDid(data.id) : window.alert('Decks need a name') || history.goBack()
 
+    }
+
+    const firstHandle = () => {
+        title?.length < 1 ? setTitle('Gotta be something...') : setHide('flex') || setVisi('none')
     }
     let selected = icon2
     const addingIt = async (it) => {
@@ -55,184 +59,200 @@ export default function DeckCreate() {
         setOpts([b, c, ...rest])
     }
     return (
-        <div id='deck-create-whole' className='deck-create'>
-            <div id='deck-create-top'>
-                <div>
-                    <DeckCard deck={{ title, icon }} make={1} />
-                </div>
+        <>
+            <div id='deck-create-whole' className='deck-create'>
+                <div id='deck-create-top'>
+                    <div>
+                        <DeckCard deck={{ title, icon }} make={1} />
+                    </div>
 
-                {/* {visi === hide ?
+                    {/* {visi === hide ?
                         <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' />
                     : <></>} */}
-                <div id='createdisplay'>
-                </div>
-
-                <div id='one-card-right'>
-                    <div
-                    // onClick={() => setIcon(!icon ? 0 : 1)}
-                    >
-
+                    <div id='createdisplay'>
                     </div>
-                    <div id='create-card-right'>
-                        <div>Make Your Deck!</div>
-                        {visi === hide && addcnt > 10 ? 
-                         <>
-                         <button id='edit-modal' type='button'
-                        onClick={()=> history.push(`/deck/${did}`)}
-                        >Finish!</button>
-                        You have added {addcnt} cards!
-                        </>
-                        :visi === hide ?
-                                <>You have added {addcnt}-{addcnt == 1 ? 'card' : 'cards'} </>
-                                : <></>}
-                        <form id='create-card-right'
-                            onSubmit={handleIt}>
-                            {/* <div> */}
-                            <textarea
-                                style={{ display: visi }}
-                                id='card-create-textarea'
-                                type='textarea'
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                placeholder='Deckasaurus'
-                                required
-                            />
-                            <div
-                                style={{ display: hide }}
 
-                            >
-                                <div id='icon-box'>
-                                    <div
-                                        style={{ border: +icon2 === 0 ? '2px solid white' : 'none' }}
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('0')}
-                                        onMouseOver={() => setIcon('0')}
-                                    >
-                                        <img src={logo0} style={{ maxHeight: '70px' }} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 1 ? '2px solid white' : 'none' }}
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('1')}
-                                        onMouseOver={() => setIcon('1')}>
-                                        <img src={logo1} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('2')}
-                                        onMouseOver={() => setIcon('2')}>
-                                        <img src={logo2} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 3 ? '2px solid white' : 'none' }}
+                    <div id='one-card-right'>
+                        <div
+                        // onClick={() => setIcon(!icon ? 0 : 1)}
+                        >
 
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('3')}
-                                        onMouseOver={() => setIcon('3')}>
-                                        <img src={logo3} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 4 ? '2px solid white' : 'none' }}
+                        </div>
+                        <div id='create-card-right'>
+                            {visi === hide || <div>Make Your Deck!</div>}
+                            {visi === hide && addcnt >= 10 ?
+                                <div id='make-title'>
 
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('4')}
-                                        onMouseOver={() => setIcon('4')}>
-                                        <img src={logo4} />
+                                    <div>You have added </div>
+                                    <div>{addcnt} &nbsp; {addcnt == 1 ? 'card' : 'cards'}
                                     </div>
-                                    <div
-                                        style={{ border: +icon2 === 5 ? '2px solid white' : 'none' }}
-
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('5')}
-                                        onMouseOver={() => setIcon('5')}>
-                                        <img src={logo5} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 6 ? '2px solid white' : 'none' }}
-
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('6')}
-                                        onMouseOver={() => setIcon('6')}>
-                                        <img src={logo6} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 7 ? '2px solid white' : 'none' }}
-
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('7')}
-                                        onMouseOver={() => setIcon('7')}>
-                                        <img src={logo7} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 8 ? '2px solid white' : 'none' }}
-
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('8')}
-                                        onMouseOver={() => setIcon('8')}>
-                                        <img src={logo8} />
-                                    </div>
-                                    <div
-                                        style={{ border: +icon2 === 9 ? '2px solid white' : 'none' }}
-
-                                        onMouseLeave={() => setIcon(icon2)}
-                                        onClick={() => setIcon2('9')}
-                                        onMouseOver={() => setIcon('9')}>
-                                        <img src={logo9} />
-                                    </div>
+                                    <button id='edit-modal' type='button'
+                                        onClick={() => history.push(`/deck/${did}`)}
+                                    >Finish!</button>
                                 </div>
 
+                                : visi === hide ?
+                                    <div id='make-title'><div style={{ 'font-size': '2vw', textDecoration: 'underline' }}>You have added </div><div style={{ 'font-size': '4vw' }}>{addcnt ? addcnt : ''} &nbsp; {addcnt == 1 ? 'card' : addcnt == 0 ? 'Nothing' : 'cards'}</div> </div>
+                                    : <></>}
+                            <form id='create-card-right'
+                                onSubmit={handleIt}>
+                                {/* <div> */}
+                                {/* <textarea
+                                    style={{ display: visi }}
+                                    id='card-create-textarea'
+                                    type='textarea'
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder='Deckasaurus'
+                                    required
+                                /> */}
+                                <input
+                                    style={{ display: visi }}
+                                    id='card-create-textarea'
+                                    type='textarea'
+                                    value={title}
+                                    defaultValue={'Deckasaurus'}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    // placeholder='-tern'
+                                    required
+                                />
+                                <div
+                                    style={{ display: hide }}
+
+                                >
+                                    <div id='icon-box'>
+                                        <div
+                                            style={{ margin: '.5vw', border: +icon2 === 0 ? '2px solid white ' : 'none' }}
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('0')}
+                                            onMouseOver={() => setIcon('0')}
+                                        >
+                                            <img src={logo0} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 1 ? '2px solid white' : 'none' }}
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('1')}
+                                            onMouseOver={() => setIcon('1')}>
+                                            <img src={logo1} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('2')}
+                                            onMouseOver={() => setIcon('2')}>
+                                            <img src={logo2} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 3 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('3')}
+                                            onMouseOver={() => setIcon('3')}>
+                                            <img src={logo3} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 4 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('4')}
+                                            onMouseOver={() => setIcon('4')}>
+                                            <img src={logo4} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 5 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('5')}
+                                            onMouseOver={() => setIcon('5')}>
+                                            <img src={logo5} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 6 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('6')}
+                                            onMouseOver={() => setIcon('6')}>
+                                            <img src={logo6} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 7 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('7')}
+                                            onMouseOver={() => setIcon('7')}>
+                                            <img src={logo7} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 8 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('8')}
+                                            onMouseOver={() => setIcon('8')}>
+                                            <img src={logo8} />
+                                        </div>
+                                        <div
+                                            style={{ border: +icon2 === 9 ? '2px solid white' : 'none' }}
+
+                                            onMouseLeave={() => setIcon(icon2)}
+                                            onClick={() => setIcon2('9')}
+                                            onMouseOver={() => setIcon('9')}>
+                                            <img src={logo9} />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                {/* </div> */}
+                                {/* <div> */}
+                                {/* </div> */}
+
+                                <button id='edit-modal' type='button'
+                                    style={{ display: visi }}
+                                    onClick={firstHandle}>
+                                    Name it!</button>
+                                <button id='edit-modal' type='submit'
+                                    style={{ display: hide }}
+                                >Make it!</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div className="error-cont">
+                        {errors?.map((error) => (
+                            <div classname='error-message'>{error}</div>
+                        ))}
+                    </div>
+                </div>
+                {visi === hide ?
+                    <div id='create-deck-card-whole'>
+                        <div id='cd-select-header'>
+                            Add Some Cards!
+                        </div>
+                        <div id='cd-select-cards'>
+                            <div className='select-one-card'
+                                onClick={() => addingIt(a)}
+                            >
+                                <CardCard card={a} make={3} />
                             </div>
-
-                            {/* </div> */}
-                            {/* <div> */}
-                            {/* </div> */}
-
-                            <button id='edit-modal' type='button'
-                                style={{ display: visi }}
-                                onClick={() => { setHide('flex'); setVisi('none') }} >
-                                Name it!</button>
-                            <button id='edit-modal' type='submit'
-                                style={{ display: hide }}
-                            >Make it!</button>
-                        </form>
+                            <div
+                                className='select-one-card'
+                                onClick={() => addingIt(b)}>
+                                <CardCard card={b} make={3} />
+                            </div>
+                            <div className='select-one-card'
+                                onClick={() => addingIt(c)}>
+                                <CardCard card={c} make={3} />
+                            </div>
+                            {rest?.length ? <div id='display-next' onClick={skippingIt}>
+                                ►
+                            </div> : <></>}
+                        </div>
+                        {/* <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' deck_id={did} /> */}
                     </div>
-                </div>
-
-                <div className="error-cont">
-                    {errors?.map((error) => (
-                        <div classname='error-message'>{error}</div>
-                    ))}
-                </div>
+                    : <></>}
             </div>
-            {visi === hide ?
-                <div id='create-deck-card-whole'>
-                    <div id='cd-select-header'>
-                        Add Some Cards!
-                    </div>
-                    <div id='cd-select-cards'>
-                        <div className='select-one-card'
-                            onClick={() => addingIt(a)}
-                        >
-                            <CardCard card={a} make={3} />
-                        </div>
-                        <div
-                            className='select-one-card'
-                            onClick={() => addingIt(b)}>
-                            <CardCard card={b} make={3} />
-                        </div>
-                        <div className='select-one-card'
-                            onClick={() => addingIt(c)}>
-                            <CardCard card={c} make={3} />
-                        </div>
-                        {rest?.length ? <div id='display-next' onClick={skippingIt}>
-                            ►
-                        </div> : <></>}
-                    </div>
-                    {/* <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' deck_id={did} /> */}
-                </div>
-                : <></>}
-        </div>
+        </>
     );
 }
 

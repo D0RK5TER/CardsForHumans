@@ -10,21 +10,21 @@ export default function CardEdit() {
     const dispatch = useDispatch();
     const history = useHistory()
     const { idx } = useParams()
-    const card = useSelector(state => state.cards[idx])
-    const [text, setText] = useState(card?.text)
-    const [is_question, setIs_question] = useState(card?.is_question)
+    const card = useSelector(state => state.cards)
+    const [text, setText] = useState(card[idx]?.text)
+    const [is_question, setIs_question] = useState(card[idx]?.is_question)
     const [errors, setErrors] = useState([])
 
     const handleIt = async (e) => {
         e.preventDefault()
-        const data = await dispatch(thunkEditCard({ text, is_question }, card?.id))
-        data.ok ? history.push(`/${data.id}`) : setErrors(data.errors)
+        const data = await dispatch(thunkEditCard({ text, is_question }, idx))
+        !data[0]? history.push(`/${data.id}`) : setText(data[0])
     }
 
     return (
         <div id='one-card-whole'>
             <div>
-                <CardCard card={{ text, is_question: card['is_question'] }} />
+                <CardCard card={{ text, is_question: card?.is_question }} />
             </div>
             <div id='one-card-right'>
                 <div
@@ -52,11 +52,7 @@ export default function CardEdit() {
 
                     </form>
                 </div>
-                <div className="error-cont">
-                    {errors?.map((error) => (
-                        <div classname='error-message'>{error}</div>
-                    ))}
-                </div>
+
             </div>
         </div>
     );
