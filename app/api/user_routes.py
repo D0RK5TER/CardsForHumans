@@ -20,6 +20,7 @@ user_routes = Blueprint('user', __name__)
 @login_required
 def curr_user():
     user = User.query.get(current_user.id)
+    # ret = user.current_user()
     return user.current_user()
 
 

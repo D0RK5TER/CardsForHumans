@@ -5,7 +5,7 @@ import { thunkEditDeck, thunkDeleteDeck, thunkGetDeck } from '../../store/decks'
 
 // import CardCard from '../CardCard';
 import DeckCard from '../DeckCard';
-import '../../0css/cardcreate.css';
+import '../../0css/deckcreate.css';
 import logo0 from '../../0assets/icons/icon0.png'
 import logo1 from '../../0assets/icons/icon1.png'
 import logo2 from '../../0assets/icons/icon2.png'
@@ -36,7 +36,7 @@ export default function DeckEdit() {
         e.preventDefault()
         if (title.length > 0) {
             const data = await dispatch(thunkEditDeck({ title, icon }, idx))
-            !data ? history.push(`/deck/${idx}`) : setErrors(data)
+            !data ? history.push(`/deck/${idx}`) : window.alert('Decks need a name') || history.goBack()
         }
         else {
             setErrors(['Please add a title'])
@@ -62,7 +62,6 @@ export default function DeckEdit() {
                 <div
                 // onClick={() => setIcon(!icon ? 0 : 1)}
                 >
-                    space
                 </div>
                 <div id='create-card-right'>
                     <div>Get Changin!</div>

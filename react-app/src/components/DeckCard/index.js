@@ -14,6 +14,7 @@ import logo8 from '../../0assets/icons/icon8.png'
 import logo9 from '../../0assets/icons/icon9.png'
 
 import '../../0css/deckcard.css'
+
 export default function DeckCard({ deck, make }) {
     const history = useHistory()
     // const sessionUser = useSelector(state => state.user);
@@ -35,8 +36,8 @@ export default function DeckCard({ deck, make }) {
     return (
         <div id='deck-card-whole' onClick={!make?() => history.push(`/deck/${deck?.id}`):()=>window.alert('Finish making it before you go to it!')}>
             <div id='deck-card-inner'>
-                <div id='deck-card-text'  >
-                    {!deck?.title ? <>Deckasaurus</> : deck?.title}
+                <div id='deck-card-text'>
+                    { deck?.title}
                 </div>
                 <div id='deck-card-bot'>
                     <div >

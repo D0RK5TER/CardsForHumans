@@ -21,11 +21,11 @@ import CardCard from '../CardCard';
 export default function DeckCreate() {
     const dispatch = useDispatch();
     const history = useHistory()
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState('Deckasaures')
     const [icon, setIcon] = useState(0)
     const [icon2, setIcon2] = useState(0)
-    const [hide, setHide] = useState('none')
-    const [visi, setVisi] = useState('relative')
+    const [hide, setHide] = useState('relative')
+    const [visi, setVisi] = useState('none')
     const [errors, setErrors] = useState([])
     const [did, setDid] = useState(0)
     const [addcnt, setAddcnt] = useState(0)
@@ -36,12 +36,8 @@ export default function DeckCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? setHide('none') || setDid(data.id) : window.alert('Decks need a name') || history.goBack()
+        !data.errors ? setVisi('none') || setDid(data.id) : window.alert('Decks need a name')
 
-    }
-
-    const firstHandle = () => {
-        title?.length < 1 ? setTitle('Gotta be something...') : setHide('flex') || setVisi('none')
     }
     let selected = icon2
     const addingIt = async (it) => {
@@ -62,42 +58,38 @@ export default function DeckCreate() {
         <>
             <div id='deck-create-whole' className='deck-create'>
                 <div id='deck-create-top'>
-                    <div>
-                        <DeckCard deck={{ title, icon }} make={1} />
-                    </div>
 
-                    {/* {visi === hide ?
+                    <div id='createdisplay'>
+                        <DeckCard deck={{ title, icon }} make={1} />
+
+
+                        {/* {visi === hide ?
                         <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' />
                     : <></>} */}
-                    <div id='createdisplay'>
                     </div>
 
-                    <div id='one-card-right'>
-                        <div
-                        // onClick={() => setIcon(!icon ? 0 : 1)}
-                        >
 
-                        </div>
-                        <div id='create-card-right'>
-                            {visi === hide || <div>Make Your Deck!</div>}
-                            {visi === hide && addcnt >= 10 ?
-                                <div id='make-title'>
+                    <div id='create-deck-right'>
+                        {visi === hide || <div id='deck-title'>Make Your Deck!</div>}
+                        {visi === 'none' ? <div id='deck-title-sub'>Select a pic</div> : <div id='deck-title-sub'>Name it...</div>}
+                        {visi === hide && addcnt >= 10 ?
+                            <div id='make-title'>
 
-                                    <div>You have added </div>
-                                    <div>{addcnt} &nbsp; {addcnt == 1 ? 'card' : 'cards'}
-                                    </div>
-                                    <button id='edit-modal' type='button'
-                                        onClick={() => history.push(`/deck/${did}`)}
-                                    >Finish!</button>
+                                <div>You have added </div>
+                                <div>{addcnt} &nbsp; {addcnt == 1 ? 'card' : 'cards'}
                                 </div>
+                                <button id='edit-modal' type='button'
+                                    onClick={() => history.push(`/deck/${did}`)}
+                                >Finish!</button>
+                            </div>
 
-                                : visi === hide ?
-                                    <div id='make-title'><div style={{ 'font-size': '2vw', textDecoration: 'underline' }}>You have added </div><div style={{ 'font-size': '4vw' }}>{addcnt ? addcnt : ''} &nbsp; {addcnt == 1 ? 'card' : addcnt == 0 ? 'Nothing' : 'cards'}</div> </div>
-                                    : <></>}
-                            <form id='create-card-right'
-                                onSubmit={handleIt}>
-                                {/* <div> */}
-                                {/* <textarea
+                            : visi === hide ?
+                                <div id='make-title'><div style={{ 'font-size': '2vw', textDecoration: 'underline' }}>You have added </div><div style={{ 'font-size': '4vw' }}>{addcnt ? addcnt : ''} &nbsp; {addcnt == 1 ? 'card' : addcnt == 0 ? 'Nothing' : 'cards'}</div> </div>
+                                : <></>}
+                        <form id='create-card-right'
+                            onSubmit={handleIt}>
+                            {/* <div> */}
+                            {/* <textarea
                                     style={{ display: visi }}
                                     id='card-create-textarea'
                                     type='textarea'
@@ -106,116 +98,116 @@ export default function DeckCreate() {
                                     placeholder='Deckasaurus'
                                     required
                                 /> */}
-                                <input
-                                    style={{ display: visi }}
-                                    id='card-create-textarea'
-                                    type='textarea'
-                                    value={title}
-                                    defaultValue={'Deckasaurus'}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                    // placeholder='-tern'
-                                    required
-                                />
-                                <div
-                                    style={{ display: hide }}
+                            <textarea
+                                id='card-create-textarea'
+                                style={{ display: visi }}
+                                type='textarea'
+                                value={title}
+                                defaultValue={'Deckasaurus'}
+                                onChange={(e) => setTitle(e.target.value)}
+                                // placeholder='-tern'
+                                required
+                            />
+                            <div
+                                style={{ display: hide }}
 
-                                >
-                                    <div id='icon-box'>
-                                        <div
-                                            style={{ margin: '.5vw', border: +icon2 === 0 ? '2px solid white ' : 'none' }}
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('0')}
-                                            onMouseOver={() => setIcon('0')}
-                                        >
-                                            <img src={logo0} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 1 ? '2px solid white' : 'none' }}
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('1')}
-                                            onMouseOver={() => setIcon('1')}>
-                                            <img src={logo1} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('2')}
-                                            onMouseOver={() => setIcon('2')}>
-                                            <img src={logo2} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 3 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('3')}
-                                            onMouseOver={() => setIcon('3')}>
-                                            <img src={logo3} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 4 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('4')}
-                                            onMouseOver={() => setIcon('4')}>
-                                            <img src={logo4} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 5 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('5')}
-                                            onMouseOver={() => setIcon('5')}>
-                                            <img src={logo5} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 6 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('6')}
-                                            onMouseOver={() => setIcon('6')}>
-                                            <img src={logo6} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 7 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('7')}
-                                            onMouseOver={() => setIcon('7')}>
-                                            <img src={logo7} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 8 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('8')}
-                                            onMouseOver={() => setIcon('8')}>
-                                            <img src={logo8} />
-                                        </div>
-                                        <div
-                                            style={{ border: +icon2 === 9 ? '2px solid white' : 'none' }}
-
-                                            onMouseLeave={() => setIcon(icon2)}
-                                            onClick={() => setIcon2('9')}
-                                            onMouseOver={() => setIcon('9')}>
-                                            <img src={logo9} />
-                                        </div>
+                            >
+                                <div id='icon-box'>
+                                    <div
+                                        style={{ margin: '.5vw', border: +icon2 === 0 ? '2px solid white ' : 'none' }}
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('0')}
+                                        onMouseOver={() => setIcon('0')}
+                                    >
+                                        <img src={logo0} />
                                     </div>
+                                    <div
+                                        style={{ border: +icon2 === 1 ? '2px solid white' : 'none' }}
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('1')}
+                                        onMouseOver={() => setIcon('1')}>
+                                        <img src={logo1} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 2 ? '2px solid white' : 'none' }}
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('2')}
+                                        onMouseOver={() => setIcon('2')}>
+                                        <img src={logo2} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 3 ? '2px solid white' : 'none' }}
 
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('3')}
+                                        onMouseOver={() => setIcon('3')}>
+                                        <img src={logo3} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 4 ? '2px solid white' : 'none' }}
+
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('4')}
+                                        onMouseOver={() => setIcon('4')}>
+                                        <img src={logo4} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 5 ? '2px solid white' : 'none' }}
+
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('5')}
+                                        onMouseOver={() => setIcon('5')}>
+                                        <img src={logo5} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 6 ? '2px solid white' : 'none' }}
+
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('6')}
+                                        onMouseOver={() => setIcon('6')}>
+                                        <img src={logo6} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 7 ? '2px solid white' : 'none' }}
+
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('7')}
+                                        onMouseOver={() => setIcon('7')}>
+                                        <img src={logo7} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 8 ? '2px solid white' : 'none' }}
+
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('8')}
+                                        onMouseOver={() => setIcon('8')}>
+                                        <img src={logo8} />
+                                    </div>
+                                    <div
+                                        style={{ border: +icon2 === 9 ? '2px solid white' : 'none' }}
+
+                                        onMouseLeave={() => setIcon(icon2)}
+                                        onClick={() => setIcon2('9')}
+                                        onMouseOver={() => setIcon('9')}>
+                                        <img src={logo9} />
+                                    </div>
                                 </div>
 
-                                {/* </div> */}
-                                {/* <div> */}
-                                {/* </div> */}
+                            </div>
 
-                                <button id='edit-modal' type='button'
-                                    style={{ display: visi }}
-                                    onClick={firstHandle}>
-                                    Name it!</button>
-                                <button id='edit-modal' type='submit'
-                                    style={{ display: hide }}
-                                >Make it!</button>
-                            </form>
-                        </div>
+                            {/* </div> */}
+                            {/* <div> */}
+                            {/* </div> */}
+
+                            <button id='edit-modal' type='button'
+                                style={{ display: hide }}
+                                onClick={() => { setHide('none'); setVisi('flex') }}>
+                                Pick One!</button>
+                            <button id='edit-modal' type='submit'
+                                style={{ display: visi }}
+                            >Name It!</button>
+                        </form>
+
                     </div>
 
                     <div className="error-cont">

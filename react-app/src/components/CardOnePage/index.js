@@ -105,7 +105,7 @@ export default function OneCard() {
                         </div>
                     </div >
                     <div className='info-box-card two' >
-                        T-he  Printe-D
+                        T-otal  Printe-D
                         <div className='info-box-card'>
                             {card[idx]?.printed}
                         </div>
