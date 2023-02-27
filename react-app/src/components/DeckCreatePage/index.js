@@ -36,8 +36,12 @@ export default function DeckCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? setHide('none') || setDid(data.id) : setErrors(data.errors)
+        !data.errors ? setHide('none') || setDid(data.id) : window.alert('Decks need a name') || history.goBack()
 
+    }
+
+    const firstHandle = () => {
+        title?.length < 1 ? setTitle('Gotta be something...') : setHide('flex') || setVisi('none')
     }
     let selected = icon2
     const addingIt = async (it) => {
@@ -88,18 +92,28 @@ export default function DeckCreate() {
                                 </div>
 
                                 : visi === hide ?
-                                    <div id='make-title'><div style={{'font-size': '2vw'}}>You have added </div><div style={{'font-size': '4vw'}}>{addcnt?addcnt:''} &nbsp; {addcnt==1 ? 'card' :addcnt==0? 'Nothing': 'cards'}</div> </div>
+                                    <div id='make-title'><div style={{ 'font-size': '2vw', textDecoration: 'underline' }}>You have added </div><div style={{ 'font-size': '4vw' }}>{addcnt ? addcnt : ''} &nbsp; {addcnt == 1 ? 'card' : addcnt == 0 ? 'Nothing' : 'cards'}</div> </div>
                                     : <></>}
                             <form id='create-card-right'
                                 onSubmit={handleIt}>
                                 {/* <div> */}
-                                <textarea
+                                {/* <textarea
                                     style={{ display: visi }}
                                     id='card-create-textarea'
                                     type='textarea'
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     placeholder='Deckasaurus'
+                                    required
+                                /> */}
+                                <input
+                                    style={{ display: visi }}
+                                    id='card-create-textarea'
+                                    type='textarea'
+                                    value={title}
+                                    defaultValue={'Deckasaurus'}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    // placeholder='-tern'
                                     required
                                 />
                                 <div
@@ -195,7 +209,7 @@ export default function DeckCreate() {
 
                                 <button id='edit-modal' type='button'
                                     style={{ display: visi }}
-                                    onClick={() => { setHide('flex'); setVisi('none') }} >
+                                    onClick={firstHandle}>
                                     Name it!</button>
                                 <button id='edit-modal' type='submit'
                                     style={{ display: hide }}

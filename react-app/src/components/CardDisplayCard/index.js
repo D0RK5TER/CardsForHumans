@@ -11,6 +11,7 @@ import DeckCard from '../DeckCard';
 // import BadgeFormModal from '../BadgeFormModal';
 import '../../0css/usercurr.css'
 import '../../0css/carddisplay.css'
+import heart from '../../0assets/like.png'
 
 export default function CardDisplay({ cards, title, deck }) {
 

@@ -56,7 +56,7 @@ export default function ProfileButton({ user }) {
             </div>
             <div id='bot-half'>
 
-              <div id='nav-butt' onClick={() => dispatch(thunkMyInfo()) && history.push('/profile') || closeMenu()} >
+              <div id='nav-butt' onClick={async () => await dispatch(thunkMyInfo()) || history.push('/profile') || closeMenu()} >
                 Your Stuff
               </div>
 

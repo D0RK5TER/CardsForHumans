@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Deck, db,  Card
 from app.forms import DeckForm
+from .auth_routes import validation_errors_to_error_messages
 
 
 deck_routes = Blueprint('deck', __name__)
@@ -35,7 +36,7 @@ def one_deck(id):
     if deck:
         return {'deck':deck.deck_cards()}
     else:
-        return {'errors': ['That aint no deck i heard of']}
+        return {'errors': ['That aint no deck i heard of']}, 404
 
 @deck_routes.route('', methods=['POST'])
 @login_required
@@ -52,7 +53,7 @@ def make_deck():
         db.session.commit()
         return  deck.basic()
 
-    return {'errors': form.errors}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 
@@ -72,7 +73,7 @@ def edit_deck(id):
         else:
             return {'errors': ['Not Your deck!']}, 401
 
-    return {'errors': form.errors}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 
@@ -85,7 +86,7 @@ def make_deck_card(id):
     # form['csrf_token'].data = request.cookies['csrf_token']
     if deck and card:
         if (current_user.id != deck.owner):
-            return {'errors': ['Notcha Deck']}
+            return {'errors': ['Notcha Deck']}, 403
         deck.cards.append(card)
         db.session.commit()
         return  deck.basic()

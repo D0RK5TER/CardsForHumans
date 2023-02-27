@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { thunkEditDeck, thunkDeleteDeck } from '../../store/decks';
+import { thunkEditDeck, thunkDeleteDeck, thunkGetDeck } from '../../store/decks';
 
 // import CardCard from '../CardCard';
 import DeckCard from '../DeckCard';
@@ -21,18 +21,33 @@ export default function DeckEdit() {
     const dispatch = useDispatch();
     const history = useHistory()
     const { idx } = useParams()
-    const deck = useSelector(state => state.decks[idx])
-    const [title, setTitle] = useState(deck?.title)
-    const [icon, setIcon] = useState(deck?.icon)
-    const [icon2, setIcon2] = useState(deck?.icon)
+    const deck = useSelector(state => state.decks)
+    const [title, setTitle] = useState(deck[idx]?.title)
+    const [icon, setIcon] = useState(deck[idx]?.icon)
+    const [icon2, setIcon2] = useState(deck[idx]?.icon)
     const [hide, setHide] = useState('none')
     const [visi, setVisi] = useState('relative')
     const [errors, setErrors] = useState([])
+    useEffect(() => {
+        if (!deck[idx]) history.goBack()
+    }, [])
+
     const handleIt = async (e) => {
         e.preventDefault()
-        const data = await dispatch(thunkEditDeck({ title, icon }, deck?.id))
-        data.ok ? history.push(`/deck/${deck.id}`) : setErrors(data.errors)
+        if (title.length > 0) {
+            const data = await dispatch(thunkEditDeck({ title, icon }, idx))
+            !data ? history.push(`/deck/${idx}`) : setErrors(data)
+        }
+        else {
+            setErrors(['Please add a title'])
+        }
     }
+
+    const firstHandle = () => {
+        title?.length < 1 ? setTitle('Gotta be something...') : setHide('flex') || setVisi('none')
+    }
+
+
     // const cancelIt = async (e) => {
     //     e.preventDefault()
     //     const data = await dispatch(thunkDeleteDeck(deck?.id))
@@ -54,11 +69,12 @@ export default function DeckEdit() {
                     <form id='create-card-right'
                         onSubmit={handleIt}>
                         {/* <div> */}
-                        <textarea
+                        <input
                             style={{ display: visi }}
                             id='card-create-textarea'
                             type='textarea'
                             value={title}
+                            defaultValue={deck?.title}
                             onChange={(e) => setTitle(e.target.value)}
                             // placeholder='-tern'
                             required
@@ -151,11 +167,18 @@ export default function DeckEdit() {
                         </div>
                         <button id='edit-modal' type='button'
                             style={{ display: visi }}
-                            onClick={() => { setHide('flex'); setVisi('none') }} >
+                            // onClick={() => { setHide('flex'); setVisi('none') }} >
+                            onClick={firstHandle} >
+
                             Name it!</button>
                         <button id='edit-modal' type='submit'
                             style={{ display: hide }}
                         >Change it!</button>
+                        <div className="error-cont">
+                            {errors?.map((error) => (
+                                <div style={{ color: 'white' }} classname='error-message'>{error}</div>
+                            ))}
+                        </div>
                     </form>
                 </div>
                 <div className="error-cont">
