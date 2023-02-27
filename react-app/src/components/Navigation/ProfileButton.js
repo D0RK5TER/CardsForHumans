@@ -6,6 +6,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../ModalButton";
 import LoginFormModal from "../AuthLoginFormModal";
 import SignupFormModal from "../AuthSignupFormModal";
+import { thunkMyInfo } from "../../store/myprofile";
 export default function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory()
@@ -55,7 +56,7 @@ export default function ProfileButton({ user }) {
             </div>
             <div id='bot-half'>
 
-              <div id='nav-butt' onClick={() => history.push('/profile') || closeMenu()} >
+              <div id='nav-butt' onClick={() => dispatch(thunkMyInfo()) && history.push('/profile') || closeMenu()} >
                 Your Stuff
               </div>
 

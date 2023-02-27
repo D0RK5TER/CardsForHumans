@@ -7,11 +7,17 @@
     min-height: 100vh;
 padding-left: 0;
 }
-
+#icon-box>div {
+    margin: .75vw;
+    height: fit-content;
+}
 #icon-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
+    width: 30vw;
+    height: 15vw;
 }
 
 

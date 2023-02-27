@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkGetCard, thunkDeleteCard } from '../../store/cards';
 import { thunkMakePrint } from '../../store/prints';
-import { thunkMakeFav, thunkDeleteFav } from '../../store/myprofile';
+import { thunkMakeFav, thunkDeleteFav, thunkMyInfo } from '../../store/myprofile';
 import CardCard from '../CardCard';
 import '../../0css/onecard.css'
 
@@ -24,7 +24,8 @@ export default function OneCard() {
         if (window.confirm('Are you sure?')) {
             const data = await dispatch(thunkDeleteCard(card[idx]?.id))
             // console.log(data)
-            data.ok ? history.push(`/profile`) : window.alert('Something Went Wrong!')
+            // data.ok ? dispatch(thunkMyInfo()) : window.alert('Something Went Wrong!')
+            data.ok ? dispatch(thunkMyInfo()) && history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
     const printIt = async () => {

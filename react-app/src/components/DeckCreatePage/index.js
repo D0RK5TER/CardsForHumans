@@ -6,7 +6,7 @@ import { thunkMakeDeck } from '../../store/decks';
 import { thunkDeckCard } from '../../store/myprofile';
 import DeckCard from '../DeckCard';
 import '../../0css/deckcreate.css';
-import logo0 from '../../0assets/icons/icon0.png'
+import logo0 from '../../0assets/icons/icon01.png'
 import logo1 from '../../0assets/icons/icon1.png'
 import logo2 from '../../0assets/icons/icon2.png'
 import logo3 from '../../0assets/icons/icon3.png'
@@ -75,14 +75,14 @@ export default function DeckCreate() {
                     </div>
                     <div id='create-card-right'>
                         <div>Make Your Deck!</div>
-                        {visi === hide && addcnt > 10 ? 
-                         <>
-                         <button id='edit-modal' type='button'
-                        onClick={()=> history.push(`/deck/${did}`)}
-                        >Finish!</button>
-                        You have added {addcnt} cards!
-                        </>
-                        :visi === hide ?
+                        {visi === hide && addcnt > 10 ?
+                            <>
+                                <button id='edit-modal' type='button'
+                                    onClick={() => history.push(`/deck/${did}`)}
+                                >Finish!</button>
+                                You have added {addcnt} cards!
+                            </>
+                            : visi === hide ?
                                 <>You have added {addcnt}-{addcnt == 1 ? 'card' : 'cards'} </>
                                 : <></>}
                         <form id='create-card-right'
@@ -103,12 +103,12 @@ export default function DeckCreate() {
                             >
                                 <div id='icon-box'>
                                     <div
-                                        style={{ border: +icon2 === 0 ? '2px solid white' : 'none' }}
+                                        style={{ margin: '.5vw',border: +icon2 === 0 ? '2px solid white ' : 'none' }}
                                         onMouseLeave={() => setIcon(icon2)}
                                         onClick={() => setIcon2('0')}
                                         onMouseOver={() => setIcon('0')}
                                     >
-                                        <img src={logo0} style={{ maxHeight: '70px' }} />
+                                        <img src={logo0}  />
                                     </div>
                                     <div
                                         style={{ border: +icon2 === 1 ? '2px solid white' : 'none' }}

@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -34,18 +34,23 @@ def login():
     Logs a user in
     """
     form = LoginForm()
+    user = User.query.filter(User.email == form.data['email']).first()
+    userb = User.query.filter(User.username == form.data['email']).first()
+    form['csrf_token'].data = request.cookies['csrf_token']
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
+    if not user and not userb:
+        return {'errors': ["You don't seem to exisit"]}, 401
+
+    elif form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
-        userb = User.query.filter(User.username == form.data['email']).first()
         if user:
             login_user(user)
-        else:
+        elif userb:
             login_user(userb)
             user = userb
+        else: 
+            {'errors': ["You don't seem to exist"]}, 403
 
         return user.basic()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
