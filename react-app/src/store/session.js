@@ -25,7 +25,8 @@ export const authenticate = () => async (dispatch) => {
 		if (data.errors) {
 			return;
 		}
-		dispatch(setUser(data));
+		await dispatch(setUser(data));
+		await dispatch(thunkMyInfo())
 	}
 };
 

@@ -99,6 +99,7 @@ export const thunkDeckCard = (deck, cid) => async (dispatch) => {
         // const data = await response.json();
         // await dispatch(actionRemoveLike(data));
         // data.ok = true
+        dispatch(thunkMyInfo())
         return null;
     } else if (response.status < 500) {
         const data = await response.json();
