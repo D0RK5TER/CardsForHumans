@@ -50,7 +50,9 @@
 ![Screenshot 2023-02-27 at 9 07 57 PM](https://user-images.githubusercontent.com/107891735/221760414-a309cb26-840d-4872-a8cc-4ab2d6a96cc0.png)
 ![Screenshot 2023-02-27 at 9 08 11 PM](https://user-images.githubusercontent.com/107891735/221760466-69b3eff9-aa95-4841-897a-6c77c1ed20f1.png)
 ## Adds cards to the freshly created deck
-![Screenshot 2023-02-27 at 9 08 25 PM](https://user-images.githubusercontent.com/107891735/221760548-0332723c-e972-401e-a824-84a1df5abc8b.png)
+
+![Screenshot 2023-02-27 at 9 09 01 PM](https://user-images.githubusercontent.com/107891735/221761194-e6bf5f86-dac4-48b1-99c3-b5af6973d047.png)
+
 ## Then is navigated to the decks new page, where stats are viewable
 ![Screenshot 2023-02-27 at 9 07 39 PM](https://user-images.githubusercontent.com/107891735/221760590-6ba0fd89-accc-4d88-9d0d-86eb6a05f640.png)
 ## The user then wants to explore cards
