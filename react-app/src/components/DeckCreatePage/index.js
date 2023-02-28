@@ -110,6 +110,7 @@ export default function DeckCreate() {
                                 defaultValue={'Deckasaurus'}
                                 onChange={(e) => setTitle(e.target.value)}
                                 // placeholder='-tern'
+                                maxLength='50'
                                 required
                             />
                             <div
