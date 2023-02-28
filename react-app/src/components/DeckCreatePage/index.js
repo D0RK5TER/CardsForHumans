@@ -31,12 +31,15 @@ export default function DeckCreate() {
     const [addcnt, setAddcnt] = useState(0)
     const usefav = useSelector(state => state.user.favorites)
     const [opts, setOpts] = useState(usefav)
+    const [ogopt, setOgopt] = useState([])
     const [a, b, c, ...rest] = opts
 
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        !data.errors ? setVisi('none') || setDid(data.id) : window.alert('Decks need a name')
+        // console.log(data)
+
+        !data.errors ? setVisi('none') || setDid(data?.deck?.id) || setOpts(data?.cards) || setOgopt(data?.cards) : window.alert('Decks need a name')
 
     }
     let selected = icon2
@@ -48,11 +51,12 @@ export default function DeckCreate() {
         else {
             const newopts = opts.filter(x => x.id != it.id)
             setOpts(newopts)
+            setOgopt(newopts)
             setAddcnt(addcnt + 1)
         }
     }
     const skippingIt = async () => {
-        setOpts([b, c, ...rest])
+       rest?.length? setOpts([b, c, ...rest]): setOpts([b,c, ogopt])
     }
     return (
         <>
@@ -222,20 +226,27 @@ export default function DeckCreate() {
                             Add Some Cards!
                         </div>
                         <div id='cd-select-cards'>
+                        {a? 
                             <div className='select-one-card'
                                 onClick={() => addingIt(a)}
                             >
                                 <CardCard card={a} make={3} />
                             </div>
+                            : <></>}
+                            {b? 
                             <div
                                 className='select-one-card'
                                 onClick={() => addingIt(b)}>
                                 <CardCard card={b} make={3} />
                             </div>
+                            : <></>}
+                            {c? 
+                            
                             <div className='select-one-card'
                                 onClick={() => addingIt(c)}>
                                 <CardCard card={c} make={3} />
                             </div>
+                        : <></>}
                             {rest?.length ? <div id='display-next' onClick={skippingIt}>
                                 ►
                             </div> : <></>}

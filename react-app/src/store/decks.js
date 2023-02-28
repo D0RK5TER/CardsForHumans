@@ -70,7 +70,7 @@ export const thunkMakeDeck = (form) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        await dispatch(actionSetD(data));
+        await dispatch(actionSetD(data.deck));
         // data.ok = true
         return data;
     } else if (response.status < 500) {

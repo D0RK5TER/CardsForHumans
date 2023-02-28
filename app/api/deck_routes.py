@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Deck, db,  Card
 from app.forms import DeckForm
 from .auth_routes import validation_errors_to_error_messages
+from sqlalchemy.sql.expression import func
 
 
 deck_routes = Blueprint('deck', __name__)
@@ -51,7 +52,12 @@ def make_deck():
         )
         db.session.add(deck)
         db.session.commit()
-        return  deck.basic()
+        cards = Card.query.filter_by(is_question = 0).order_by(func.random()).limit(20)
+        bards = Card.query.filter_by(is_question = 1).order_by(func.random()).limit(5)
+        arr = []
+        [arr.append(c.basic()) for c in cards]
+        [arr.append(b.basic()) for b in bards]
+        return  {'deck':deck.basic(), 'cards': arr}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
