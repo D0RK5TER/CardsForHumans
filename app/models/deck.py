@@ -36,6 +36,15 @@ class Deck(db.Model):
             'icon': self.icon,
             'cards': [c.basic() for c in self.cards]
         }
+    
+    def deck_card_create(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'created': self.created,
+            'icon': self.icon,
+            'cards': [c.id for c in self.cards]
+        }
 
     # cards = db.Column(db.String(255), nullable=False, unique=True)
     # hashed_password = db.Column(db.String(255), nullable=False)

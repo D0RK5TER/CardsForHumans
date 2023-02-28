@@ -66,7 +66,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'created': self.created,
-            'decks': [deck.basic() for deck in self.owner],
+            'decks': [deck.deck_card_create() for deck in self.owner],
             'cards_made': [c.basic() for c in self.maker],
             'favorites': [c.basic() for c in self.favorites],
             'prints': [p.current_user() for p in self.print_history]
