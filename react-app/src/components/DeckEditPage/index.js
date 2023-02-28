@@ -25,9 +25,10 @@ export default function DeckEdit() {
     const [title, setTitle] = useState(deck[idx]?.title)
     const [icon, setIcon] = useState(deck[idx]?.icon)
     const [icon2, setIcon2] = useState(deck[idx]?.icon)
-    const [hide, setHide] = useState('none')
-    const [visi, setVisi] = useState('relative')
+    const [hide, setHide] = useState('flex')
+    const [visi, setVisi] = useState('none')
     const [errors, setErrors] = useState([])
+    const [tog, setTog] = useState(true)
     useEffect(() => {
         if (!deck[idx]) history.goBack()
     }, [])
@@ -39,15 +40,15 @@ export default function DeckEdit() {
             !data ? history.push(`/deck/${idx}`) : window.alert('Decks need a name') || history.goBack()
         }
         else {
-            setErrors(['Please add a title'])
+            setTitle('Gotta be something...')
+            // setHide('none') || setVisi('flex')
         }
     }
 
-    const firstHandle = () => {
-        title?.length < 1 ? setTitle('Gotta be something...') : setHide('flex') || setVisi('none')
-    }
+    const firstHandle = () => setHide('none') || setVisi('flex')
 
 
+    let boo = 1
     // const cancelIt = async (e) => {
     //     e.preventDefault()
     //     const data = await dispatch(thunkDeleteDeck(deck?.id))
@@ -58,14 +59,15 @@ export default function DeckEdit() {
             <div>
                 <DeckCard deck={{ title, icon }} />
             </div>
-            <div id='one-card-right'>
-                <div
-                // onClick={() => setIcon(!icon ? 0 : 1)}
-                >
-                </div>
-                <div id='create-card-right'>
-                    <div>Get Changin!</div>
-                    <form id='create-card-right'
+            {/* <div id='one-card-right'> */}
+            <div
+            // onClick={() => setIcon(!icon ? 0 : 1)}
+            >
+                {/* </div> */}
+                <div id='create-deck-right'>
+                    <div id='deck-title'>Get Changin!</div>
+                    <form
+                        id='create-card-right'
                         onSubmit={handleIt}>
                         {/* <div> */}
                         <input
@@ -165,13 +167,15 @@ export default function DeckEdit() {
 
                         </div>
                         <button id='edit-modal' type='button'
-                            style={{ display: visi }}
-                            // onClick={() => { setHide('flex'); setVisi('none') }} >
+                            style={{ display: hide }}
+                            // onHover={()=>boo=1}
+                            onMouseEnter={() => setTog(!tog)}
+                            onMouseLeave={() => setTog(!tog)} 
                             onClick={firstHandle} >
 
-                            Name it!</button>
+                            {tog ? 'Change=Good' : 'Change!=Good'}</button>
                         <button id='edit-modal' type='submit'
-                            style={{ display: hide }}
+                            style={{ display: visi }}
                         >Change it!</button>
                         <div className="error-cont">
                             {errors?.map((error) => (

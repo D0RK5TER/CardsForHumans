@@ -1,16 +1,23 @@
 #deck-card-text {
-    display: flex;
+    /* display: flex; */
     padding-top: 1vw;
     font-size: 2vw;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     overflow-wrap: break-word;
     overflow: hidden;
     max-width: 17vw;
-    text-overflow: clip;
+    /* text-overflow: clip; */
 }
-
+/* #card-card-text {
+    padding-top: 1vw;
+    font-size: 2vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    overflow-wrap: break-word;
+} */
 
 #deck-card-logo {
     height: 10vw;

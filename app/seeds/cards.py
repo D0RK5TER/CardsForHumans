@@ -7,34 +7,34 @@ def seed_cards():
         creator=1,    is_question=0, text='Because Mom Said So')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=2,   is_question=0,text='Washing Your Hands')
+        creator=2,   is_question=0,text='Washing your hands')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=3,   is_question=0,text='Brushing Your Teeth')
+        creator=3,   is_question=0,text='Brushing your teeth')
     db.session.add(tobbie)
     tobbie =  Card(
-        creator=4,    is_question=0,text='Melting Mashmallows')
+        creator=4,    is_question=0,text='Melted Mashmallows')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=5,   is_question=0,text='Staying Up Too Late')
+        creator=5,   is_question=0,text='Staying up too late')
     db.session.add(tobbie)
     tobbie = Card(
         creator=1,   is_question=0,text='Being Sick')
     db.session.add(tobbie)
     tobbie =  Card(
-        creator=2,    is_question=0,text='Asking for the Day Off')
+        creator=2,    is_question=0,text='Asking for the dayoff')
     db.session.add(tobbie)
     tobbie = Card(
         creator=3,   is_question=0,text='Homework')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=4,   is_question=0,text='Poke It With A Stick')
+        creator=4,   is_question=0,text='Poke it with a stick')
     db.session.add(tobbie)
     tobbie = Card(
         creator=5,   is_question=0,text='Passing Gas')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='A Car')
+        creator=1,   is_question=0,text='A car')
     db.session.add(tobbie)
     tobbie = Card(
         creator=2,   is_question=0,text='Pirate Treasure')
@@ -43,22 +43,22 @@ def seed_cards():
         creator=2,   is_question=0,text='A Chocolate Bath')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text="Pretending You're Sick")
+        creator=1,   is_question=0,text="Pretending you're sick")
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='My Stash Of Halloween Candy')
+        creator=6,   is_question=0,text='My stash of Halloween candy')
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='Easter Eggs')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=2,   is_question=0,text="My Dad's Smelly Shoes")
+        creator=2,   is_question=0,text="Dad's Smelly Shoes")
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Hiding In Your Blankets')
+        creator=6,   is_question=0,text='Hiding in your blankets')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Wetting The Bed')
+        creator=6,   is_question=0,text='Wetting the bed')
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='Taco Flavored Pizza')
@@ -67,22 +67,22 @@ def seed_cards():
         creator=2,   is_question=0,text='Boogers')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='A Barn Cat')
+        creator=6,   is_question=0,text='A barn cat')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='A Cat In A tuxedo')
+        creator=6,   is_question=0,text='A cat in a tuxedo')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Kissing A Frog')
+        creator=6,   is_question=0,text='Kissing a "Frog"')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='A Bow And Arrow')
+        creator=1,   is_question=0,text='A bow and arrow')
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='A Homerun')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Frting In A Microphone')
+        creator=6,   is_question=0,text='Farting in a microphone')
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='Science')
@@ -94,7 +94,7 @@ def seed_cards():
         creator=6,   is_question=0,text='Hot Pockets')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='A bag Of flaming Poop')
+        creator=6,   is_question=0,text='A bag Of flaming poop')
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='A T-Rex')
@@ -103,28 +103,28 @@ def seed_cards():
         creator=6,   is_question=0,text='Captain Planet')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Enlisting In The Army')
+        creator=6,   is_question=0,text='Enlisting in the Army')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Becoming A Doctor')
+        creator=6,   is_question=0,text='Becoming a doctor')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='Massaging Feet')
+        creator=1,   is_question=0,text='Massaging feet')
     db.session.add(tobbie)
     tobbie = Card(
         creator=6,   is_question=0,text='Ro-Sham-Bo')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Flipping A Coin')
+        creator=6,   is_question=0,text='Flipping a Coin')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=6,   is_question=0,text='Drinking Puddle Water')
+        creator=6,   is_question=0,text='Drinking puddle water')
     db.session.add(tobbie)
     tobbie = Card(
         creator=1,   is_question=0,text='Carrot Juice')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='A Pet Goldfish')
+        creator=1,   is_question=0,text='My pet goldfish')
     db.session.add(tobbie)
     tobbie = Card(
         creator=1,   is_question=0,text='Jennifer Lopez')
@@ -133,19 +133,19 @@ def seed_cards():
         creator=1,   is_question=0,text="Willy Wonka's Factory")
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='A Spelling Bee')
+        creator=1,   is_question=0,text='The Spelling Bee')
     db.session.add(tobbie)
     tobbie = Card(
         creator=1,   is_question=0,text='Throwing Up')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='Dressing Up As A Cat')
+        creator=1,   is_question=0,text='Dressing up as a cat')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='Pretending You Are A Dog')
+        creator=1,   is_question=0,text='Pretending you are a dog')
     db.session.add(tobbie)
     tobbie = Card(
-        creator=1,   is_question=0,text='Eating Rotten Food')
+        creator=1,   is_question=0,text='Eating rotten food')
     db.session.add(tobbie)
     tobbie = Card(
         creator=1,   is_question=0,text='Public Bathrooms')
@@ -199,7 +199,7 @@ def seed_cards():
     db.session.add(q6)
     q6 = Card(creator=6,   is_question=1, text='I just got a ___ and it is horrible☣︎')
     db.session.add(q6)
-    q6 = Card(creator=4,   is_question=1, text='Disnay came out with a ___ movie.')
+    q6 = Card(creator=4,   is_question=1, text='Disney came out with a ___ movie.')
     db.session.add(q6)
     q6 = Card(creator=5,   is_question=1, text='I hate it when my mom ___.')
     db.session.add(q6)
@@ -207,7 +207,7 @@ def seed_cards():
     db.session.add(q6)
     q6 = Card(creator=5,   is_question=1, text='Death by ___ would be the worst.')
     db.session.add(q6)
-    q6 = Card(creator=6,   is_question=1, text='Why do i hurt?')
+    q6 = Card(creator=6,   is_question=1, text='Why do I hurt?')
     db.session.add(q6)
 
     q6 = Card(creator=2,   is_question=1, text='Why do you hurt?')

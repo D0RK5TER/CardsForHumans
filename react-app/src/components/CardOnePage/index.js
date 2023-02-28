@@ -9,7 +9,8 @@ import '../../0css/onecard.css'
 import heart from '../../0assets/like.png'
 import noheart from '../../0assets/likenot.png'
 import broheart from '../../0assets/likebreak.png'
-
+import DeckCardModal from '../DeckCardCreateModal';
+import OpenModalButton from '../ModalButton';
 
 export default function OneCard() {
     const history = useHistory()
@@ -19,6 +20,8 @@ export default function OneCard() {
     const [tog, setTog] = useState(heart)
     const card = useSelector(state => state.cards)
     const user = useSelector(state => state.user)
+    let decks = useSelector(state => state.myprofile?.decks)
+
     const { idx } = useParams()
     useEffect(() => {
         dispatch(thunkGetCard(idx))
@@ -47,7 +50,9 @@ export default function OneCard() {
         // console.log(data)
         !data?.errors ? setRend(!rend) : setErrors(data.errors)
     }
-
+    // useEffect(()=>{
+    //     thunkMyInfo()
+    // }, [decks?.cards?.length])
     // console.log(idx)
     // const sessionUser = useSelector(state => state.user);
     return (
@@ -84,11 +89,18 @@ export default function OneCard() {
                             </div>
                         </> :
                         <>
-                            <div id='edit-modal2' onClick={unlikeIt} onMouseEnter={()=>setTog(broheart)} onMouseLeave={()=>setTog(heart)}>
-                                <img src={tog}  />
+                            <div id='edit-modal2' onClick={unlikeIt} onMouseEnter={() => setTog(broheart)} onMouseLeave={() => setTog(heart)}>
+                                <img src={tog} />
                             </div>
                         </>
                     }
+                    <div>
+                        <OpenModalButton
+                            buttonText="Add 2 Deck"
+                            location='edit-modal2'
+                            modalComponent={<DeckCardModal idx={idx} setRend={setRend} rend={rend} decks={decks}/>}
+                        />
+                    </div>
                 </div>
 
                 <div id='one-card-info'>
