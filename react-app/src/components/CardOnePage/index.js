@@ -96,7 +96,7 @@ export default function OneCard() {
                     }
                     <div>
                         <OpenModalButton
-                            buttonText="Add to Deck"
+                            buttonText="Add 2 Deck"
                             location='edit-modal2'
                             modalComponent={<DeckCardModal idx={idx} setRend={setRend} rend={rend} decks={decks}/>}
                         />
