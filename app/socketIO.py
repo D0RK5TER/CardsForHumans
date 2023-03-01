@@ -1,5 +1,5 @@
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
-from app.models import db, Game
+from app.models import db, Message
 from flask_login import login_required, current_user
 import os
 from datetime import datetime
@@ -17,23 +17,23 @@ socketio = SocketIO(cors_allowed_origins=origins)
 
 
 # handle chat messages
-@socketio.on("game")
-def handle_game(data):
+@socketio.on("chat")
+def handle_chat(data):
     # now = datetime.now()
     print((data['timestamp']), 'DATA WITH CREATED AT', "HERE IS NOW!")
     # test_str = str(data['timestamp'])
     # print(test_str, "!!!!!! -------- HERE IS STR of TIMESTRING --------")
 
     if len(data['message']) > 0 and len(data['message']) <= 2000:
-    #     message = Message(
-    #     user_id=current_user.id,
-    #     channel_id=int(data['room']),
-    #     message=data['message'],
-    #     live_id = data['live_id'],
-    #     created_at=datetime.now()
-    # )
+        message = Message(
+        user_id=current_user.id,
+        game_id=int(data['room']),
+        message=data['message'],
+        live_id = data['live_id'],
+        created_at=datetime.now()
+    )
         # print('--------BACKENDDATA', message.to_dict())
-        # db.session.add(message)
+        db.session.add(message)
         db.session.commit()
         # new_message_date = datetime.now()
         if data['room']:

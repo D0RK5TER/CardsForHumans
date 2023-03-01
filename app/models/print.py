@@ -34,3 +34,6 @@ class Print(db.Model):
             'card': self.card,
             'created': self.created
         }
+    
+    
+    
