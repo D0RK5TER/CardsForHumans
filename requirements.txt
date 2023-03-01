@@ -20,7 +20,6 @@ markupsafe==2.0.1
 flask-wtf==1.1.1
 greenlet==2.0.1
 gunicorn==20.1.0
-itsdangerous==2.1.2
 jinja2==3.1.2
 mako==1.2.4
 markupsafe==2.1.2
