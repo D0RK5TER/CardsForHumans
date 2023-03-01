@@ -102,7 +102,7 @@ export default function DeckCreate() {
                                     placeholder='Deckasaurus'
                                     required
                                 /> */}
-                            <textarea
+                            {/* <textarea
                                 id='card-create-textarea'
                                 style={{ display: visi }}
                                 type='textarea'
@@ -112,7 +112,19 @@ export default function DeckCreate() {
                                 // placeholder='-tern'
                                 maxLength='50'
                                 required
-                            />
+                            /> */}
+                            <input
+                            style={{ display: visi }}
+                            id='card-create-textarea'
+                            type='textarea'
+                            value={title}
+                            // defaultValue={deck?.title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            // placeholder='-tern'
+                            maxLength='50'
+
+                            required
+                        />
                             <div
                                 style={{ display: hide }}
 
