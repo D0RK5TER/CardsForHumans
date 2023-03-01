@@ -5,12 +5,17 @@ import myprofile from './myprofile';
 import cards from './cards'
 import decks from './decks'
 import prints from './prints'
+import games from './games'
+import messages from './message'
+
 const rootReducer = combineReducers({
   user,
   myprofile,
   cards,
   decks,
   prints,
+  messages,
+  games
 });
 
 

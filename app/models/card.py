@@ -14,7 +14,7 @@ class Card(db.Model):
 #COLUMNS
     id = db.Column(db.Integer, primary_key=True)
     creator = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id")), nullable=False)
+        add_prefix_for_prod("users.id")), nullable=True)
     text = db.Column(db.String(60), nullable=False)
     is_question = db.Column(db.Integer, nullable=False,  default=0)
     created = db.Column(db.DateTime, default=datetime.utcnow)

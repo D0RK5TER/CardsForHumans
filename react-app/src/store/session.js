@@ -2,7 +2,7 @@ import { thunkMyInfo } from "./myprofile";
 import { actionRemove } from "./myprofile";
 // constants
 const SET_USER = "session/SET_USER";
-const REMOVE_USER = "session/REMOVE_USER";
+export const REMOVE_USER = "session/REMOVE_USER";
 
 const setUser = (user) => ({
 	type: SET_USER,

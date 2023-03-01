@@ -78,6 +78,8 @@ export default function DeckEdit() {
                             defaultValue={deck?.title}
                             onChange={(e) => setTitle(e.target.value)}
                             // placeholder='-tern'
+                            maxLength='50'
+
                             required
                         />
                         <div

@@ -15,6 +15,11 @@ import DeckEdit from "./components/DeckEditPage";
 import CardEdit from "./components/CardEditPage";
 import PrintQueue from "./components/PrintQueuePage";
 
+
+import LiveGameChat from "./components/LiveGameChat";
+import GameList from "./components/LiveGameGames";
+import Game from "./components/LiveGame";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,6 +32,20 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/game/chat">
+            <LiveGameChat />
+          </Route>
+          <Route path='/game/:gameId' exact={true}>
+          <div className='app-container'>
+            {/* <Servers /> */}
+            {/* <div className='channel-app-container'> */}
+            <Game />
+            {/* </div> */}
+          </div>
+        </Route>
+          {/* <Route path='/livegamechat' exact={true}>
+            <LiveChat />
+          </Route> */}
           <Route path="/profile" >
             <UserCurrent />
           </Route>
@@ -40,13 +59,13 @@ function App() {
             <PrintQueue />
           </Route>
           <Route exact path='/deck/:idx'>
-          <OneDeck />
+            <OneDeck />
           </Route>
           <Route exact path='/deck/:idx/edit'>
-          <DeckEdit />
+            <DeckEdit />
           </Route>
           <Route exact path='/:idx/edit'>
-          <CardEdit />
+            <CardEdit />
           </Route>
           <Route exact path="/:idx">
             <OneCard />

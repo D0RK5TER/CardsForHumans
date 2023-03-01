@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 from .favorites import Favorite
-
+from .user_games import UserGames
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -22,7 +22,9 @@ class User(db.Model, UserMixin):
     print_history = db.relationship('Print', back_populates='printed_by')
     favorites = db.relationship('Card', secondary=Favorite, back_populates='liked_by')
 
-    
+    messages = db.relationship("Message", back_populates="user")
+    games = db.relationship("Game",  secondary=UserGames, back_populates="user")
+
     @property
     def password(self):
         return self.hashed_password
