@@ -20,10 +20,10 @@ socketio = SocketIO(cors_allowed_origins=origins)
 @socketio.on("chat")
 def handle_chat(data):
     # now = datetime.now()
-    print((data['timestamp']), 'DATA WITH CREATED AT', "HERE IS NOW!")
+    # print((data['timestamp']), 'DATA WITH CREATED AT', "HERE IS NOW!")
     # test_str = str(data['timestamp'])
     # print(test_str, "!!!!!! -------- HERE IS STR of TIMESTRING --------")
-
+    print(data, '$@$@$@$@$$@$@$$@')
     if len(data['message']) > 0 and len(data['message']) <= 2000:
         message = Message(
         user_id=current_user.id,

@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 let socket;
 
 export default function LiveGameChat() {
-  const user = useSelector(state => state.session.user);
+  const user = useSelector(state => state.user);
   const [messages, setMessages] = useState([])
   // use state for controlled form input
   const [chatInput, setChatInput] = useState("");
@@ -28,16 +28,16 @@ export default function LiveGameChat() {
   const sendChat = (e) => {
     e.preventDefault()
     // emit a message
-    socket.emit("chat", { user: user.username, msg: chatInput });
+    socket.emit("chat", { user: user.username, message: chatInput });
     // clear the input field after the message is sent
     setChatInput("")
   }
 
   return (
-    <>
+    <div style={{background: 'black', paddingTop: '50vw' , color: 'white'}}>
       <div>
         {messages.map((message, ind) => (
-          <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+          <div key={ind}>{`${message.user}: ${message.message}`}</div>
         ))}
       </div>
       <form onSubmit={sendChat}>
@@ -47,6 +47,6 @@ export default function LiveGameChat() {
         />
         <button type="submit">Send</button>
       </form>
-    </>
+    </div>
   )
 };
