@@ -11,15 +11,19 @@ class Game(db.Model):
     name = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     live_id = db.Column(db.String(50), nullable=False)
+    deck_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('decks.id')), nullable=True, default=1)
 
     messages = db.relationship("Message", back_populates="game")
-    user = db.relationship("User", back_populates="games", secondary=UserGames,)
+    deck = db.relationship('Deck', back_populates='in_game' )
 
+    user = db.relationship("User", back_populates="games", secondary=UserGames,)
+   
     def to_dict(self):
         return {
             'id': self.id,
             'name': self.name,
             'userId': self.user_id,
+            'cards': self.deck.deck_cards()['cards']
         }
 
 

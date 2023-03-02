@@ -15,6 +15,8 @@ class Deck(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow)
     
     owned_by = db.relationship('User', back_populates='owner')
+    in_game = db.relationship('Game', back_populates='deck' )
+
     cards = db.relationship('Card', secondary=DeckCard, back_populates='in_deck')
 
     def basic(self):

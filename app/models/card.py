@@ -23,7 +23,7 @@ class Card(db.Model):
     #one-many
     made_by = db.relationship('User', back_populates='maker')
     p_times = db.relationship('Print', back_populates='cardD')
-
+    # in_game = db.relationship('Deck',)
     #many-many
     in_deck = db.relationship(
         'Deck', secondary=DeckCard, back_populates='cards')

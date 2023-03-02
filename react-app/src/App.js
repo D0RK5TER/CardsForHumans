@@ -30,52 +30,56 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/game/chat">
-            {/* <Game /> */}
-            <LiveGameChat />
-          </Route>
-          <Route path='/game/:gameId' exact={true}>
-            <div id='game-page'>
-              {/* <Servers /> */}
-              <GamePlay />
-              
-              <GameChat />
-            </div>
-          </Route>
-          {/* <Route path='/livegamechat' exact={true}>
+      <div id="below-nav-bar">
+
+        {isLoaded && (
+          <Switch>
+            <Route path="/game/chat">
+              {/* <Game /> */}
+              <LiveGameChat />
+            </Route>
+            <Route path='/game/:gameId' exact={true}>
+              <div id='game-page'>
+                {/* <Servers /> */}
+                <GamePlay />
+
+                <GameChat />
+              </div>
+            </Route>
+            {/* <Route path='/livegamechat' exact={true}>
             <LiveChat />
           </Route> */}
-          <Route path="/profile" >
-            <UserCurrent />
-          </Route>
-          <Route path="/deck/create">
-            <DeckCreate />
-          </Route>
-          <Route path="/create">
-            <CardCreate />
-          </Route>
-          <Route path="/printer">
-            <PrintQueue />
-          </Route>
-          <Route exact path='/deck/:idx'>
-            <OneDeck />
-          </Route>
-          <Route exact path='/deck/:idx/edit'>
-            <DeckEdit />
-          </Route>
-          <Route exact path='/:idx/edit'>
-            <CardEdit />
-          </Route>
-          <Route exact path="/:idx">
-            <OneCard />
-          </Route>
-          <Route exact path="/">
-            <SplashPage />
-          </Route>
-        </Switch>
-      )}
+            <Route path="/profile" >
+              <UserCurrent />
+            </Route>
+            <Route path="/deck/create">
+              <DeckCreate />
+            </Route>
+            <Route path="/create">
+              <CardCreate />
+            </Route>
+            <Route path="/printer">
+              <PrintQueue />
+            </Route>
+            <Route exact path='/deck/:idx'>
+              <OneDeck />
+            </Route>
+            <Route exact path='/deck/:idx/edit'>
+              <DeckEdit />
+            </Route>
+            <Route exact path='/:idx/edit'>
+              <CardEdit />
+            </Route>
+            <Route exact path="/:idx">
+              <OneCard />
+            </Route>
+            <Route exact path="/">
+              <SplashPage />
+            </Route>
+          </Switch>
+        )}
+      </div>
+
     </>
   );
 }

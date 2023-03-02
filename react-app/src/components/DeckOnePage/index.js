@@ -55,7 +55,7 @@ export default function OneDeck() {
                             </div>
                         </div>
                         <div className='info-box-card two'>
-                             Minutes Alive:
+                            Minutes Alive:
                             <div>
                                 {deck[idx] && ageMinutes(deck[idx]?.created)}
                             </div>
@@ -63,10 +63,7 @@ export default function OneDeck() {
                     </div>
                 </div>
             </div>
-
-            {/* <CardDisplay cards={usefav ? usefav : []} title='Favs:'/> */}
-
-
+            {deck[idx]?.cards?.length && <CardDisplay cards={deck[idx]?.cards} title='Cards' />}
         </div >
     );
 }
