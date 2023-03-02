@@ -13,7 +13,7 @@ from .api.card_routes import card_routes
 from .api.deck_routes import deck_routes
 from .api.print_routes import print_routes
 from .api.likes_routes import like_routes
-
+from .api.game_routes import game_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -41,6 +41,7 @@ app.register_blueprint(card_routes, url_prefix='/api/card')
 app.register_blueprint(deck_routes, url_prefix='/api/deck')
 app.register_blueprint(print_routes, url_prefix='/api/print')
 app.register_blueprint(like_routes, url_prefix='/api/like')
+app.register_blueprint(game_routes, url_prefix='/api/game')
 
 
 db.init_app(app)

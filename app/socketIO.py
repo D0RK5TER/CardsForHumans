@@ -27,9 +27,8 @@ def handle_chat(data):
     if len(data['message']) > 0 and len(data['message']) <= 2000:
         message = Message(
         user_id=current_user.id,
-        game_id=int(data['room']),
+        room_id=int(data['room']),
         message=data['message'],
-        live_id = data['live_id'],
         created_at=datetime.now()
     )
         # print('--------BACKENDDATA', message.to_dict())
@@ -44,16 +43,14 @@ def handle_chat(data):
 @socketio.on("update")
 def update_chat(data):
     print("\n", data, "UPDATE DATAAAAAAAAAAAAAAAAAAAAAAA","\n")
-    live_id = data["live_id"]
+    room_id = data["room_id"]
     message = data["message"]
-    is_edited = data["is_edited"]
     user = data["user"]
-    update_chat = Message.query.filter(Message.live_id == live_id).first()
+    update_chat = Message.query.filter(Message.room_id == room_id).first()
     print("\n", update_chat.to_dict(), "UPDATE DATAAAAAAAAAAAAAAAAAAAAAAA","\n")
     if user["id"] == current_user.id:
         if len(data['message']) > 0 and len(data['message']) <= 2000:
             update_chat.message = message
-            update_chat.is_edited = is_edited
 
 
             db.session.commit()

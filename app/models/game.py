@@ -10,6 +10,7 @@ class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    live_id = db.Column(db.String(50), nullable=False)
 
     messages = db.relationship("Message", back_populates="game")
     user = db.relationship("User", back_populates="games", secondary=UserGames,)

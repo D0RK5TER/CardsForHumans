@@ -29,7 +29,10 @@ class Card(db.Model):
         'Deck', secondary=DeckCard, back_populates='cards')
     liked_by = db.relationship(
         'User', secondary=Favorite, back_populates='favorites')
+
     
+
+
 #ROUTE INSTANCE METHODS
     def basic(self):
         return {
