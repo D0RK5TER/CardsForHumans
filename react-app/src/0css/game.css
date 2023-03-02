@@ -1,0 +1,40 @@
+
+
+
+
+#messages_cont{
+    font-size: 1.2vw;
+}
+
+#game-page{
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    vertical-align: middle;
+    align-items: center;
+}
+
+
+
+.chat-scroll-cont {
+    width: 40vw;
+    background-color: black;
+    height: 15vw;
+    overflow: scroll;
+    color: white;
+}
+
+.chat-input {
+    /* font-size: 2vw; */
+    padding: .51vw;
+    font-size: 1.2vw;
+
+}
+
+
+
+#gameboard {
+    background-color: rgb(255, 255, 255);
+    border-top: 2vw solid black;
+    height: 33vw;
+    
+}

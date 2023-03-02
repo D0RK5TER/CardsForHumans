@@ -55,14 +55,21 @@ export const thunkGames = () => async (dispatch) => {
 
 export const thunkOneGame = gameId => async (dispatch) => {
     const response = await fetch(`/api/game/${gameId}`, {
-        method: "GET"
+        headers: {
+            'Content-Type': 'application/json'
+        },
     });
-
     if (response.ok) {
         const data = await response.json()
-
         dispatch(addGame(data))
         return data
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ["Whoopsies! Try Again!"];
     }
 }
 
@@ -135,14 +142,8 @@ export default function reducer(state = initialState, action) {
             // action.games.forEach((game) => (games[game.id] = game))
             // games;
             return newState
-
         case ADD_GAME:
-            // const addGAME = {
-            //     ...state,
-            //     GAME: { ...state.GAME }
-            // }
-            // addGAME.GAME = action.GAME.GAME
-            // addGAME
+            newState[action.game.game.id] = action.game
             return newState
 
         case UPDATE_GAME:

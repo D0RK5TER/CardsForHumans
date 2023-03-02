@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGames } from "../../store/games";
-import Game from "../LiveGame";
+import Game from "../GameChat";
 // import { fetchOneChannel } from "../store/channel";
 // import LogoutButton from "./auth/LogoutButton";
 // import { Modal } from "./context/Modal.js";
@@ -53,7 +53,7 @@ export default function GameList() {
   const games = gamesArr?.map((game, i) => {
     return (
       <div className="listItem" key={i}>
-        
+
         <div
           className="serverIcon"
           onMouseOut={hideGameName}
@@ -67,7 +67,7 @@ export default function GameList() {
   return (
     <div className="main">
       <div className="bg">
-        
+
         {/* {showModal && (
           <Modal onClose={() => setShowModal(false)}>
                     <div className="list">{games}</div>
@@ -77,18 +77,18 @@ export default function GameList() {
       <div className="general-bar">
         {gameId && <Game gameId={gameId} />}
         <div className='logout-user-container'>
-              <div className="general-bar-user">
-                <img
-                  id="member-profile"
-                  src="https://www.svgrepo.com/show/331368/discord-v2.svg"
-                  alt=""
-                ></img>
-                {user?.username}
-              </div>
-              {/* <div className="logout-button">
+          <div className="general-bar-user">
+            <img
+              id="member-profile"
+              src="https://www.svgrepo.com/show/331368/discord-v2.svg"
+              alt=""
+            ></img>
+            {user?.username}
+          </div>
+          {/* <div className="logout-button">
                 <LogoutButton />
               </div> */}
-            </div>
+        </div>
       </div>
     </div>
   );

@@ -4,10 +4,10 @@ import { useParams } from "react-router-dom";
 
 import { io } from 'socket.io-client';
 import { v4 as uuidv4 } from "uuid";
-
+import '../../0css/game.css'
 let socket;
 
-export default function LiveGameChat() {
+export default function LiveGame() {
   const user = useSelector(state => state.user);
   const [messages, setMessages] = useState([])
   const { gameId } = useParams()
@@ -38,22 +38,12 @@ export default function LiveGameChat() {
     socket.emit("chat", { user: user.username, message: chatInput, room: gameId, live_id: uuidv4(), });
     // clear the input field after the message is sent
     setChatInput("")
+    console.log('????')
   }
   console.log(messages, '!!!!')
   return (
-    <div style={{ background: 'black', paddingTop: '50vw', color: 'white' }}>
-      <div>
-        {messages.map((message, ind) => (
-          <div style={{ color: 'white' }} key={ind}>{`${message.user}: ${message.message}`}</div>
-        ))}
-      </div>
-      <form onSubmit={sendChat}>
-        <input
-          value={chatInput}
-          onChange={updateChatInput}
-        />
-        <button type="submit">Send</button>
-      </form>
+    <div id='gameboard' onClick={null}>
+      
     </div>
   )
 };

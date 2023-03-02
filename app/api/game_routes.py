@@ -17,11 +17,11 @@ def one_game_index(id):
     one_game = game.to_dict()
     one_game_messages = Message.query.filter(Message.room_id == id).order_by(Message.created_at.asc()).all()
 
-    game_messages = [message.to_dict() for message in one_game_messages]
-    message_with_user = []
-    for m in game_messages:
-        user = User.query.get(m['userId']).basic()
-        m['user'] = user
-        message_with_user.append(m)
+    game_messages = [message.basic() for message in one_game_messages]
+    # message_with_user = []
+    # for m in game_messages:
+    #     user = User.query.get(m['userId']).name()
+    #     m['user'] = user
+    #     message_with_user.append(m)
 
-    return {"game": one_game, "messages": message_with_user}, 200
+    return {"game": one_game, "messages": game_messages}, 200

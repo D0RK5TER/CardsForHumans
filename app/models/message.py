@@ -25,4 +25,9 @@ class Message(db.Model):
             'createdAt': self.created_at
         }
     
-    
+    def basic(self):
+        return {
+            'id': self.id,
+            'user': self.user.name(),
+            'message':self.message,
+        }
