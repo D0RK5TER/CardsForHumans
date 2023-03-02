@@ -115,7 +115,9 @@ def upgrade():
     sa.Column('name', sa.String(length=255), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('live_id', sa.String(length=50), nullable=False),
+    sa.Column('deck_id', sa.Integer(), nullable=True, default=1),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":

@@ -5,14 +5,18 @@ from app.models import db, User, environment, SCHEMA, Card, Deck, Print, Favorit
 # Adds a demo user, you can add other users here if you want
 def seed_deck_cards():
     decks = Deck.query.all()
+    i = 0
     for d in decks:
-        cards = Card.query.all()
-        fav_num = 0
-        deck_num = randint(23,52)        
-        while fav_num < deck_num:
-            card = cards.pop(randint(0,len(cards)-1))
-            d.cards.append(card)
-            fav_num += 1
+        if d.owner == 6:
+            d.cards = Card.query.all()
+        else:
+            cards = Card.query.all()
+            fav_num = 0
+            deck_num = randint(23,52)        
+            while fav_num < deck_num:
+                card = cards.pop(randint(0,len(cards)-1))
+                d.cards.append(card)
+                fav_num += 1
 
     db.session.commit()
 
