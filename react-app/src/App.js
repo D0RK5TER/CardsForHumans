@@ -33,16 +33,18 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/game/chat">
+            {/* <Game /> */}
             <LiveGameChat />
           </Route>
           <Route path='/game/:gameId' exact={true}>
-          <div className='app-container'>
-            {/* <Servers /> */}
-            {/* <div className='channel-app-container'> */}
-            <Game />
-            {/* </div> */}
-          </div>
-        </Route>
+            <div className='app-container'>
+              {/* <Servers /> */}
+              {/* <div className='channel-app-container'> */}
+              <LiveGameChat ></LiveGameChat>
+              <Game />
+              {/* </div> */}
+            </div>
+          </Route>
           {/* <Route path='/livegamechat' exact={true}>
             <LiveChat />
           </Route> */}

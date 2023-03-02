@@ -18,7 +18,7 @@ export default function Game() {
   const dispatch = useDispatch();
   const { gameId } = useParams();
 
-  const theMessages = useSelector((state) => state.games[gameId].messages);
+  const theMessages = useSelector((state) => state.games);
   const games = useSelector((state) => state.games);
   const user = useSelector((state) => state.user);
   const currGame = games[gameId]
@@ -64,6 +64,7 @@ export default function Game() {
     })();
 
     // dispatch(fetchOneChannel(channelId))
+    console.log(gameId, '123123')
 
     // initializing socket.io
     socket = io();
@@ -155,7 +156,7 @@ export default function Game() {
         message: chatInput,
         room: gameId,
         timestamp: new Date(),
-        live_id: uuidv4(),
+        
       });
     }
 
@@ -174,7 +175,7 @@ export default function Game() {
         message: editInput,
         is_edited: true,
         created_at: message.createdAt,
-        live_id: message.liveId,
+        // live_id: message.liveId,
       });
     }
 
@@ -192,45 +193,6 @@ export default function Game() {
 
     setChatInput("");
   };
-
-  // SEARCH HELPER FUNCS
-//   const updateSearchInput = (e) => {
-//     setSearchInput(e.target.value);
-//   };
-
-//   const sendSearch = async (e) => {
-//     e.preventDefault();
-
-//     if (stringCheck(searchInput)) {
-//       // if(searchInput.length) {
-
-//       const search = await fetch(`/api/channels/${channelId}/messages`, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ search: searchInput }),
-//       });
-//       const searchRes = await search.json();
-//       const foundRes = searchRes?.messages;
-//       setSearchResults(foundRes);
-//       setShowSearchResults(true);
-//       setSearchInput("");
-//     }
-
-//     setSearchInput("");
-//   };
-
-//   const searchScroll = (ref) => {
-//     window.scrollTo({
-//       top: ref.offsetTop,
-//       left: 0,
-//       behavior: "smooth",
-//     });
-//   };
-
-
-
   const messageOptionsComponent = (i, message) => {
     if (message.user.id === user.id) {
       return (
@@ -274,7 +236,9 @@ export default function Game() {
         </div> */}
       </div>
       <div className="messages-users-container">
+        {console.log(theMessages)}
         <div className="message-input-container">
+          hey
           <div className="channel-messages-container">
             {messages?.map((message, i) => (
               <div
@@ -343,7 +307,7 @@ export default function Game() {
                 className="message-form-input-container"
                 value={chatInput}
                 onChange={updateChatInput}
-                placeholder={`Message #${game.name}`}
+                placeholder={`Message #${game?.name}`}
               />
             </form>
           </div>
