@@ -13,13 +13,14 @@ export default function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.user);
 	const que = useSelector(state => state.prints)
+	console.log(window.location.href)
 	return (
 		<div id='navbar'>
-			<div onClick={() => { dispatch(thunkSplashCards()); history.push('/') }} id='home-button'>
+			{!window.location.href.includes('/game/')?<div onClick={() => { dispatch(thunkSplashCards()); history.push('/') }} id='home-button'>
 				<div>Cards
 					<br />For<br /> Humans
 				</div>
-			</div>
+			</div>:<div></div>}
 			<>
 				{Object?.values(que)?.length ?
 					<>

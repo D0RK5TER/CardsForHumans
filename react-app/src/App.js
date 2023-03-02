@@ -15,10 +15,10 @@ import DeckEdit from "./components/DeckEditPage";
 import CardEdit from "./components/CardEditPage";
 import PrintQueue from "./components/PrintQueuePage";
 
-
-import LiveGameChat from "./components/LiveGameChat";
-import GameList from "./components/LiveGameGames";
-import Game from "./components/LiveGame";
+import './0css/game.css'
+import LiveGameChat from "./components/GamePlay";
+import GamePlay from "./components/GamePlay";
+import GameChat from "./components/GameChat";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,12 +37,11 @@ function App() {
             <LiveGameChat />
           </Route>
           <Route path='/game/:gameId' exact={true}>
-            <div className='app-container'>
+            <div id='game-page'>
               {/* <Servers /> */}
-              {/* <div className='channel-app-container'> */}
-              <LiveGameChat ></LiveGameChat>
-              <Game />
-              {/* </div> */}
+              <GamePlay />
+              
+              <GameChat />
             </div>
           </Route>
           {/* <Route path='/livegamechat' exact={true}>
