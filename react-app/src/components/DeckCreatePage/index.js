@@ -77,7 +77,7 @@ export default function DeckCreate() {
                         {visi === hide || <div id='deck-title'>Make Your Deck!</div>}
                         {visi === 'none' && visi!==hide ? <div id='deck-title-sub'>Select a pic</div> : visi === 'none'?<></>: <div id='deck-title-sub'>Name it...</div>}
                         {visi === hide && addcnt >= 10 ?
-                            <div id='make-title'>
+                            <div id='make-title' style={{ 'font-size': '2vw',}}>
 
                                 <div>You have added </div>
                                 <div>{addcnt} &nbsp; {addcnt == 1 ? 'card' : 'cards'}

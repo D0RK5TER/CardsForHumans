@@ -1,6 +1,6 @@
 import { thunkMyInfo } from "./myprofile";
 import { actionRemove } from "./myprofile";
-// constants
+import { actionRemoveAll } from './prints'
 const SET_USER = "session/SET_USER";
 export const REMOVE_USER = "session/REMOVE_USER";
 
@@ -67,6 +67,7 @@ export const logout = () => async (dispatch) => {
 	if (response.ok) {
 		dispatch(removeUser());
 		dispatch(actionRemove())
+		dispatch(actionRemoveAll())
 	}
 };
 

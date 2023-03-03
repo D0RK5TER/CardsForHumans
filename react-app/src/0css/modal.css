@@ -50,7 +50,7 @@ filter: invert(100%);
 }
 
 .modal-form>div>input {
-    height: 2vw;
+    height: 3vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     font-size: 2vw;
