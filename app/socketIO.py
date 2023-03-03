@@ -1,5 +1,5 @@
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
-from app.models import db, Message
+from app.models import db, Message, Game, User
 from flask_login import login_required, current_user
 import os
 from datetime import datetime
@@ -19,11 +19,6 @@ socketio = SocketIO(cors_allowed_origins=origins)
 # handle chat messages
 @socketio.on("chat")
 def handle_chat(data):
-    # now = datetime.now()
-    # print((data['timestamp']), 'DATA WITH CREATED AT', "HERE IS NOW!")
-    # test_str = str(data['timestamp'])
-    # print(test_str, "!!!!!! -------- HERE IS STR of TIMESTRING --------")
-    print(data, '$@$@$@$@$$@$@$$@')
     if len(data['message']) > 0 and len(data['message']) <= 2000:
         message = Message(
         user_id=current_user.id,
@@ -40,44 +35,13 @@ def handle_chat(data):
             emit("game", data, broadcast=True, to=room)
 
 
-@socketio.on("update")
-def update_chat(data):
-    print("\n", data, "UPDATE DATAAAAAAAAAAAAAAAAAAAAAAA","\n")
-    room_id = data["room_id"]
-    message = data["message"]
-    user = data["user"]
-    update_chat = Message.query.filter(Message.room_id == room_id).first()
-    print("\n", update_chat.to_dict(), "UPDATE DATAAAAAAAAAAAAAAAAAAAAAAA","\n")
-    if user["id"] == current_user.id:
-        if len(data['message']) > 0 and len(data['message']) <= 2000:
-            update_chat.message = message
-
-
-            db.session.commit()
-            if data['room']:
-                room = data['room']
-                emit("update", data, broadcast=True, to=room)
-
-
-
-@socketio.on('delete')
-def on_delete(data):
-    live_id = data["live_id"]
-    delete_chat = Message.query.filter(Message.live_id == live_id).first()
-    db.session.delete(delete_chat)
-    db.session.commit()
-    if data['room']:
-        room = data['room']
-        emit("delete", data, broadcast=True, to=room)
-
-
 @socketio.on('join')
 def on_join(data):
-    # print('------USERDATASOCKET', data)
-    username = data['user']['username']
-    room = data['room']
-    join_room(room)
-    emit(username + ' has entered the room.', to=room)
+    game = Game.query.get(data['id'])
+    game.user.append(User.query.get(current_user.id))
+    db.session.commit()
+    join_room(game.id)
+    send( game.basic(), to=game.id)
 
 @socketio.on('leave')
 def on_leave(data):
@@ -86,8 +50,6 @@ def on_leave(data):
     leave_room(room)
     send(username + ' has left the room.', to=room)
 
-
-#
 
 #you need which message in the array the user wants to delete
 #first get the array of messages send it backend

@@ -9,41 +9,40 @@ let socket;
 
 export default function LiveGame() {
   const user = useSelector(state => state.user);
-  const [messages, setMessages] = useState([])
+  const stategame = useSelector(state=>state.games)
+  const [game, setGame] = useState(stategame)
+  const [players, setPlayers] = useState({})
   const { gameId } = useParams()
   // use state for controlled form input
-  const [chatInput, setChatInput] = useState("");
+  // const [chatInput, setChatInput] = useState("");
 
   useEffect(() => {
+    // console.log(stategame[gameId], '#@@#@@#')
+    (async () => {
+      const response = await fetch(`/api/game/${gameId}`);
+      const data = await response.json();
+      // console.log(data, '$3$')
+      setGame(data.game);
+      setPlayers(data?.game?.players)
+      socket.emit("join", {id: gameId})
 
+    })();
     socket = io();
     // listen for chat events
-    socket.on("chat", (chat) => {
-      // when we recieve a chat, add it into our messages array in state
-      setMessages(messages => [...messages, chat])
+    // socket.join('join', {})
+    // socket.emit("join", {id: user?.id})
+    // socket.join(gameId)
+    socket.on('join',(gamez)=>{
+      console.log(gamez, 'VWVWVWVWVW!!!!!!!')
+      const {players, ...rest} = gamez
+      setGame(rest)
+      setPlayers(players)
     })
-
-    
-
   }, [])
 
-  const updateChatInput = (e) => {
-    setChatInput(e.target.value)
-  };
-
-  const sendChat = (e) => {
-    e.preventDefault()
-    // emit a message
-
-    socket.emit("chat", { user: user.username, message: chatInput, room: gameId, live_id: uuidv4(), });
-    // clear the input field after the message is sent
-    setChatInput("")
-    console.log('????')
-  }
-  console.log(messages, '!!!!')
   return (
     <div id='gameboard' onClick={null}>
-      
+      {players?.length?players.map(x=><>{x.username}</>):<>adsasdasdads</>}
     </div>
   )
 };

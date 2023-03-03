@@ -23,7 +23,15 @@ class Game(db.Model):
             'id': self.id,
             'name': self.name,
             'userId': self.user_id,
-            'cards': self.deck.deck_cards()['cards']
+            'cards': self.deck.deck_cards()['cards'],
+            'players': [u.name() for u in self.user]
+
         }
 
 
+    def basic(self):
+        return {
+            'id': self.id,
+            'owner': self.user_id,
+            'players': [u.name() for u in self.user]
+        }

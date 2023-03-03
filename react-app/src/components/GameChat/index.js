@@ -36,6 +36,7 @@ export default function GameChat() {
     (async () => {
       const response = await fetch(`/api/game/${gameId}`);
       const data = await response.json();
+      // console.log(data, '$3$')
       setGame(data.game);
       setMessages(data.messages);
       th?.scroll(0, 1000000000)
@@ -44,7 +45,8 @@ export default function GameChat() {
 
     // initializing socket.io
     socket = io();
-    socket.emit("join", { user: user, room: gameId });
+    // socket.emit("join", { user: user, room: gameId, users: [user?.username] });
+    // socket.on('join', (data)=>console.log(data,'heyyoooooooo'))
     socket.on("chat", (chat) => {
       const currDate = Date(chat.timestamp);
       const dateStamp = currDate.toString().split("-")[0];
@@ -75,7 +77,7 @@ export default function GameChat() {
     }
 
   }, [dispatch, gameId]);
-
+  useEffect(() => null, [])
   // SCROLL with useRef
   // useEffect(() => {
   //   messageEnd.current?.scrollIntoView({ behavior: "smooth" });
