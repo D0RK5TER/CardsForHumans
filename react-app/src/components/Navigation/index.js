@@ -13,7 +13,7 @@ export default function Navigation({ isLoaded }) {
 	const history = useHistory()
 	const sessionUser = useSelector(state => state.user);
 	const que = useSelector(state => state.prints)
-	console.log(window.location.href)
+	// console.log(window.location.href)
 	return (
 		<div id='navbar'>
 			{!window.location.href.includes('/game/')?<div onClick={() => { dispatch(thunkSplashCards()); history.push('/') }} id='home-button'>

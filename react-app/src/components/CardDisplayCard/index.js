@@ -38,12 +38,6 @@ export default function CardDisplay({ cards, title, deck }) {
                 </div>
                 <div className='card-display-cards'>
                     <div>
-
-                        {/* {!rend ? <div id='display-next' onClick={handleIt}>
-                            ◀︎
-                        </div> : <></>} */}
-                    </div>
-                    <div>
                         <DeckCard deck={a} />
                     </div>
 
@@ -58,13 +52,11 @@ export default function CardDisplay({ cards, title, deck }) {
                         {a && b && c ? <div id='display-next' onClick={handleIt}>
                             ►
                         </div>
-                            : <></>}
+                            : <>Nothing Here!</>}
                     </div>
                 </div>
 
             </div>
-
-
             :
             <div id='card-display-whole'>
                 <div id='card-display-header'>
