@@ -11,6 +11,7 @@ import noheart from '../../0assets/likenot.png'
 import broheart from '../../0assets/likebreak.png'
 import DeckCardModal from '../DeckCardCreateModal';
 import OpenModalButton from '../ModalButton';
+import CardDisplay from '../CardDisplayCard';
 
 export default function OneCard() {
     const history = useHistory()
@@ -56,6 +57,7 @@ export default function OneCard() {
     // console.log(idx)
     // const sessionUser = useSelector(state => state.user);
     return (
+        <>
         <div id='one-card-whole'>
             <div id='one-card-card-cont'>
                 <CardCard card={card[idx]} />
@@ -131,6 +133,8 @@ export default function OneCard() {
                 ))}
             </div>
         </div>
+        {card[idx]?.in? <CardDisplay cards={card[idx]?.in} deck={1} title='In these decks'/>:<></> }
+        </>
     );
 }
 

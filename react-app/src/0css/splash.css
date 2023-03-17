@@ -1,12 +1,30 @@
+
+@keyframes marquee {
+    from {
+        left: -295%;
+    }
+
+    to {
+        left: 430%;
+    }
+}
+
+
 #bot-right:hover {
     transform: rotate(0);
     transition: 800ms;
     z-index: 3;
+    
 }
 
 #bot-right {
+    /* animation: marquee 5.5s linear infinite; */
     transform: rotate(.08turn);
     transition: 800ms;
+    /* position: absolute; */
+    animation-name: splashenter;
+    animation-duration: 1s;
+
 
 }
 
@@ -126,4 +144,6 @@
     align-items: center;
     width: 100vw;
     min-height: 100vh;
+    /* animation: marquee 1.5s linear infinite; */
+    /* transform-origin: top; */
 }
