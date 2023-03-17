@@ -68,7 +68,6 @@ export default function DeckCardModal({ idx, setRend, rend, decks }) {
                                 {x.title}
                             </div>
                             <img src={logos[x.icon]} />
-                            {/* {console.log(deck)} */}
                         </div>
                     )
                     : <div>Looks like you need more decks! or maybe less cards? </div>}
