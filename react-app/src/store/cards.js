@@ -25,7 +25,7 @@ export const thunkSplashCards = () => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log(data, '!*!*!**!*!*!*!**!')
+        // console.log(data, '!*!*!**!*!*!*!**!')
         await dispatch(actionSetMany(data.cards));
         // await dispatch(actionSetMany(data.questions));
         data.ok = true

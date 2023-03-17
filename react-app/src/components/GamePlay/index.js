@@ -33,7 +33,7 @@ export default function LiveGame() {
     // socket.emit("join", {id: user?.id})
     // socket.join(gameId)
     socket.on('join',(gamez)=>{
-      console.log(gamez, 'VWVWVWVWVW!!!!!!!')
+      // console.log(gamez, 'VWVWVWVWVW!!!!!!!')
       const {players, ...rest} = gamez
       setGame(rest)
       setPlayers(players)
