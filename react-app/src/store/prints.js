@@ -48,7 +48,7 @@ export const thunkGetPrints = () => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         await dispatch(actionSetC(data.deck));
         return null;
     } else if (response.status < 500) {
@@ -61,7 +61,7 @@ export const thunkGetPrints = () => async (dispatch) => {
     }
 };
 export const thunkMakePrint = (form) => async (dispatch) => {
-    console.log(form)
+    // console.log(form)
     const response = await fetch(`/api/print`, {
         method: 'POST',
         headers: {
@@ -71,7 +71,7 @@ export const thunkMakePrint = (form) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log(data, '!!')
+        // console.log(data, '!!')
         await dispatch(actionSetC(data));
         // data.ok = true
         return null

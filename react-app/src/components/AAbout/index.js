@@ -13,7 +13,7 @@ export default function About() {
         <div className="modal-content about">
             <div className="modal-header">
 
-                <div className="modal-title" style={{textDecoration: 'none'}}>
+                <div className="modal-title" style={{ textDecoration: 'none' }}>
                     Welcome!
 
                 </div>
@@ -27,8 +27,8 @@ export default function About() {
                 Some text would look nice here
             </div>
             <div id='myinfopage'>
-                <div className="gitcon" onClick={() => window.location = 'https://github.com/D0RK5TER/cardsforhumans'}
-                style={{cursor: 'pointer'}}
+                <div className="gitcon" onClick={()=>window.open('https://github.com/D0RK5TER/cardsforhumans', '_blank')}
+                    style={{ cursor: 'pointer' }}
                 >
                     <img src={gitcon}
                         className="gitcon"
@@ -45,7 +45,7 @@ export default function About() {
                     }}>
                     Email Dexter
                 </Link>
-                <div className="linkcon" style={{cursor: 'pointer'}} onClick={() => window.location = 'https://www.linkedin.com/in/p-dexter-assaf-63a7a3252/'}>
+                <div className="linkcon" style={{ cursor: 'pointer' }} onClick={() => window.open('https://www.linkedin.com/in/p-dexter-assaf-63a7a3252/', '_blank')}>
                     <img src={linkcon}
                         alt='my buttons'
                     />
