@@ -24,7 +24,9 @@ filter: invert(100%);
     font-size: 1vw;
     color: red;
 }
-
+.modal-exit:hover {
+    color: red;
+}
 .modal-exit {
     cursor: pointer;
     font-size: 2vw;

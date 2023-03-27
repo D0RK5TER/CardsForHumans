@@ -260,9 +260,9 @@ export default function DeckCreate() {
                                 <CardCard card={c} make={3} />
                             </div>
                         : <></>}
-                            {rest?.length ? <div id='display-next' onClick={skippingIt}>
+                            {/* {opts?.length ? <div id='display-next' onClick={skippingIt}>
                                 ►
-                            </div> : <></>}
+                            </div> : <></>} */}
                         </div>
                         {/* <CardDisplay cards={usefav ? usefav : []} title='Pick Some!' deck_id={did} /> */}
                     </div>

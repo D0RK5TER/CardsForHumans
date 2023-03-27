@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b6e9354c392a0756a12e9be26e383448f4fda47f8a4a31633c5061f2098878b1"
+            "sha256": "7a19a32350af63df6f14e2c9a8993f988b62a09833f24277c4d24ea9646cb181"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -172,19 +172,19 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:7efb448ec9a5e313a57655d35aa54cd3e01b7e1fbcf72dce1bf06119420f5bad",
-                "sha256:e354bedeb60efa6affdcc8ae121b73544a7aa74156d047311948f6d711cd378d"
+                "sha256:43ce9281e097583d758c2c708c4376371261a02c34682491a8e98352365aad20",
+                "sha256:ff80f3b5394912eb1b108fcfd444dc78b7f1f3e16b16188054bd01cb9cb86f09"
             ],
             "markers": "python_version < '3.10'",
-            "version": "==6.0.0"
+            "version": "==6.1.0"
         },
         "itsdangerous": {
             "hashes": [
-                "sha256:2c2349112351b88699d8d4b6b075022c0808887cb7ad10069318a8b0bc88db44",
-                "sha256:5dbbc68b317e5e42f327f9021763545dc3fc3bfe22e6deb96aaf1fc38874156a"
+                "sha256:5174094b9637652bdb841a3029700391451bd092ba3db90600dea710ba28e97c",
+                "sha256:9e724d68fc22902a1435351f84c3fb8623f303fffcc566a4cb952df8c572cff0"
             ],
             "index": "pypi",
-            "version": "==2.1.2"
+            "version": "==2.0.1"
         },
         "jinja2": {
             "hashes": [
@@ -287,27 +287,27 @@
         },
         "python-engineio": {
             "hashes": [
-                "sha256:7454314a529bba20e745928601ffeaf101c1b5aca9a6c4e48ad397803d10ea0c",
-                "sha256:d8d8b072799c36cadcdcc2b40d2a560ce09797ab3d2d596b2ad519a5e4df19ae"
+                "sha256:11f9c35b775fe70e0a25f67b16d5b69fbfafc368cdd87eeb6f4135a475c88e50",
+                "sha256:bcc035c70ecc30acc3cfd49ef19aca6c51fa6caaadd0fa58c2d7480f50d04cf2"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==4.3.4"
+            "version": "==4.4.0"
         },
         "python-socketio": {
             "hashes": [
-                "sha256:92395062d9db3c13d30e7cdedaa0e1330bba78505645db695415f9a3c628d097",
-                "sha256:d9a9f047e6fdd306c852fbac36516f4b495c2096f8ad9ceb8803b8e5ff5622e3"
+                "sha256:7adb8867aac1c2929b9c1429f1c02e12ca4c36b67c807967393e367dfbb01441",
+                "sha256:e714f4dddfaaa0cb0e37a1e2deef2bb60590a5b9fea9c343dd8ca5e688416fd9"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==5.7.2"
+            "version": "==5.8.0"
         },
         "setuptools": {
             "hashes": [
-                "sha256:e5fd0a713141a4a105412233c63dc4e17ba0090c8e8334594ac790ec97792330",
-                "sha256:f106dee1b506dee5102cc3f3e9e68137bbad6d47b616be7991714b0c62204251"
+                "sha256:2ee892cd5f29f3373097f5a814697e397cf3ce313616df0af11231e2ad118077",
+                "sha256:b78aaa36f6b90a074c1fa651168723acbf45d14cb1196b6f02c0fd07f17623b2"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==67.4.0"
+            "version": "==67.6.0"
         },
         "six": {
             "hashes": [

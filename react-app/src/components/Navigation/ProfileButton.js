@@ -44,7 +44,7 @@ export default function ProfileButton({ user }) {
 
   return (
     <>
-      <div onClick={openMenu}>
+      <div onClick={openMenu} id='probutt'>
         Account ▿
       </div>
       <div className={ulClassName} ref={ulRef}>
