@@ -52,7 +52,7 @@ export default function CardDisplay({ cards, title, deck }) {
                         {a && b && c ? <div id='display-next' onClick={handleIt}>
                             ►
                         </div>
-                            : <>Nothing Here!</>}
+                            : <></>}
                     </div>
                 </div>
 
