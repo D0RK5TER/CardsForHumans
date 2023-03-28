@@ -19,6 +19,11 @@ export default function UserCurrent() {
     // useEffect(() => async () => {
     //     await dispatch(thunkMyBrewery(userId))
     // }, [dispatch])
+
+    const makecard = ()=>history.push('/create')
+
+    const makedeck = ()=>history.push('/deck/create')
+
     useEffect(() => {
         dispatch(thunkMyInfo())
     }, [])
@@ -59,7 +64,11 @@ export default function UserCurrent() {
                             <CardDisplay cards={user?.cards_made} />
                         </div>
                         :
-                        <h1>Try making some cards!</h1>
+                        <h1>Try making some 
+                            <p className='nothingyet' onClick={makecard}>
+                            CARDS!
+                            </p>
+                            </h1>
                     }
                 </div>
             </div>
@@ -89,7 +98,9 @@ export default function UserCurrent() {
                             <CardDisplay cards={user?.decks} deck={1} />
                         </div>
                         :
-                        <h1>Try making a deck!</h1>
+                        <h1>Try making a <p className='nothingyet' onClick={makedeck}>
+                        DECK!
+                        </p></h1>
                     }
                 </div>
             </div>
@@ -118,7 +129,9 @@ export default function UserCurrent() {
                             <CardDisplay cards={user?.favorites} />
                         </div>
                         :
-                        <h1>Try and like something!</h1>
+                        <h1>Try and like <p className='nothingyet' onClick={()=>history.push('/')}>
+                        something...
+                        </p></h1>
                     }
                 </div>
             </div>

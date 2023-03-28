@@ -1,4 +1,12 @@
 
+.nothingyet:hover{
+    color: rgb(255, 255, 255);
+    text-shadow: 1px .51px rgb(192, 192, 192)
+    }
+.nothingyet {
+    text-decoration: 1px solid white underline;
+    cursor: pointer;
+}
 #user-curr-favs {
     display: flex;
     flex-direction: column;
