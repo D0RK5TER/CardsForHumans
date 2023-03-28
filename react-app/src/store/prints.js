@@ -9,7 +9,7 @@ const actionSetC = (print) => ({
 });
 
 
-const actionRemove = (id) => ({
+export const actionRemove = (id) => ({
     type: REMOVE,
     id
 });
@@ -17,6 +17,9 @@ export const actionRemoveAll = () => ({
     type: REMOVE_ALL,
     
 });
+// export const actionRemoveOne = (id)=> ({
+    
+// })
 
 // export const thunkSplashCards = () => async (dispatch) => {
 //     const response = await fetch(`/api/deck/splash`, {

@@ -8,7 +8,7 @@ import OpenModalButton from '../ModalButton';
 import { thunkMyInfo } from '../../store/myprofile'
 import CardCard from '../CardCard';
 import DeckCard from '../DeckCard';
-import { actionRemoveAll } from '../../store/prints';
+import { actionRemoveAll, actionRemove } from '../../store/prints';
 // import BadgeFormModal from '../BadgeFormModal';
 import '../../0css/print.css'
 
@@ -18,6 +18,8 @@ export default function PrintQueue() {
     const prints = useSelector(state => state.prints)
     const cards = useSelector(state => state.cards)
     const [rend, setRend] = useState(false)
+
+    const delone =  async (id) => await dispatch(actionRemove(id)) || setRend(!rend)
 
     const cleanup = async () => await dispatch(actionRemoveAll()) || setRend(!rend)
     const printer = () => window.print() || setRend(!rend)
@@ -51,6 +53,9 @@ export default function PrintQueue() {
                 {Object?.values(prints) ? Object?.values(prints).map(x =>
                     <>
                         <div style={{ margin: '1vw' }}>
+                            <button onClick={()=>delone(x.id)}
+                            style={{ margin: '1vw' }}
+                            >Delete</button>
                             <CardCard card={cards[x.card]} />
                         </div>
                         
