@@ -37,8 +37,6 @@ export default function DeckCreate() {
     const handleIt = async (e) => {
         e.preventDefault()
         const data = await dispatch(thunkMakeDeck({ title, icon: icon2.toString() }))
-        // console.log(data)
-
         !data.errors ? setVisi('none') || setDid(data?.deck?.id) || setOpts(data?.cards) || setOgopt(data?.cards) : window.alert('Decks need a name')
 
     }

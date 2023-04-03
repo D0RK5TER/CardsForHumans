@@ -29,7 +29,6 @@ export default function CardDisplay({ cards, title, deck }) {
         }
         else setCardmeme([b, c, ...cards])
     }
-    // console.log(a, b, c)
     return (
         deck ?
             <div id='card-display-whole'>

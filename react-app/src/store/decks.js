@@ -48,7 +48,6 @@ export const thunkGetDeck = (id) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log(data)
         await dispatch(actionSetD(data.deck));
         return null;
     } else if (response.status < 500) {

@@ -31,14 +31,11 @@ export default function OneCard() {
         e.preventDefault()
         if (window.confirm('Are you sure?')) {
             const data = await dispatch(thunkDeleteCard(card[idx]?.id))
-            // console.log(data)
-            // data.ok ? dispatch(thunkMyInfo()) : window.alert('Something Went Wrong!')
             data.ok ? await dispatch(thunkMyInfo()) || history.push(`/profile`) : window.alert('Something Went Wrong!')
         }
     }
     const printIt = async () => {
         const data = await dispatch(thunkMakePrint({ card: +idx }))
-        // !data?.errors ? window.print() || setRend(!rend) : setErrors(data.errors)
         !data?.errors ? setRend(!rend) : setErrors(data.errors)
     }
 
@@ -48,14 +45,8 @@ export default function OneCard() {
     }
     const unlikeIt = async () => {
         const data = await dispatch(thunkDeleteFav(+idx))
-        // console.log(data)
         !data?.errors ? setRend(!rend) : setErrors(data.errors)
     }
-    // useEffect(()=>{
-    //     thunkMyInfo()
-    // }, [decks?.cards?.length])
-    // console.log(idx)
-    // const sessionUser = useSelector(state => state.user);
     return (
         <>
         <div id='one-card-whole'>

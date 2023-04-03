@@ -10,7 +10,6 @@ export default function CardCard({ card, make }) {
     // const sessionUser = useSelector(state => state.user);
     let classtoggle
     card?.is_question == 1 ? classtoggle = 'question' : classtoggle = 'answer'
-    // console.log(card)
     return (
         <div id='card-card-whole' className={classtoggle}
             onClick={

@@ -32,7 +32,6 @@ export default function DeckCard({ deck, make }) {
                                         alt === 9 ? alt = logo9 :
                                             alt = logo0
 
-    // console.log(alt)
     return (
         <div id='deck-card-whole' onClick={!make?() => history.push(`/deck/${deck?.id}`):()=>window.alert('Finish making it before you go to it!')}>
             <div id='deck-card-inner'>
