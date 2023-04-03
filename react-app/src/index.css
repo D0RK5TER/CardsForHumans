@@ -1,18 +1,9 @@
 /* TODO Add site wide styles */
 
-
-
-
-
-
-
-
 @media print {
 
     #card-card-whole {
         border: 2px black solid;
-        /* border-style: inset; */
-        /* padding: 0px; */
     }
 
 }
@@ -22,8 +13,6 @@
     flex-direction: column;
     justify-content: space-around;
     height: 17vw;
-    /* border: 1px solid black  */
-
 }
 
 #dexter {
