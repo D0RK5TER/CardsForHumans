@@ -17,32 +17,6 @@ export const actionRemoveAll = () => ({
     type: REMOVE_ALL,
     
 });
-// export const actionRemoveOne = (id)=> ({
-    
-// })
-
-// export const thunkSplashCards = () => async (dispatch) => {
-//     const response = await fetch(`/api/deck/splash`, {
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//     });
-//     if (response.ok) {
-//         const data = await response.json();
-//         // console.log(data)
-//         dispatch(actionSetMany(data.answers));
-//         await dispatch(actionSetMany(data.questions));
-//         data.ok = true
-//         return null;
-//     } else if (response.status < 500) {
-//         const data = await response.json();
-//         if (data.errors) {
-//             return data.errors;
-//         }
-//     } else {
-//         return ["Whoopsies! Try Again!"];
-//     }
-// };
 export const thunkGetPrints = () => async (dispatch) => {
     const response = await fetch(`/api/print`, {
         headers: {
@@ -64,7 +38,6 @@ export const thunkGetPrints = () => async (dispatch) => {
     }
 };
 export const thunkMakePrint = (form) => async (dispatch) => {
-    // console.log(form)
     const response = await fetch(`/api/print`, {
         method: 'POST',
         headers: {
@@ -74,9 +47,7 @@ export const thunkMakePrint = (form) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        // console.log(data, '!!')
         await dispatch(actionSetC(data));
-        // data.ok = true
         return null
     } else if (response.status < 500) {
         const data = await response.json();
@@ -87,28 +58,6 @@ export const thunkMakePrint = (form) => async (dispatch) => {
         return ["Whoopsies! Try Again!"];
     }
 };
-// export const thunkEditDeck = (form, id) => async (dispatch) => {
-//     const response = await fetch(`/api/deck/${id}`, {
-//         method: 'PUT',
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(form)
-//     });
-//     if (response.ok) {
-//         const data = await response.json();
-//         await dispatch(actionSetC(data));
-//         data.ok = true
-//         return data;
-//     } else if (response.status < 500) {
-//         const data = await response.json();
-//         if (data.errors) {
-//             return data.errors;
-//         }
-//     } else {
-//         return ["Whoopsies! Try Again!"];
-//     }
-// };
 export const thunkDeletePrint = (id) => async (dispatch) => {
     if (id) {
         const response = await fetch(`/api/print/${id}`, {

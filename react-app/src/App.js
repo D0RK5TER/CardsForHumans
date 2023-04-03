@@ -46,9 +46,6 @@ function App() {
                 <GameChat />
               </div>
             </Route>
-            {/* <Route path='/livegamechat' exact={true}>
-            <LiveChat />
-          </Route> */}
             <Route path="/profile" >
               <UserCurrent />
             </Route>
