@@ -2,6 +2,7 @@
 const SET_DECK = "decks/SET_DECK";
 const REMOVE = "decks/REMOVE";
 const SET_DECKS = "decks/SET_DECKS"
+// --- ACTIONS --- //
 
 const actionSetD = (deck) => ({
     type: SET_DECK,
@@ -17,29 +18,7 @@ export const actionRemove = (id) => ({
     type: REMOVE,
     id
 });
-
-// export const thunkSplashCards = () => async (dispatch) => {
-//     const response = await fetch(`/api/deck/splash`, {
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//     });
-//     if (response.ok) {
-//         const data = await response.json();
-//         // console.log(data)
-//         dispatch(actionSetMany(data.answers));
-//         await dispatch(actionSetMany(data.questions));
-//         data.ok = true
-//         return null;
-//     } else if (response.status < 500) {
-//         const data = await response.json();
-//         if (data.errors) {
-//             return data.errors;
-//         }
-//     } else {
-//         return ["Whoopsies! Try Again!"];
-//     }
-// };
+// --- THUNKS --- //
 export const thunkGetDeck = (id) => async (dispatch) => {
     const response = await fetch(`/api/deck/${id}`, {
         headers: {
@@ -125,6 +104,7 @@ export const thunkDeleteDeck = (id) => async (dispatch) => {
     }
 };
 
+// --- REDUCE/STORE --- //
 
 const initialState = {};
 

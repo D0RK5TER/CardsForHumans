@@ -2,6 +2,10 @@
 const SET_CARD = "cards/SET_CARD";
 const REMOVE = "cards/REMOVE";
 const SET_CARDS = "cards/SET_CARDS"
+
+
+// --- ACTIONS --- //
+
 const actionSet = (card) => ({
     type: SET_CARD,
     card,
@@ -16,6 +20,7 @@ export const actionRemove = (id) => ({
     type: REMOVE,
     id
 });
+// --- THUNKS --- //
 
 export const thunkSplashCards = () => async (dispatch) => {
     const response = await fetch(`/api/card/splash`, {
@@ -25,9 +30,7 @@ export const thunkSplashCards = () => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
-        // console.log(data, '!*!*!**!*!*!*!**!')
         await dispatch(actionSetMany(data.cards));
-        // await dispatch(actionSetMany(data.questions));
         data.ok = true
         return data;
     } else if (response.status < 500) {
@@ -70,7 +73,6 @@ export const thunkMakeCard = (form) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         await dispatch(actionSet(data));
-        // data.ok = true
         return data
     } else if (response.status < 500) {
         const data = await response.json();
@@ -125,6 +127,7 @@ export const thunkDeleteCard = (id) => async (dispatch) => {
     }
 };
 
+// --- REDUCE/STORE --- //
 
 const initialState = {};
 

@@ -3,6 +3,7 @@ const SET_INFO = "myprofile/SET_INFO";
 const REMOVE = "myprofile/REMOVE";
 const LIKE = "myprofile/LIKE"
 const REMOVE_LIKE = "myprofile/REMOVE_LIKE"
+// --- ACTIONS --- //
 
 const actionSet = (user) => ({
     type: SET_INFO,
@@ -22,6 +23,7 @@ export const actionRemoveLike = (likes) => ({
     likes
 })
 
+// --- THUNKS --- //
 
 export const thunkMyInfo = () => async (dispatch) => {
     const response = await fetch("/api/user/current", {
@@ -96,10 +98,7 @@ export const thunkDeckCard = (deck, cid) => async (dispatch) => {
         body: JSON.stringify({ card: cid })
     });
     if (response.ok) {
-        // const data = await response.json();
-        // await dispatch(actionRemoveLike(data));
-        // data.ok = true
-        dispatch(thunkMyInfo())
+        await dispatch(thunkMyInfo())
         return null;
     } else if (response.status < 500) {
         const data = await response.json();
@@ -113,6 +112,7 @@ export const thunkDeckCard = (deck, cid) => async (dispatch) => {
 
 
 }
+// --- REDUCE/STORE --- //
 
 const initialState = {};
 

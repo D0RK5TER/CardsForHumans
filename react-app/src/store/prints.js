@@ -3,6 +3,8 @@ const SET_PRINT = "prints/SET_PRINT";
 const REMOVE = "prints/REMOVE";
 const REMOVE_ALL = "prints/REMOVE_ALL"
 
+// --- ACTIONS --- //
+
 const actionSetC = (print) => ({
     type: SET_PRINT,
     print,
@@ -17,6 +19,9 @@ export const actionRemoveAll = () => ({
     type: REMOVE_ALL,
     
 });
+
+// --- THUNKS --- //
+
 export const thunkGetPrints = () => async (dispatch) => {
     const response = await fetch(`/api/print`, {
         headers: {
@@ -102,6 +107,7 @@ export const thunkDeletePrint = (id) => async (dispatch) => {
         }
     }
 };
+// --- REDUCE/STORE --- //
 
 
 const initialState = {};

@@ -3,6 +3,7 @@ import { actionRemove } from "./myprofile";
 import { actionRemoveAll } from './prints'
 const SET_USER = "session/SET_USER";
 export const REMOVE_USER = "session/REMOVE_USER";
+// --- ACTIONS --- //
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -12,6 +13,7 @@ const setUser = (user) => ({
 const removeUser = () => ({
 	type: REMOVE_USER,
 });
+// --- THUNKS --- //
 
 
 export const authenticate = () => async (dispatch) => {
@@ -97,6 +99,9 @@ export const signUp = (username, email, password) => async (dispatch) => {
 		return ["An error occurred. Please try again."];
 	}
 };
+
+
+// --- REDUCE/STORE --- //
 
 const initialState = {};
 

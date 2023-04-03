@@ -124,12 +124,11 @@ export const thunkDeleteGame = (game) => async (dispatch) => {
 }
 
 
-// --- INITIAL STATE --- //
 
 const initialState = {}
 
 
-// --- REDUCER --- //
+// --- REDUCE/STORE --- //
 
 export default function reducer(state = initialState, action) {
     let newState = { ...state }
